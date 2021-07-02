@@ -12,5 +12,5 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     )
   }
-  ReactDOM.render(tempEle, root);
+  ReactDOM.render(<><h1>Welcome to Fitbook!</h1><img src={thanos} alt="thanos"></img></>, root);
 })
