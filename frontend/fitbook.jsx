@@ -12,5 +12,5 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     )
   }
-  ReactDOM.render(<><h1>Welcome to Fitbook!</h1><img src={thanos} alt="thanos"></img></>, root);
+  ReactDOM.render(<><h1>Welcome to Fitbook!</h1><img src="https://media.tenor.com/images/a7587f87f98dcd024d4dcbc4587a3d4e/tenor.gif" alt="thanos"></img></>, root);
 })
