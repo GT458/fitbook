@@ -6,7 +6,7 @@ const sessionErrorsReducer = (state = [], action) => {
 
   switch(action.type) {
     case RECEIVE_ERRORS:
-      return Object.assign({}, action, {errors: action.errors})
+      return Object.assign({}, action, {errors: [action.errors]})
     case RECEIVE_CURRENT_USER:
       return Object.assign({}, action, {errors: []})
     default:
