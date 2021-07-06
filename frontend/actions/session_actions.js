@@ -15,7 +15,7 @@ export const logoutCurrentUser = () => ({
 
 export const receiveErrors = errors => ({
   type: RECEIVE_ERRORS,
-  errors
+  errors: errors.responseJSON
 })
 
 export const login = user => dispatch => (

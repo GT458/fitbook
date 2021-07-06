@@ -4,7 +4,7 @@ export const CLOSE_MODAL = 'CLOSE_MODAL';
 export const openModal = (modalType) => ({
   type: OPEN_MODAL,
   modalType
-  // added so modal can be made dynamic, used for posts 
+  // added so modal can be made dynamic, used for posts + signup
 })
 
 export const closeModal = (modal) => ({

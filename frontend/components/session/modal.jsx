@@ -104,8 +104,8 @@ class Modal extends React.Component {
             </label>
             <label>
               <input type='password' value={this.state.password} onChange={this.update('password')} placeholder='Password'></input>
-            </label>
-            <label>Birthday {/* add more day, month ånd year*/}
+            </label> <br />
+            <label>Birthday {/* add more day, month ånd year*/} <br />
               <select name='day' onChange={this.updateBday('day')}>
                 <option value='0' disabled>Day</option>
                 <option value='1'>1</option>
@@ -118,8 +118,8 @@ class Modal extends React.Component {
                 <option value='0' disabled>Year</option>
                 <option value='1999'>1999</option>
               </select>
-            </label>
-            <label>Gender</label>
+            </label> <br />
+            <label>Gender</label> <br />
             <label>Male
               <input type='radio' name='gender' value='Male' onChange={this.update('gender')}></input>     
             </label>
@@ -128,7 +128,7 @@ class Modal extends React.Component {
             </label>
             <label>Other
               <input type='radio' name='gender' value='Other' onChange={this.update('gender')}></input>
-            </label>
+            </label> <br />
             <button type='submit'>Sign Up</button>
           </form>
         </div>

@@ -5,12 +5,13 @@ class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
+      email: '',
       password: '',
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
   }
 
   
@@ -20,22 +21,17 @@ class LoginForm extends React.Component {
     this.props.processForm(user);
   }
 
+  handleDemo(e) {
+    e.preventDefault();
+    const user = {email: 'demo@demo.com', password: 'password'}
+    this.props.processForm(user);
+  }
   update(type) {
     return e => this.setState({[type]: e.currentTarget.value})
   }
-  renderErrors() {
-    return (
-      <ul>
-        {this.props.errors.map((error, i) => (
-          <li key={i}>
-            {error}
-          </li>
-        ))}
-      </ul>
-    )
-  }
+  
   render() {
-    
+    const errs = this.props.errors.length ? this.props.errors.map((error, i) => (<li key={i}>{error}</li>)) : [];
     return (
       <div className='login-form'>
         <div className='left-side'>
@@ -52,10 +48,11 @@ class LoginForm extends React.Component {
               <input type='password' value={this.state.password} onChange={this.update('password')}></input>
             </label>
             <button type='submit'>Login</button>
+            <button onClick={e => this.handleDemo(e)}>Demo Login</button>
           </form>
 
           <div className='errors'>
-            {this.renderErrors()}
+            {errs}
 
           </div>
           <p>Need an account?</p>
