@@ -8,7 +8,11 @@ class Footer extends React.Component{
 
   render() {
     return (
-      <div className='footer'></div>
+      <div className='footer'>
+        <ul className='ul-footer'>
+          <li>Built with React and Ruby on Rails</li>
+        </ul>
+      </div>
     )
   }
 }

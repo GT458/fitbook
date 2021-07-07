@@ -16,10 +16,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
 
 
-
+.html {
+  background: #edf0f5;
+}
 body {
   font-family: 'Roboto', sans-serif;
-  background: white;
+  background: #edf0f5;
 }
 
 .footer {
@@ -29,5 +31,6 @@ body {
   background-color: white;
 }
 .app {
+  width: max-width;
   background: #edf0f5;
 }

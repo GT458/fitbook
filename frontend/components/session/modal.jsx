@@ -57,7 +57,7 @@ class Modal extends React.Component {
     }
     
     return e => {
-      bday[idx] = e.target.value;
+      bday[idxToSwap] = e.target.value;
       this.setState({birthday:  bday.join('-')})
     }
   }
@@ -100,57 +100,94 @@ class Modal extends React.Component {
     if (!this.props.modal.show) {
       return null;
     }
+    const days = () => {
+      let numDays = [];
+      for (let i = 1; i <= 31; i++) {
+        numDays.push(<option value={i} key={`day-${i}`}>{i}</option>)
+      }
+      return numDays;
+    }
+    const years = () => {
+      let numYears = [];
+      for (let i = 1900; i <= 2021; i++) {
+        numYears.unshift(<option value={i} key={`day-${i}`}>{i}</option>)
+      }
+      return numYears;
+    }
     return (
       <div className='modal'>
         <div className='modal-child'>
           <div className='modal-form'>
 
           
-          <span className='close-button'><button onClick={() => this.props.closeModal()}>&#10006;</button></span>
-          <h2>Sign Up</h2>
-          <span>It's quick and easy.</span>
-          <div className='modal-errors'>
-            {this.props.errors.length ? this.props.errors.map((error, i) => <li key={i}>{error}</li>) : [] }
+            <span className='close-button'><button onClick={() => this.props.closeModal()}>&#x2715;</button></span>
+          <div className='modal-header'>
+            <h2>Sign Up</h2>
+            <span>It's quick and easy.</span>
           </div>
+          {this.props.errors.length ? <div className='modal-errors'>{this.props.errors.map((error, i) => <li key={i}>{error}</li>)}</div> : [] }
+          <div className={'form-container'}>
           <form onSubmit={this.handleSubmit}>
-            <label>
-              <input type='text' value={this.state.fname} onChange={this.update('fname')} placeholder='First Name' required></input>
-            </label>
-            <label>
-              <input type='text' value={this.state.lname} onChange={this.update('lname')} placeholder='Last Name' required></input>
-            </label>
-            <label>
-              <input type='text' value={this.state.email} onChange={this.update('email')} placeholder='Email' required></input>
-            </label>
-            <label>
-              <input type='password' value={this.state.password} onChange={this.update('password')} placeholder='Password' required></input>
-            </label> <br />
-            <label>Birthday {/* add more day, month ånd year*/} <br />
-              <select name='day' onChange={this.updateBday('day')} required>
-                <option value='0' disabled>Day</option>
-                <option value='1'>1</option>
-              </select>
-              <select name='day' onChange={this.updateBday('month')} required>
-                <option value='0' disabled>Month</option>
+            <div className='name'>
+
+                <input className='text' type='text' value={this.state.fname} onChange={this.update('fname')} placeholder='First Name' required></input>
+   
+
+                  <input className='text' type='text' value={this.state.lname} onChange={this.update('lname')} placeholder='Last Name' required></input>
+
+            </div>
+
+                <input className='text' type='text' value={this.state.email} onChange={this.update('email')} placeholder='Email' required></input>
+
+                <input className='text' type='password' value={this.state.password} onChange={this.update('password')} placeholder='Password' required></input>
+            <div className='birthday'>
+                  <label>Birthday {/* add more day, month ånd year*/} </label> 
+              
+              <select name='month' onChange={this.updateBday('month')} required defaultValue='0'>
+                <option value='0' disabled >Month</option>
                 <option value='1'>January</option>
+                <option value='2'>February</option>
+                <option value='3'>March</option>
+                <option value='4'>April</option>
+                <option value='5'>May</option>
+                <option value='6'>June</option>
+                <option value='7'>July</option>
+                <option value='8'>August</option>
+                <option value='9'>September</option>
+                <option value='10'>October</option>
+                <option value='11'>November</option>
+                <option value='12'>December</option>
               </select>
-              <select name='day' onChange={this.updateBday('year')} required>
-                <option value='0' disabled>Year</option>
-                <option value='1999'>1999</option>
+                  <select name='day' onChange={this.updateBday('day')} required defaultValue='0'>
+                    <option value='0' disabled >Day</option>
+                    {days()}
+                  </select>
+              <select name='year' onChange={this.updateBday('year')} required defaultValue='0'>
+                <option value='0' disabled >Year</option>
+                {years()}
               </select>
-            </label> <br />
-            <label>Gender</label> <br />
-            <label>Male
+            
+                </div>
+                <div className='gender'>
+
+                
+            <label className='gen-label'>Gender</label> 
+            <div className='gender-option'>
+              <label>Male </label>
               <input type='radio' name='gender' value='Male' onChange={this.update('gender')} required></input>     
-            </label>
-            <label>Female
+            </div>
+              <div className='gender-option'>
+              <label>Female</label>
               <input type='radio' name='gender' value='Female' onChange={this.update('gender')}></input>
-            </label>
-            <label>Other
+            </div>
+              <div className='gender-option'>
+              <label>Other</label>
               <input type='radio' name='gender' value='Other' onChange={this.update('gender')}></input>
-            </label> <br />
+            </div>
+            </div>
             <button type='submit' className='signup-button'>Sign Up</button>
           </form>
+            </div>
           </div>
         </div>
       </div>
