@@ -35,28 +35,28 @@ class LoginForm extends React.Component {
     return (
       <div className='login-form'>
         <div className='left-side'>
-          <h3>Connect with friends and the world around you on Fitbook.</h3>
+          <h2>fitbook</h2>
+          <h4>Connect with friends and the world around you on Fitbook.</h4>
         </div>
         <div className='right-side'>
-          <h2>Login</h2>
-          <form onSubmit={this.handleSubmit}>
-            <label>Email:
-              <input type='text' value={this.state.email} onChange={this.update('email')}></input>
-            </label>
-            <br />
-            <label>Password:
-              <input type='password' value={this.state.password} onChange={this.update('password')}></input>
-            </label>
-            <button type='submit'>Login</button>
-            <button onClick={e => this.handleDemo(e)}>Demo Login</button>
-          </form>
 
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              <input type='text' value={this.state.email} onChange={this.update('email')} placeholder='Email'></input>
+            </label>
+            <label>
+              <input type='password' value={this.state.password} onChange={this.update('password')} placeholder='Password'></input>
+            </label>
+            <button type='submit' className='login-button btn'>Login</button>
+          </form>
+          <div className='sep'></div>
+          <button onClick={e => this.props.openModal(this.props.modal)} className='outside-btn btn'>Create New Account</button>
+          <button onClick={e => this.handleDemo(e)} className='outside-btn btn'>Demo Login</button>
           <div className='errors'>
             {errs}
 
           </div>
-          <p>Need an account?</p>
-          <button onClick={e => this.props.openModal(this.props.modal)}>Sign Up</button>
+          
         </div>
        
       </div>

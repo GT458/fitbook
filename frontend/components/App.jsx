@@ -5,8 +5,10 @@ import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import { AuthRoute } from '../util/route_util';
 import Modal from './session/modal'
+import Footer from './footer';
 const App = () => (
-  <div>
+  <>
+  <div className='app'>
     {/* Eventually, remove splash container and have login form container, login form
     container will have login form that shows welcome, component to login, and button to sign up
     sign up button rendersa signup modal */}
@@ -20,6 +22,8 @@ const App = () => (
     {/* <Route path='/login' component={LoginFormContainer}/> */}
     {/* "<Route path='/signup' component={SignupFormContainer}/> */}
   </div>
+  <Footer />
+  </>
 )
 
 export default App;

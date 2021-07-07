@@ -17,7 +17,7 @@ class Splash extends React.Component {
     const signUpLogin = () => (
       <div>
         
-        <h1>Fitbook</h1>
+        
       </div>
     )
     console.log(this.props.currentUser)

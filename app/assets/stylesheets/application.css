@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+* {
+  font-family: 'Lato', sans-serif;
+  background: #edf0f5;
+}
+
+.footer {
+
+  width: 100vmax;
+  height: 500px;
+  background-color: white;
+}
+.app {
+}
