@@ -1,24 +1,20 @@
 // Place all the styles related to the api/session controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.modal{
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background: rgba(255, 255, 255, 0.7);
-  z-index: 10;
-  // color: red;
-}
+
 
 .login-form {
   display: flex;
   justify-content: space-evenly;
 }
-
+.errors li{
+  background: white;
+  background-color: white;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
 .right-side {
-  width: 300px;
+  width: 395px;
   border-radius: 10px;
   background-color: white;
   box-shadow: 0 2px 4px rgba( 0, 0, 0, .1), 0 8px 16px rgba( 0, 0, 0, 0.1);
@@ -27,23 +23,39 @@
   align-items: center;
   text-align: center;
   margin: 40px 20px;
+  overflow: hidden;
 }
-.right-side form {
-  background-color: white;
-}
+// .right-side form {
+//   background-color: white;
+//   margin: 5px;
+//   width: 100%;
+// }
 .sep {
   border-bottom: 1px solid lightgray;
   width: 90%;
-  margin: 25px 0px;
+  margin: 20px 0px;
 }
-.right-side input {
-  width: 90%;
-  border-radius: 5px;
-  border: 1px solid lightgray;
-  padding: 15px 3px;
-  background-color: white;
-  margin: 10px 0px;
-  
+.right-side {
+  form {
+    background-color: white;
+    margin: 5px;
+    width: 100%;
+  }  
+  input {
+    box-sizing: border-box;
+    width: 90%;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    padding: 15px 6px;
+    background-color: white;
+    margin: 10px 0px;
+    font-size: 15px;
+    font-weight: 100;
+    &:focus-visible {
+      border-color: #1877f2;
+      box-shadow: 0 0 0 2px #e7f3ff;
+    }
+  }
 }
 .btn {
   padding: 10px 0px;
@@ -55,23 +67,39 @@
   color: white;
   font-size: 15px;
   font-weight: bold;
+  height: 50px;
 }
-.outside-btn {
-  width: 75%;
-  background-color: #42b72a;
-  margin-bottom: 10px;
+.outer-btns {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 60%;
+  .outside-btn {
+    width: 100%;
+    background-color: #42b72a;
+    margin: 8px 0;
+    &:hover {
+      background-color: #36a420;
+      cursor: pointer;
+    }
+  }
 }
+
+
 .login-button {
   width: 90%;
   font-size: 20px;
   background-color: #1877f2;
-  
+  margin: 10px 0;
+  &:hover {
+    background-color: #166fe5;
+    cursor: pointer;
+  }
 }
 
 .left-side {
   display: flex;
   flex-direction: column;
-  width: 45%;
+  width: 30%;
   margin: 10px;
   padding: 10px;
   justify-content: center;
@@ -80,40 +108,12 @@
 .left-side h2 {
   font-size: 60px;
   color: #1877f2;
-  font-weight: bold;
+  font-weight: 700;
   margin-bottom: 5px;
 }
 .left-side h4 {
   font-size: 25px;
   margin-top: 0px;
-  font-weight: normal;
+  font-weight: 300;
 }
-
-.modal-child {
-  border: 1px solid lightgray;
-  border-radius: 4px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-}
-.modal-form {
-  display: flex;
-  flex-direction: column;
-  
-}
-.modal-errors {
-  background-color: pink;
-  border: 1px solid darkred;
-  text-align: center;
-  margin: 20px 10px 20px 10px;
-}
-.modal li {
-  list-style: none;
-  color: black;
-}
-.errors li {
-  list-style: none;
-  color: red;
-}
+// MODAL STYLES

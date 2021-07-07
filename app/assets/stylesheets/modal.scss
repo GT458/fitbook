@@ -1,0 +1,41 @@
+.modal{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: 10;
+  color: red;
+}
+.modal span {
+  
+}
+.modal-child {
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+}
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  
+}
+.modal-errors {
+  background-color: pink;
+  border: 1px solid darkred;
+  text-align: center;
+  margin: 20px 10px 20px 10px;
+}
+.modal li {
+  list-style: none;
+  color: black;
+}
+.errors li {
+  list-style: none;
+  color: red;
+}

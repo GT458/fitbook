@@ -47,15 +47,18 @@ class LoginForm extends React.Component {
             <label>
               <input type='password' value={this.state.password} onChange={this.update('password')} placeholder='Password'></input>
             </label>
-            <button type='submit' className='login-button btn'>Login</button>
+            <div className='errors'>
+              {errs}
+
+            </div>
+            <button type='submit' className='login-button btn'>Log In</button>
           </form>
           <div className='sep'></div>
-          <button onClick={e => this.props.openModal(this.props.modal)} className='outside-btn btn'>Create New Account</button>
-          <button onClick={e => this.handleDemo(e)} className='outside-btn btn'>Demo Login</button>
-          <div className='errors'>
-            {errs}
-
+          <div className='outer-btns'>
+            <button onClick={e => this.props.openModal(this.props.modal)} className='outside-btn btn'>Create New Account</button>
+            <button onClick={e => this.handleDemo(e)} className='outside-btn btn'>Demo Login</button>
           </div>
+          
           
         </div>
        
