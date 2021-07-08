@@ -23,7 +23,7 @@ export const receiveErrors = errors => ({
   type: RECEIVE_ERRORS,
   errors: errors.responseJSON
 })
-
+  
 export const login = user => dispatch => (
   APIUtil.login(user).then(user => (dispatch(receiveCurrentUser(user))), err => dispatch(receiveErrors(err)))
 )
