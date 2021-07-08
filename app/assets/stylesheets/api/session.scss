@@ -27,18 +27,19 @@
   margin: 100px 20px;
   overflow: hidden;
 }
-// .right-side form {
-//   background-color: white;
-//   margin: 5px;
-//   width: 100%;
-// }
+
 .sep {
   border-bottom: 1px solid lightgray;
   width: 90%;
   margin: 20px 0px;
 }
 .right-side {
-
+  .errors {
+    color: red;
+    li {
+      list-style: none;
+    }
+  }
   form {
     background-color: white;
     margin: 5px;
@@ -69,7 +70,7 @@
   border: none;
   color: white;
   font-size: 15px;
-  font-weight: 300;
+  font-weight: 700;
   height: 50px;
 }
 .outer-btns {
