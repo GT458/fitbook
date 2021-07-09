@@ -5,7 +5,8 @@ import Profile from './profile';
 const mSTP = (state, ownProps) => {
   // debugger
   return ({
-    currentUser: state.entities.users[ownProps.match.params.userId]
+    currentUser: state.entities.users[state.session.id],
+    user: state.entities.users[ownProps.match.params.userId]
   })
 };
 

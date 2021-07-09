@@ -1,6 +1,7 @@
 import React from 'react'
 import ProfileHeader from './profile_components/profile_header';
-
+import ProfileNavBar from './profile_components/profile_nav_bar';
+import PostTab from './profile_components/nav_tabs/post_tab';
 class Profile extends React.Component {
   componentDidMount() {
     // debugger
@@ -15,47 +16,33 @@ class Profile extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      pageType: 'posts'
+    }
   }
 
   render() {
     // debugger
-    if (!this.props.currentUser) {
+    if (!this.props.user) {
       return <h1>no user</h1>;
     }
     return (
     <div className='profile-page'>
       <div className='top'>
-        <h1>Top section of profile</h1>
         <div className='cover-photo-header'>
-            <img className='cover-photo'src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7YhIjVgUwoHocrnTWc89jg5SsnkNMDJLbeg&usqp=CAU'></img>
+          <img className='cover-photo'src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7YhIjVgUwoHocrnTWc89jg5SsnkNMDJLbeg&usqp=CAU'></img>
         </div>
-
       </div>
-      <div className='name-photo-container'>
-        <h1>name photo container</h1>
-        <ProfileHeader user={this.props.currentUser} />
-      </div>
-      <div className='profile-nav-bar'>
-        {/* <ProfileNavBar /> */}
-      </div>
+      <ProfileHeader user={this.props.user} currentUser={this.props.currentUser} />
+      <ProfileNavBar />
       <div className='profile-page-info'>
         {/* For now temp stuff, but based off nav bar on page content rendered here will be based off such*/}
-        <div className='left-profile'>
-          <h1>Left column of profile feed</h1>
-          <div className='intro'>
-            {/* <IntroComponent /> */}
-          </div>
-        </div>
-        <div className='right-profile'>
-          <h1>Right column of profile feed</h1>
-          <div className='posts'>
-            {/* <PostFeed /> */}
-            <h1>Posts feed</h1>
-          </div>
-        </div>
+        {/* render Posts or About or Friends or Photos */}
+        <PostTab user={this.props.user} currentUser={this.props.currentUser}/>
+        
 
       </div>
-      {/* <h1>{this.props.currentUser.fname}'s Profile</h1> */}
+      {/* <h1>{this.props.user.fname}'s Profile</h1> */}
     </div>
       
     )

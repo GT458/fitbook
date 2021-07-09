@@ -19,8 +19,8 @@ class ProfileHeader extends React.Component {
         <h2 className='profile-name'>{`${user.fname} ${user.lname}`}</h2>
         <span className='friend-count'>0 friends</span>
       </div>
-      <div className='edit-profile-button'>
-        <button>Edit Profile</button>
+      <div className='profile-button'>
+        {this.props.user.id === this.props.currentUser.id ? <button>Edit Profile</button> : <button>Add Friend</button>}
       </div>
     </div>
     );
