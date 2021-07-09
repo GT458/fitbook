@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 
 class NavBar extends React.Component {
 
@@ -11,7 +11,8 @@ class NavBar extends React.Component {
     return (
       <div className='nav-bar'>
         <div className='left'>
-          <img src={'https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512'}></img>
+          <Link to='/'><img src={'https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512'}></img></Link>
+          
           <input type='text' placeholder='Search Fitbook'></input>
         </div>
         <div className='middle'>

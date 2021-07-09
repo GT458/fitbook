@@ -1,0 +1,53 @@
+.top {
+  grid-area: header;
+  border: 5px solid red;
+  
+}
+
+.name-photo-container {
+  grid-area: namephoto;
+  border: 5px solid red;
+}
+
+.profile-nav-bar {
+  grid-area: profilenav;
+  border: 5px solid red;
+}
+
+.profile-page-info {
+  grid-area: profilepageinfo;
+  border: 5px solid red;
+}
+
+.profile-page {
+  display: grid;
+  // grid-template-columns: [left] 1fr [middle] 2fr [right] 1fr;
+  // grid-template-rows: [top] 1fr [middle] 1fr [bottom] 2fr;
+
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    ". header ."
+    ". namephoto ."
+    ". profilenav ."
+    ". profilepageinfo .";
+  border: 5px solid red;
+
+}
+
+// .top {
+//   grid-column-start: middle;
+//   grid-column-end: right;
+//   grid-row-start: top;
+//   grid-row-end: middle;
+//   border: 1px solid red;
+// }
+
+// .name-photo-container {
+//   grid-column-start: middle;
+//   grid-column-end: right;
+//   grid-row-start: middle;
+//   grid-row-end: bottom;
+//   border: 1px solid green;
+  
+// }

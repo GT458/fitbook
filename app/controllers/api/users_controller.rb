@@ -5,6 +5,18 @@ class Api::UsersController < ApplicationController
     render 'api/users/index'
   end
 
+  def show
+    @user = User.find_by(id: params[:id])
+    if @user 
+      render 'api/users/show'
+    else
+      render json: '[User does not exist]', status: 404
+    end
+  end
+
+  def update
+
+  end
 
   def create
     @user = User.new(user_params)
