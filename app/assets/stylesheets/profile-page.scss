@@ -1,7 +1,13 @@
 .top {
   grid-area: header;
   border: 5px solid red;
-  
+  .cover-photo-header {
+    border: 3px solid green;
+    img {
+      width: -webkit-fill-available;
+    }
+  }
+
 }
 
 .name-photo-container {
@@ -17,6 +23,18 @@
 .profile-page-info {
   grid-area: profilepageinfo;
   border: 5px solid red;
+  .left-profile {
+    border: 3px solid green;
+    .intro {
+      border: 2px solid blue;
+    }
+  }
+  .right-profile {
+    border: 3px solid green;
+    .posts {
+      border: 2px solid blue;
+    }
+  }
 }
 
 .profile-page {
