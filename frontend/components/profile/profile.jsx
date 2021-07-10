@@ -21,8 +21,29 @@ class Profile extends React.Component {
     }
   }
 
+  handleButtonClick(e) {
+    e.preventDefault();
+    switch(e.target.value) {
+      case 'posts':
+        this.setState({pageType: 'posts'})
+      case 'about':
+        this.setState({pageType:'about'})
+      case 'friends':
+        this.setState({pageType: 'friends'})
+      case 'photos':
+        this.setState({pageType: 'photos'})
+      default:
+        this.setState({pageType: 'posts'})
+    }
+  }
   render() {
     // debugger
+    let postToRender = () => {
+      switch(this.state.pageType) {
+        case 'posts':
+          return <PostTab user={this.props.user} currentUser={this.props.currentUser} />
+      }
+    }
     if (!this.props.user) {
       return <h1>no user</h1>;
     }
@@ -40,7 +61,7 @@ class Profile extends React.Component {
         {/* render Posts or About or Friends or Photos */}
         <PostTab user={this.props.user} currentUser={this.props.currentUser}/>
         
-
+        {/* postToRender */}
       </div>
       {/* <h1>{this.props.user.fname}'s Profile</h1> */}
     </div>
