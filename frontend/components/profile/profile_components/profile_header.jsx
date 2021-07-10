@@ -10,6 +10,7 @@ class ProfileHeader extends React.Component {
 
   render() {
     let user = this.props.user;
+    
     return (
     <div className='name-photo-container'>
       <div className='profile-picture'>

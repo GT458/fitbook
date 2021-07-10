@@ -2,6 +2,10 @@ import React from 'react'
 import ProfileHeader from './profile_components/profile_header';
 import ProfileNavBar from './profile_components/profile_nav_bar';
 import PostTab from './profile_components/nav_tabs/post_tab';
+import AboutTab from './profile_components/nav_tabs/about_tab';
+import PhotosTab from './profile_components/nav_tabs/photos_tab';
+import FriendsTab from './profile_components/nav_tabs/friends_tab';
+
 class Profile extends React.Component {
   componentDidMount() {
     // debugger
@@ -19,20 +23,32 @@ class Profile extends React.Component {
     this.state = {
       pageType: 'posts'
     }
+
+    this.handleButtonClick = this.handleButtonClick.bind(this);
   }
 
-  handleButtonClick(e) {
-    e.preventDefault();
-    switch(e.target.value) {
+  handleButtonClick(arg) {
+    // e.preventDefault();
+    console.log(arg)
+    switch(arg) {
       case 'posts':
+        // console.log(this.state)
         this.setState({pageType: 'posts'})
+        break;
       case 'about':
+        // console.log(this.state)
         this.setState({pageType:'about'})
+        break;
       case 'friends':
+        // console.log(this.state)
         this.setState({pageType: 'friends'})
+        break;
       case 'photos':
         this.setState({pageType: 'photos'})
+        break;
+        // console.log(this.state)
       default:
+        console.log('blegh;')
         this.setState({pageType: 'posts'})
     }
   }
@@ -41,6 +57,14 @@ class Profile extends React.Component {
     let postToRender = () => {
       switch(this.state.pageType) {
         case 'posts':
+          return <PostTab user={this.props.user} currentUser={this.props.currentUser} />
+        case 'about':
+          return <AboutTab />
+        case 'friends':
+          return <FriendsTab />
+        case 'photos':
+          return <PhotosTab />
+        default:
           return <PostTab user={this.props.user} currentUser={this.props.currentUser} />
       }
     }
@@ -55,13 +79,13 @@ class Profile extends React.Component {
         </div>
       </div>
       <ProfileHeader user={this.props.user} currentUser={this.props.currentUser} />
-      <ProfileNavBar />
+      <ProfileNavBar handleButtonClick={this.handleButtonClick}/>
       <div className='profile-page-info'>
         {/* For now temp stuff, but based off nav bar on page content rendered here will be based off such*/}
         {/* render Posts or About or Friends or Photos */}
-        <PostTab user={this.props.user} currentUser={this.props.currentUser}/>
+        {/* <PostTab user={this.props.user} currentUser={this.props.currentUser}/> */}
         
-        {/* postToRender */}
+        { postToRender() }
       </div>
       {/* <h1>{this.props.user.fname}'s Profile</h1> */}
     </div>
