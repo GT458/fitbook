@@ -10,12 +10,18 @@ class Api::UsersController < ApplicationController
     if @user 
       render 'api/users/show'
     else
-      render json: '[User does not exist]', status: 404
+      render json: ['User does not exist'], status: 404
     end
   end
 
   def update
-
+    @user = User.find_by(id: params[:id])
+    print(params[:id])
+    if @user.update(user_params)
+      render 'api/users/show'
+    else
+      render json: ['Failed to update user'], status: 418
+    end
   end
 
   def create

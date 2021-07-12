@@ -8,7 +8,13 @@ export const receiveUser = (user) => ({
   user
 })
 
-
+export const updateUser = user => dispatch => {
+  return (
+    UserAPIUtil.updateUser(user).then((user) => {
+      return dispatch(receiveUser(user))
+    }, (error) => dispatch(receiveErrors(error)))
+  )
+}
 export const getUser = userId => dispatch => { 
   
   return (

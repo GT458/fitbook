@@ -59,11 +59,11 @@ class Profile extends React.Component {
         case 'posts':
           return <PostTab user={this.props.user} currentUser={this.props.currentUser} />
         case 'about':
-          return <AboutTab />
+          return <AboutTab user={this.props.user} currentUser={this.props.currentUser}/>
         case 'friends':
-          return <FriendsTab />
+          return <FriendsTab user={this.props.user} currentUser={this.props.currentUser}/>
         case 'photos':
-          return <PhotosTab />
+          return <PhotosTab user={this.props.user} currentUser={this.props.currentUser}/>
         default:
           return <PostTab user={this.props.user} currentUser={this.props.currentUser} />
       }
@@ -74,11 +74,16 @@ class Profile extends React.Component {
     return (
     <div className='profile-page'>
       <div className='top'>
-        <div className='cover-photo-header'>
-          <img className='cover-photo'src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7YhIjVgUwoHocrnTWc89jg5SsnkNMDJLbeg&usqp=CAU'></img>
+        <div className='header-content-container'>
+
+          <div className='cover-photo-header'>
+              <img className='cover-photo' src='https://www.denofgeek.com/wp-content/uploads/2019/11/Attack-on-Titan-Season-4-Release-Date-Trailer-News.jpg?resize=768%2C432'></img>
+          </div>
+          <ProfileHeader modal={this.props.modal} openEditModal={this.props.openEditModal} user={this.props.user} currentUser={this.props.currentUser} />
         </div>
+
+       
       </div>
-      <ProfileHeader user={this.props.user} currentUser={this.props.currentUser} />
       <ProfileNavBar handleButtonClick={this.handleButtonClick}/>
       <div className='profile-page-info'>
         {/* For now temp stuff, but based off nav bar on page content rendered here will be based off such*/}

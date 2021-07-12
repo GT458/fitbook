@@ -16,7 +16,7 @@ class Splash extends React.Component {
     )
     const signUpLogin = () => (
       <div>
-        
+        <h2>no user</h2>
         
       </div>
     )

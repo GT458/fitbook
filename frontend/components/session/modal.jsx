@@ -79,7 +79,7 @@ class Modal extends React.Component {
       error: false
     })
     
-    this.props.closeModal()
+    this.props.closeModal({show: false})
 
   }
 

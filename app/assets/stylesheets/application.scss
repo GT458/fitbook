@@ -26,11 +26,12 @@ body {
 
 .footer {
 
-  width: 100vmax;
-  height: 500px;
+  width: max-width;
+  height: 100vh;
   background-color: white;
 }
 .app {
   width: max-width;
+  min-width: 940px;
   background: #edf0f5;
 }

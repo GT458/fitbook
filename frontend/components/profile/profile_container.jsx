@@ -1,17 +1,19 @@
 import { connect } from 'react-redux';
 import { getUser } from '../../actions/user_actions';
 import Profile from './profile';
-
+import { openEditModal } from '../../actions/modal_actions';
 const mSTP = (state, ownProps) => {
   // debugger
   return ({
     currentUser: state.entities.users[state.session.id],
-    user: state.entities.users[ownProps.match.params.userId]
+    user: state.entities.users[ownProps.match.params.userId],
+    modal: state.ui.modal
   })
 };
 
 const mDTP = dispatch => ({
-  getUser: (userId) => dispatch(getUser(userId))
+  getUser: (userId) => dispatch(getUser(userId)),
+  openEditModal: (modal) => dispatch(openEditModal(modal))
 });
 
 

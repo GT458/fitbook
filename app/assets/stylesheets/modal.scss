@@ -167,3 +167,32 @@
   padding: 3px;
  }
 }
+
+// EDIT PROFILE MODAL
+
+.modal-form.edit-modal {
+  .form-container {
+    form {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      flex-direction: column;
+      input {
+        width: 100%;
+      }
+      button {
+        background-color: #E7F3FF;
+        color: #1877F2;
+        font-weight: bold;
+        font-size: 15px;
+        border: none;
+        height: 25px;
+        border-radius: 5px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  // justify-content: center;
+}
