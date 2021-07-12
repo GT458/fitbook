@@ -171,7 +171,22 @@
 // EDIT PROFILE MODAL
 
 .modal-form.edit-modal {
+  .modal-header {
+    text-align: center;
+    h2 {
+      font-size: 15px;
+    }
+  }
+  .close-button {
+    background: rgb(200, 200, 200);
+    border-radius: 100px;
+    &:hover {
+      cursor: pointer;
+      background-image: rgb(233, 233, 233);
+    }
+  }
   .form-container {
+    
     form {
       display: flex;
       justify-content: space-between;
