@@ -44,6 +44,22 @@
         object-fit: cover;
         overflow: hidden;
         object-fit: scale-down;
+        button {
+          border-radius: 100px;
+          width: 35px;
+          height: 35px;
+          color: black;
+          font-weight: bold;
+          position: absolute; 
+          bottom: 15px;
+          left: 110px;
+          border: none;
+          &:hover {
+            cursor: pointer;
+            background-color:rgb(233, 233, 233);
+          }
+          // z-index: 10;
+        }
         img {
           max-width: 100%;
           max-height: 100%;
@@ -69,6 +85,7 @@
         display: flex;
         align-items: flex-end;
         margin-bottom: 20px;
+        
         button {
           width: 120px;
           height: 30px;
@@ -262,6 +279,29 @@
     }
     // margin: auto;
     // border: 3px solid seagreen;
+  }
+}
+
+.about-tab {
+  width: 100%;
+  .content-display {
+    width: 850px;
+    padding: 15px;
+    margin: 10px auto;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba( 0, 0, 0, .1), 0 8px 16px rgba( 0, 0, 0, 0.1);
+    h2 {
+      font-weight: bold;
+      font-size: 25px;
+      margin-bottom: 30px;
+    }
+    & > div {
+      margin-bottom: 30px;
+      .bold {
+        font-weight: bold;
+      }
+    }
   }
 }
 

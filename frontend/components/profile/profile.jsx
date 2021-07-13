@@ -79,7 +79,7 @@ class Profile extends React.Component {
           <div className='cover-photo-header'>
               <img className='cover-photo' src='https://www.denofgeek.com/wp-content/uploads/2019/11/Attack-on-Titan-Season-4-Release-Date-Trailer-News.jpg?resize=768%2C432'></img>
           </div>
-          <ProfileHeader modal={this.props.modal} openEditModal={this.props.openEditModal} user={this.props.user} currentUser={this.props.currentUser} />
+            <ProfileHeader modal={this.props.modal} openEditModal={this.props.openEditModal} openProfilePictureModal={this.props.openProfilePictureModal} user={this.props.user} currentUser={this.props.currentUser} />
         </div>
 
        

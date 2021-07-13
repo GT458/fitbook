@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { getUser } from '../../actions/user_actions';
 import Profile from './profile';
-import { openEditModal } from '../../actions/modal_actions';
+import { openEditModal, openProfilePictureModal } from '../../actions/modal_actions';
 const mSTP = (state, ownProps) => {
   // debugger
   return ({
@@ -13,7 +13,8 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = dispatch => ({
   getUser: (userId) => dispatch(getUser(userId)),
-  openEditModal: (modal) => dispatch(openEditModal(modal))
+  openEditModal: (modal) => dispatch(openEditModal(modal)),
+  openProfilePictureModal: (modal) => dispatch(openProfilePictureModal(modal))
 });
 
 

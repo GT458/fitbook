@@ -16,13 +16,18 @@ class NavBar extends React.Component {
           <input type='text' placeholder='Search Fitbook'></input>
         </div>
         <div className='middle'>
-          <span>place holder, something may go here?</span>
+          <div className='buttons-container'>
+            <a href='https://github.com/GT458/fitbook'><img src='https://pngimg.com/uploads/github/github_PNG40.png'></img></a>
+          </div>
         </div>
         <div className='right'>
-          <button className='nav-btn profile-btn'></button>
-          <button className='nav-btn menu'></button>
-          <button className='nav-btn notif-btn'></button>
-          <button className='nav-btn dropdown-btn'></button>
+          <div className='nav-buttons-container'>
+            <button className='nav-btn profile-btn'>P</button>
+            <button className='nav-btn menu'>M</button>
+            <button className='nav-btn notif-btn'>N</button>
+            <button className='nav-btn dropdown-btn'>D</button>
+
+          </div>
         </div>
       </div>
     )

@@ -9,6 +9,7 @@ import Modal from './session/modal'
 import Footer from './footer';
 import ProfileContainer from './profile/profile_container';
 import ModalEdit from './profile/profile_components/modal_edit';
+import PhotoModal from './profile/profile_components/photo_modal';
 const App = () => (
   <>
   <div className='app'>
@@ -21,6 +22,7 @@ const App = () => (
     {/* AuthRoute: not logged in, / renders login form, ProtectedRoute means logged in, / renders what we have in splash container for now */}
     <Modal />
     <ModalEdit />
+    <PhotoModal />
     <Switch>
       <ProtectedRoute path = '/users/:userId' component={ProfileContainer} />
       <ProtectedRoute path='/' component={SplashContainer} />
