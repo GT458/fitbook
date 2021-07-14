@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal } from '../../../actions/modal_actions';
-import {RECEIVE_MODAL_ERROR} from '../../../actions/session_actions';
+import { RECEIVE_MODAL_ERROR } from '../../../actions/session_actions';
 import { updateUser } from '../../../actions/user_actions';
-
+import { formatFullName } from '../../util/format_name';
 const mSTP = state => ({
   errors: state.errors.modal,
   modal: state.ui.modal,
@@ -15,7 +15,7 @@ const mDTP = dispatch => ({
   closeModal: () => dispatch(closeModal())
 });
 
-class PhotoModal extends React.Component {
+class PostModal extends React.Component {
 
   constructor(props) {
     super(props);
@@ -23,39 +23,18 @@ class PhotoModal extends React.Component {
     this.state = {
       imageUrl: '',
       imageFile: null,
-      show_profile_picture: false
+      show_post: false
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleInput(e) {
-    //e.preventDefault();
-    const reader = new FileReader();
-    const file = e.currentTarget.files[0];
-    reader.onloadend = () => {
-      this.setState({imageUrl: reader.result, imageFile: file});
-    }
-    if (file) {
-      reader.readAsDataURL(file);
-    } else {
-      this.setState({ imageUrl: '', imageFile: null});
-    }
+    
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append('user[email]', this.props.currentUser.email);
-    if (this.state.imageFile) {
-      formData.append('user[profile_photo]', this.state.imageFile);
-    }
-    $.ajax({
-      url: `api/users/${this.props.currentUser.id}`,
-      method: 'PATCH',
-      data: formData,
-      contentType: false,
-      processData: false
-    })
+    
 
     this.props.closeModal();
     this.setState({
@@ -64,7 +43,7 @@ class PhotoModal extends React.Component {
     })
   }
   render() {
-    if (!this.props.modal.show_profile_pic) {
+    if (!this.props.modal.show_post) {
       return null;
     }
 
@@ -74,16 +53,22 @@ class PhotoModal extends React.Component {
           <div className='modal-form profile-picture-modal'>
             <span className='close-button'><button onClick={() => this.props.closeModal()}>&#x2715;</button></span>
             <div className='modal-header'>
-              <h2>Edit Profile Picture</h2>
+              <h2>Create Post</h2>
+            </div>
+            <div classNAme='post-header'>
+              <div className='thumbnail'>
+
+              </div>
+              <div className='post-user-name'>
+                {formatFullName(this.props.currentUser.fname, this.props.currentUser.lname)}
+              </div>
             </div>
             <div className='form-container'>
               <form>
-                <input type='file' onChange={this.handleInput}></input>
-                <div>
-                  <img src={this.state.imageUrl} alt='' ></img>
 
-                </div>
-                <button type='submit' onClick={this.handleSubmit}>Upload Photo</button>
+                <input type='file'></input>
+                
+                <button type='submit' onClick={this.handleSubmit}>Post</button>
 
               </form>
             </div>
@@ -94,4 +79,4 @@ class PhotoModal extends React.Component {
   }
 }
 
-export default connect(mSTP, mDTP)(PhotoModal);
+export default connect(mSTP, mDTP)(PostModal);

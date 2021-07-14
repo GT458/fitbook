@@ -25,17 +25,19 @@
       box-sizing: border-box;
       height: 35px;
       border-radius: 50px;
-      border: 1px solid lightgray;
+      // border: 1px solid lightgray;
+      border: none;
       padding: 15px 6px;
-      background-color: white;
+      background-color: #F0F2F5;
       width: 260px;
       font-size: 15px;
       font-weight: 100;
       &:focus-visible {
-        border-color: #1877f2;
+        outline: none;
         box-shadow: 0 0 0 2px #e7f3ff;
       }
     }
+    
   }
   .middle {
     .buttons-container {
