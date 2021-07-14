@@ -13,7 +13,7 @@
 
 require 'open-uri'
 
-demo_user = User.find_by(id: 11)
+demo_user = User.find_by(email: 'demo@demo.com')
 
 file = open('https://s3.amazonaws.com/fitbookus-seeds/default_picture.jpeg')
 
