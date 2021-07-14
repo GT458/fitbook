@@ -28,7 +28,7 @@ class NavBar extends React.Component {
               </div>
               <span>{this.props.currentUser.fname[0].toUpperCase() + this.props.currentUser.fname.slice(1)}</span>
               </div>
-            <button className='nav-btn menu'>M</button>
+            <button className='nav-btn menu'>&#9865;</button>
             <button className='nav-btn notif-btn'>N</button>
             <button className='nav-btn dropdown-btn'>D</button>
 

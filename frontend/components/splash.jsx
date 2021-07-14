@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import FeedIndexContainer from './feed/feed_index_container';
 class Splash extends React.Component {
 
   constructor(props) {
@@ -11,6 +12,7 @@ class Splash extends React.Component {
     const welcome = () => (
       <div>
         <h1>Welcome to Fitbook, {this.props.currentUser.fname}</h1>
+        <FeedIndexContainer />
         <button onClick={() => this.props.logout()}>Logout</button> 
       </div>
     )

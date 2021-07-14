@@ -9,7 +9,11 @@ class User < ApplicationRecord
 
   has_one_attached :profile_photo
   has_one_attached :cover_photo
-
+  has_many :posts,
+    class_name: :Post,
+    foreign_key: :author_id,
+    primary_key: :id
+  
   def self.find_by_credentials(email, password)
     @user = User.find_by(email: email)
 

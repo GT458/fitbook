@@ -4,6 +4,8 @@ import Root from './components/root';
 import configureStore from './store/store';
 import * as sessionActions from './actions/session_actions';
 
+import { fetchAllPosts } from "./actions/post_actions";
+
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
   let store;
@@ -25,5 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   window.sessionActions = sessionActions;
+  window.fetchPosts = fetchAllPosts;
   ReactDOM.render(<Root store={store} />, root);
 })
