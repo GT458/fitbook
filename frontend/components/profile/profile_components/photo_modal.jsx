@@ -50,8 +50,8 @@ class PhotoModal extends React.Component {
       formData.append('user[profile_photo]', this.state.imageFile);
     }
     $.ajax({
-      url: 'api/users',
-      method: 'POST',
+      url: `api/users/${this.props.currentUser.id}`,
+      method: 'PATCH',
       data: formData,
       contentType: false,
       processData: false
