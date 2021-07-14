@@ -6,7 +6,9 @@ class NavBar extends React.Component {
   constructor(props) {
     super(props)
   }
-
+  componentDidMount() {
+    this.props.fetchUser();
+  }
   render() {
     return (
       <div className='nav-bar'>

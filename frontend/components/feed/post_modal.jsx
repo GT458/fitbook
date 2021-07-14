@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { closeModal } from '../../../actions/modal_actions';
-import { RECEIVE_MODAL_ERROR } from '../../../actions/session_actions';
-import { updateUser } from '../../../actions/user_actions';
-import { formatFullName } from '../../util/format_name';
+import { closeModal } from '../../actions/modal_actions';
+import { createPost } from '../../actions/post_actions';
+// import { RECEIVE_MODAL_ERROR } from '../../../actions/session_actions';
+
+import { formatFirstName, formatFullName } from '../../util/format_name';
 const mSTP = state => ({
   errors: state.errors.modal,
   modal: state.ui.modal,
@@ -12,7 +13,8 @@ const mSTP = state => ({
 
 const mDTP = dispatch => ({
   updateUser: (user) => dispatch(updateUser(user)),
-  closeModal: () => dispatch(closeModal())
+  closeModal: () => dispatch(closeModal()),
+  createPost: (post) => dispatch(createPost(post))
 });
 
 class PostModal extends React.Component {
@@ -21,25 +23,29 @@ class PostModal extends React.Component {
     super(props);
 
     this.state = {
-      imageUrl: '',
-      imageFile: null,
-      show_post: false
+      author_id: 0,
+      body: '',
+
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleInput(e) {
-    
+  handleInput(type) {
+    return e => this.setState({[type]: e.currentTarget.value})
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    
+    // debugger;
+    this.props.createPost({
+      author_id: this.props.currentUser.id,
+      body: this.state.body
+    });
 
     this.props.closeModal();
     this.setState({
-      imageUrl: '',
-      imageFile: null
+      author_id: 0,
+      body: '',
     })
   }
   render() {
@@ -55,9 +61,9 @@ class PostModal extends React.Component {
             <div className='modal-header'>
               <h2>Create Post</h2>
             </div>
-            <div classNAme='post-header'>
+            <div className='post-header'>
               <div className='thumbnail'>
-
+                <img src={this.props.currentUser.profile_photo}></img>
               </div>
               <div className='post-user-name'>
                 {formatFullName(this.props.currentUser.fname, this.props.currentUser.lname)}
@@ -65,8 +71,7 @@ class PostModal extends React.Component {
             </div>
             <div className='form-container'>
               <form>
-
-                <input type='file'></input>
+                <input type='textarea' value={this.state.body} onChange={this.handleInput('body')}placeholder={`What's on your mind, ${formatFirstName(this.props.currentUser.fname)}?`} required></input>
                 
                 <button type='submit' onClick={this.handleSubmit}>Post</button>
 

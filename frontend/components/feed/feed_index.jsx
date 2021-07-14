@@ -1,6 +1,6 @@
 import PostItem from './post_item';
 import React from 'react';
-
+import CreatePostComponent from './create_post_component';
 class Feed extends React.Component {
   constructor(props) {
     super(props);
@@ -41,19 +41,8 @@ class Feed extends React.Component {
     return (
       <div className='posts-feed'>
         <h2>All Posts</h2>
-        <div className='create-post'>
-          <div className='create-post-top-half'>
-            <div className='thumbnail-img'>
-
-              <img src={this.props.currentUser.profile_photo}></img>
-            </div>
-            <input type='text' placeholder={`What's on your mind?`}></input>
-          </div>
-          <div className='create-post-button'>
-            <button>Add Photo</button>
-          </div>
-        </div>
-        {posts}
+        {<CreatePostComponent />}
+        {posts.reverse()}
       </div>
     )
   }

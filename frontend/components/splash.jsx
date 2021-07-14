@@ -22,7 +22,7 @@ class Splash extends React.Component {
         
       </div>
     )
-    console.log(this.props.currentUser)
+    // console.log(this.props.currentUser)
     return (
       this.props.currentUser ? welcome() : signUpLogin()
     )
