@@ -14,8 +14,7 @@ class NavBar extends React.Component {
       <div className='nav-bar'>
         <div className='left'>
           <Link to='/'><img src={'https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512'}></img></Link>
-          
-          <input type='text' placeholder='Search Fitbook'></input>
+           <input type='text' placeholder='Search Fitbook'></input>
         </div>
         <div className='middle'>
           <div className='buttons-container'>
@@ -32,9 +31,9 @@ class NavBar extends React.Component {
               <span>{this.props.currentUser.fname[0].toUpperCase() + this.props.currentUser.fname.slice(1)}</span>
               </div>
                 </Link>
-            <button className='nav-btn menu'>&#9865;</button>
-            <button className='nav-btn notif-btn'>N</button>
-            <button className='nav-btn dropdown-btn'>D</button>
+            <button className='nav-btn menu'></button>
+            <button className='nav-btn notif-btn'></button>
+            <button className='nav-btn dropdown-btn'></button>
 
           </div>
         </div>

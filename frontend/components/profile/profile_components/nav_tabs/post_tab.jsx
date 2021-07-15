@@ -1,5 +1,6 @@
 import React from 'react';
-
+import CreatePostComponent from '../../../feed/create_post_component';
+import FeedIndexContainer from '../../../feed/feed_index_container';
 class PostTab extends React.Component {
 
   constructor(props) {
@@ -34,7 +35,7 @@ class PostTab extends React.Component {
           </div>
         </div>
         <div className='right-profile'>
-          <div className='create-post'>
+          {/* <div className='create-post'>
             <div className='create-post-top-half'>
               <div className='thumbnail-img'>
 
@@ -45,11 +46,16 @@ class PostTab extends React.Component {
             <div className='create-post-button'>
               <button>Add Photo</button>
             </div>
-          </div>
-          <div className='posts'>
+          </div> */}
+          {/* {<CreatePostComponent />} */}
+          {/* <div className='posts'>
             <div className='post-1'>
               <span>this is post 1</span>
             </div>
+          </div> */}
+          <div className='profile-post-container'>
+
+            {<FeedIndexContainer />}
           </div>
         </div>
       </div>

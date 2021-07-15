@@ -209,18 +209,23 @@
     }
   }
   .right-profile {
+    .profile-post-container {
+      .post-container {
+        width: 500px;
+      }
+    
     width: 500px;
     display: flex;
     flex-direction: column;
-    & > div {
-        margin-bottom: 15px;
-        padding: 15px;
-        border-radius: 10px;
-        box-shadow: 0 2px 4px rgba( 0, 0, 0, .1), 0 8px 16px rgba( 0, 0, 0, 0.1);
-        background-color: white;
-      }
+    // & > div {
+    //     margin-bottom: 15px;
+    //     padding: 15px;
+    //     border-radius: 10px;
+    //     box-shadow: 0 2px 4px rgba( 0, 0, 0, .1), 0 8px 16px rgba( 0, 0, 0, 0.1);
+    //     background-color: white;
+    //   }
     .create-post {
-      
+      width: 500px;
       .create-post-top-half {
         display: flex;
         justify-content: space-between;
@@ -275,6 +280,7 @@
           }
          
         }
+      }
       }
     }
     // margin: auto;

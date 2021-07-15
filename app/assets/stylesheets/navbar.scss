@@ -21,13 +21,20 @@
       height: 35px;
       cursor: pointer;
     }
+    
     input {
+      background-image: url("https://img.icons8.com/ios-glyphs/30/000000/search--v1.png");
+      background-repeat: no-repeat;
+      background-size: 25px 25px;
+      background-position-y: center;
+      background-position-x: 3px;
+      padding-left: 30px;
       box-sizing: border-box;
       height: 35px;
       border-radius: 50px;
       // border: 1px solid lightgray;
       border: none;
-      padding: 15px 6px;
+      // padding: 15px 6px;
       background-color: #F0F2F5;
       width: 260px;
       font-size: 15px;
@@ -66,11 +73,13 @@
           align-items: center;
           text-align: center;
           box-sizing: border-box;
-          max-height: 30px;
+          max-height: 33px;
           display: inline-block;
           border: none;
           border-radius: 100px;
-          padding: 1px 5px;
+          box-sizing: border-box;
+          padding: 3px;
+          padding-right: 7px;
           // direction: rtl;
           display: flex;
           justify-content: space-between;
@@ -86,9 +95,10 @@
             white-space: nowrap;
           }
           .thumbnail {
-            width: 25px;
-            height: 25px;
+            width: 30px;
+            height: 30px;
             margin-right: 5px;
+            
             img {
               border-radius: 100px;
               width: 100%;
@@ -101,15 +111,40 @@
             background-color: #d8d7d7;
           }
         }
+      .menu {
+
+        background-image: url("https://img.icons8.com/ios-filled/50/000000/circled-menu.png");
+        background-size: 24px 24px;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      .notif-btn {
+        background-image: url("https://img.icons8.com/ios-glyphs/30/000000/appointment-reminders--v1.png");
+        background-size: 24px 24px;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      .dropdown-btn {
+        background-image: url("https://img.icons8.com/ios-glyphs/30/000000/sort-down.png");
+        background-size: 24px 24px;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
       .nav-btn{
-        width: 30px;
-        min-width: 30px;
-        height: 30px;
+        width: 33px;
+        min-width: 33px;
+        height: 33px;
         display:inline-block;
         border: none;
         border-radius: 50px;
         font-weight: bold;
         margin: auto 2px;
+        object-fit: scale-down;
+        
+        // <img src="https://img.icons8.com/ios-glyphs/30/000000/squared-menu.png" />
+        img {
+
+        }
         &:hover {
           background-color: #d8d7d7;
           cursor: pointer;

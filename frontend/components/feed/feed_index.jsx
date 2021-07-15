@@ -40,7 +40,7 @@ class Feed extends React.Component {
     // debugger;
     return (
       <div className='posts-feed'>
-        <h2>All Posts</h2>
+        {/* <h2>All Posts</h2> */}
         {<CreatePostComponent />}
         {posts.reverse()}
       </div>
