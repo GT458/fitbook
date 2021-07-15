@@ -18,7 +18,7 @@ class NavBar extends React.Component {
         </div>
         <div className='middle'>
           <div className='buttons-container'>
-            <a href='https://github.com/GT458/fitbook'><img src='https://pngimg.com/uploads/github/github_PNG40.png'></img></a>
+            {/* <a href='https://github.com/GT458/fitbook'><img src='https://pngimg.com/uploads/github/github_PNG40.png'></img></a> */}
           </div>
         </div>
         <div className='right'>
@@ -31,8 +31,8 @@ class NavBar extends React.Component {
               <span>{this.props.currentUser.fname[0].toUpperCase() + this.props.currentUser.fname.slice(1)}</span>
               </div>
                 </Link>
-            <button className='nav-btn menu'></button>
-            <button className='nav-btn notif-btn'></button>
+            <a href='https://github.com/GT458/fitbook'><button className='nav-btn menu'></button> </a>
+            {/* <button className='nav-btn notif-btn'></button> */}
             <button className='nav-btn dropdown-btn'></button>
 
           </div>

@@ -16,7 +16,7 @@ const mDTP = dispatch => ({
   updateUserPhoto: (userId, formData) => dispatch(updateUserPhoto(userId, formData))
 });
 
-class PhotoModal extends React.Component {
+class CoverModal extends React.Component {
 
   constructor(props) {
     super(props);
@@ -24,7 +24,7 @@ class PhotoModal extends React.Component {
     this.state = {
       imageUrl: '',
       imageFile: null,
-      show_profile_picture: false
+      show_cover: false
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -48,7 +48,7 @@ class PhotoModal extends React.Component {
     const formData = new FormData();
     formData.append('user[email]', this.props.currentUser.email);
     if (this.state.imageFile) {
-      formData.append('user[profile_photo]', this.state.imageFile);
+      formData.append('user[cover_photo]', this.state.imageFile);
     }
 
     // $.ajax({
@@ -66,7 +66,7 @@ class PhotoModal extends React.Component {
     })
   }
   render() {
-    if (!this.props.modal.show_profile_pic) {
+    if (!this.props.modal.show_cover) {
       return null;
     }
 
@@ -76,7 +76,7 @@ class PhotoModal extends React.Component {
           <div className='modal-form profile-picture-modal'>
             <span className='close-button'><button onClick={() => this.props.closeModal()}>&#x2715;</button></span>
             <div className='modal-header'>
-              <h2>Edit Profile Picture</h2>
+              <h2>Edit Cover Picture</h2>
             </div>
             <div className='form-container'>
               <form>
@@ -96,4 +96,4 @@ class PhotoModal extends React.Component {
   }
 }
 
-export default connect(mSTP, mDTP)(PhotoModal);
+export default connect(mSTP, mDTP)(CoverModal);

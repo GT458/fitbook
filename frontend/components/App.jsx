@@ -11,6 +11,7 @@ import ProfileContainer from './profile/profile_container';
 import ModalEdit from './profile/profile_components/modal_edit';
 import PhotoModal from './profile/profile_components/photo_modal';
 import PostModal from './feed/post_modal';
+import CoverModal from './profile/profile_components/cover_modal';
 const App = () => (
   <>
   <div className='app'>
@@ -25,6 +26,7 @@ const App = () => (
     <ModalEdit />
     <PhotoModal />
     <PostModal />
+    <CoverModal />
     <Switch>
       <ProtectedRoute path = '/users/:userId' component={ProfileContainer} />
       <ProtectedRoute path='/' component={SplashContainer} />

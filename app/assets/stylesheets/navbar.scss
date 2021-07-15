@@ -62,14 +62,14 @@
   }
   .right {
     .nav-buttons-container {
-      width: 230px;
+      width: 160px;
       display: flex;
       justify-content: space-between;
       margin-right: 10px;
       
       .profile-btn {
           max-width: 150px;
-          background-color: rgb(239,239,239);
+          // background-color: rgb(239,239,239);
           align-items: center;
           text-align: center;
           box-sizing: border-box;
@@ -90,7 +90,7 @@
             float: right;
             box-sizing: border-box;
             // width: 100%;
-            font-weight: bold;
+            font-weight: 600;
             font-size: 15px;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -110,12 +110,12 @@
           }
           &:hover {
             cursor: pointer;
-            background-color: #d8d7d7;
+            background-color: #F0F2F5;
           }
         }
       .menu {
 
-        background-image: url("https://img.icons8.com/ios-filled/50/000000/circled-menu.png");
+        background-image: url("https://pngimg.com/uploads/github/github_PNG40.png");
         background-size: 24px 24px;
         background-position: center;
         background-repeat: no-repeat;
