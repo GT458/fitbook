@@ -31,7 +31,7 @@ class Feed extends React.Component {
     
     // debugger
     if (this.state.posts.length < 1) {
-      return null;
+     return  <CreatePostComponent />
     }
     let posts = this.state.posts.map((post, idx) => {
 
