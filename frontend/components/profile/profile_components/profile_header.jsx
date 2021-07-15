@@ -17,7 +17,7 @@ class ProfileHeader extends React.Component {
           <img src={this.props.user.profile_photo} alt='profile-photo'></img> {/* TODO: IMPORT PHOTO FROM AWS, USE DEFAULT PHOTO*/}
           {/* <button onClick={e => this.props.openProfilePictureModal(this.props.modal)}>E</button> */}
           {this.props.user.id === this.props.currentUser.id ? 
-            <button onClick={e => this.props.openProfilePictureModal(this.props.modal)}>E</button>
+            <button onClick={e => this.props.openProfilePictureModal(this.props.modal)}></button>
             :
             null
           }

@@ -73,7 +73,7 @@ class CoverModal extends React.Component {
     return (
       <div className='modal'>
         <div className='modal-child'>
-          <div className='modal-form profile-picture-modal'>
+          <div className='modal-form cover-photo-modal'>
             <span className='close-button'><button onClick={() => this.props.closeModal()}>&#x2715;</button></span>
             <div className='modal-header'>
               <h2>Edit Cover Picture</h2>
@@ -82,7 +82,7 @@ class CoverModal extends React.Component {
               <form>
                 <input type='file' onChange={this.handleInput}></input>
                 <div>
-                  <img src={this.state.imageUrl ||= 'https://www.houseofcharity.org/wp-content/uploads/2019/07/White-Square.jpg'} alt='' ></img>
+                  <img src={this.state.imageUrl ||= 'https://i.imgur.com/7QcHCRv.png'} alt='' ></img>
 
                 </div>
                 <button type='submit' onClick={this.handleSubmit}>Upload Photo</button>

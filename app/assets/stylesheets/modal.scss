@@ -261,6 +261,50 @@
     }
   }
 }
+// COVER PHOTO MODAL
+
+.modal-form.cover-photo-modal {
+  .modal-header {
+    text-align: center;
+  }
+
+  .form-container {
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      div {
+        width: 100%;
+        // height: auto;
+        max-height: 250px;
+        img {
+          width: 100%;
+          height: auto;
+          max-height: inherit;
+          border-radius: 5px;
+          margin: 5px 0;
+          box-sizing: content-box;
+        }
+      }
+      input {
+        border: none;
+      }
+      button {
+        background-color: #E7F3FF;
+        color: #1877F2;
+        font-weight: bold;
+        font-size: 15px;
+        border: none;
+        height: 25px;
+        border-radius: 5px;
+        width: 100%;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
 
 // POST MODAL
 
