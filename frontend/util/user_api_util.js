@@ -14,3 +14,13 @@ export const fetchUser = userId => (
   })
 )
 
+export const updateUserPhoto = (userId, formData) => (
+  $.ajax({
+    url: `api/users/${userId}`,
+    method: 'PATCH',
+    data: formData,
+    contentType: false,
+    processData: false
+  })
+)
+

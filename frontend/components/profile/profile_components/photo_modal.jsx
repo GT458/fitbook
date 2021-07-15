@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal } from '../../../actions/modal_actions';
 import {RECEIVE_MODAL_ERROR} from '../../../actions/session_actions';
-import { updateUser } from '../../../actions/user_actions';
+import { updateUser, updateUserPhoto } from '../../../actions/user_actions';
 
 const mSTP = state => ({
   errors: state.errors.modal,
@@ -12,7 +12,8 @@ const mSTP = state => ({
 
 const mDTP = dispatch => ({
   updateUser: (user) => dispatch(updateUser(user)),
-  closeModal: () => dispatch(closeModal())
+  closeModal: () => dispatch(closeModal()),
+  updateUserPhoto: (userId, formData) => dispatch(updateUserPhoto(userId, formData))
 });
 
 class PhotoModal extends React.Component {
@@ -49,14 +50,15 @@ class PhotoModal extends React.Component {
     if (this.state.imageFile) {
       formData.append('user[profile_photo]', this.state.imageFile);
     }
-    $.ajax({
-      url: `api/users/${this.props.currentUser.id}`,
-      method: 'PATCH',
-      data: formData,
-      contentType: false,
-      processData: false
-    })
 
+    // $.ajax({
+    //   url: `api/users/${this.props.currentUser.id}`,
+    //   method: 'PATCH',
+    //   data: formData,
+    //   contentType: false,
+    //   processData: false
+    // }).then(response => console.log(response), err => console.log(err.responseJSON))
+    this.props.updateUserPhoto(this.props.currentUser.id, formData)
     this.props.closeModal();
     this.setState({
       imageUrl: '',

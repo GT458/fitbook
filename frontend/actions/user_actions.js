@@ -30,3 +30,8 @@ export const getUser = userId => dispatch => {
   }, (error) => dispatch(receiveErrors(error)))
 )}
 
+export const updateUserPhoto = (userId, formData) => dispatch => {
+  return (
+    UserAPIUtil.updateUserPhoto(userId, formData).then((user) => dispatch(receiveUser(user)), err => dispatch(receiveErrors(err.responseJSON)))
+  )
+}
