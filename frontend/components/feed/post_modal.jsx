@@ -56,7 +56,7 @@ class PostModal extends React.Component {
     return (
       <div className='modal'>
         <div className='modal-child'>
-          <div className='modal-form profile-picture-modal'>
+          <div className='modal-form post-modal'>
             <span className='close-button'><button onClick={() => this.props.closeModal()}>&#x2715;</button></span>
             <div className='modal-header'>
               <h2>Create Post</h2>
@@ -71,7 +71,7 @@ class PostModal extends React.Component {
             </div>
             <div className='form-container'>
               <form>
-                <input type='textarea' value={this.state.body} onChange={this.handleInput('body')}placeholder={`What's on your mind, ${formatFirstName(this.props.currentUser.fname)}?`} required></input>
+                <textarea value={this.state.body} onChange={this.handleInput('body')}placeholder={`What's on your mind, ${formatFirstName(this.props.currentUser.fname)}?`} required></textarea>
                 
                 <button type='submit' onClick={this.handleSubmit}>Post</button>
 

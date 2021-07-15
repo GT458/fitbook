@@ -261,3 +261,68 @@
     }
   }
 }
+
+// POST MODAL
+
+.modal-form.post-modal {
+  .modal-header {
+    text-align: center;
+  }
+
+  .post-header {
+    display: flex;
+    padding-top: 15px;
+    padding-left: 15px;
+    .thumbnail {
+      width: 45px;
+      height: 45px;
+      border-radius: 100px;
+      object-fit: scale-down;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .post-user-name {
+      margin-left: 10px;
+      padding-top: 10px;
+      font-weight: 700;
+      font-size: 15px;
+    }
+  }
+  .form-container {
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      div {
+        width: 200px;
+        height: 200px;
+        
+      }
+      textarea {
+        height: 80px;
+        width: 100%;
+        border: none;
+        resize: none;
+        &:focus-visible {
+          outline: none;
+        }
+      }
+      button {
+        background-color: #E7F3FF;
+        color: #1877F2;
+        font-weight: bold;
+        font-size: 15px;
+        border: none;
+        height: 25px;
+        border-radius: 5px;
+        width: 100%;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

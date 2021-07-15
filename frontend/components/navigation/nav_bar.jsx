@@ -24,14 +24,14 @@ class NavBar extends React.Component {
         </div>
         <div className='right'>
           <div className='nav-buttons-container'>
+                <Link to={`/users/${this.props.currentUser.id}`}>
             <div className='profile-btn'>
               <div className='thumbnail'>
-                <Link to={`/users/${this.props.currentUser.id}`}>
                 <img src={this.props.currentUser.profile_photo}></img>
-                </Link>
               </div>
               <span>{this.props.currentUser.fname[0].toUpperCase() + this.props.currentUser.fname.slice(1)}</span>
               </div>
+                </Link>
             <button className='nav-btn menu'>&#9865;</button>
             <button className='nav-btn notif-btn'>N</button>
             <button className='nav-btn dropdown-btn'>D</button>

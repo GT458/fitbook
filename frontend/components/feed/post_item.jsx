@@ -3,6 +3,7 @@ import React from 'react';
 import { openModal } from "../../actions/modal_actions";
 import { getUser } from "../../actions/user_actions";
 import { formatFullName } from "../../util/format_name";
+import { Link } from 'react-router-dom'
 
 const mSTP = (state, ownProps) => ({
   currentUser: state.entities.users[state.session.id],
@@ -34,6 +35,7 @@ class PostItem extends React.Component {
     }
     return (
     <div className='post-container'>
+        <Link to={`/users/${this.props.author.id}`}>
       <div className='post-top'>
         <div className='thumbnail'>
             <img src={this.props.author.profile_photo}></img>
@@ -43,6 +45,7 @@ class PostItem extends React.Component {
           {formatFullName(this.props.author.fname, this.props.author.lname)}
         </div>
       </div>
+      </Link>
       <div className='post-body'>
         <div className='body'>
           {this.props.post.body}
