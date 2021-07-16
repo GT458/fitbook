@@ -78,7 +78,7 @@ class Profile extends React.Component {
 
           <div className='cover-photo-header'>
               {this.props.currentUser.id === this.props.user.id ? <button className='edit-cover-button' onClick={e => this.props.openCoverPhotoModal(this.props.modal)}><img src="https://img.icons8.com/material-rounded/96/000000/camera--v1.png" />Edit Cover Photo</button> : null }
-              <img className='cover-photo' src={this.props.currentUser.cover_photo}></img>
+              <img className='cover-photo' src={this.props.user.cover_photo}></img>
           </div>
             <ProfileHeader modal={this.props.modal} openEditModal={this.props.openEditModal} openProfilePictureModal={this.props.openProfilePictureModal} user={this.props.user} currentUser={this.props.currentUser} />
         </div>
