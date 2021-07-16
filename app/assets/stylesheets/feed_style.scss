@@ -5,6 +5,7 @@
   align-items: center;
 
 .create-post {
+ 
   width: 700px;
       background-color: white;
       margin-bottom: 15px;
@@ -15,11 +16,12 @@
       .create-post-top-half {
         display: flex;
         justify-content: space-between;
-        border-bottom: 1px solid lightgray;
+        //border-bottom: 1px solid lightgray;
+        margin-top: 5px;
         padding-bottom: 10px;
         input {
           box-sizing: border-box;
-          width: 100%;
+          width: 97%;
           height: 45px;
           border-radius: 50px;
           border: none;

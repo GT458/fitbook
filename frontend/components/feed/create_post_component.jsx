@@ -28,9 +28,9 @@ class CreatePostComponent extends React.Component {
           </div>
           <input type='text' placeholder={`What's on your mind?`} onClick={() => this.props.openModal(this.props.modal)}></input>
         </div>
-        <div className='create-post-button'>
-          <button>Add Photo</button>
-        </div>
+        {/* <div className='create-post-button'>
+           <button>Add Photo</button> 
+        </div> */}
       </div>
     )
   }

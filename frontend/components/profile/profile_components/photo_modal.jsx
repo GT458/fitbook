@@ -80,12 +80,12 @@ class PhotoModal extends React.Component {
             </div>
             <div className='form-container'>
               <form>
-                <input type='file' onChange={this.handleInput}></input>
                 <div>
                   {this.state.imageUrl ? <img src={this.state.imageUrl} alt='profile photo' ></img> : null}
                   {/* <img src={this.state.imageUrl ||= 'https://www.houseofcharity.org/wp-content/uploads/2019/07/White-Square.jpg'} alt='' ></img> */}
 
                 </div>
+                <label className='file-upload'>Select Photo <input type='file' onChange={this.handleInput} required></input></label>
                 <button type='submit' onClick={this.handleSubmit}>Upload Photo</button>
 
               </form>

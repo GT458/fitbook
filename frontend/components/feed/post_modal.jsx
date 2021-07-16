@@ -89,7 +89,7 @@ class PostModal extends React.Component {
             <div className='form-container'>
               <form>
                 <textarea value={this.state.body} onChange={this.handleInput('body')}placeholder={`What's on your mind, ${formatFirstName(this.props.currentUser.fname)}?`} required></textarea>
-                <input type='file' onChange={this.handleFileInput}></input>
+                <label className='file-upload'>Upload Photo<input type='file' onChange={this.handleFileInput}></input></label>
                 <div>
                 {this.state.imageUrl ? <img src={this.state.imageUrl} alt='post photo' ></img> : null}
 

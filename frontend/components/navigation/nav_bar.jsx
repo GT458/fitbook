@@ -13,7 +13,7 @@ class NavBar extends React.Component {
     return (
       <div className='nav-bar'>
         <div className='left'>
-          <Link to='/'><img src={'https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512'}></img></Link>
+          <Link to='/'><img src={'https://img.icons8.com/fluent/96/000000/facebook-new.png'}></img></Link>
            <input type='text' placeholder='Search Fitbook'></input>
         </div>
         <div className='middle'>
