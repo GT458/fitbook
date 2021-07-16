@@ -13,7 +13,7 @@ class Splash extends React.Component {
       <div className='homepage'>
         {/* <h1>Welcome to Fitbook, {this.props.currentUser.fname}</h1> */}
         <FeedIndexContainer />
-        <button onClick={() => this.props.logout()}>Logout</button> 
+        {/* <button onClick={() => this.props.logout()}>Logout</button>  */}
       </div>
     )
     const signUpLogin = () => (

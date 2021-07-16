@@ -82,7 +82,8 @@ class CoverModal extends React.Component {
               <form>
                 <input type='file' onChange={this.handleInput}></input>
                 <div>
-                  <img src={this.state.imageUrl ||= 'https://i.imgur.com/7QcHCRv.png'} alt='' ></img>
+                  {this.state.imageUrl ? <img src={this.state.imageUrl} alt='cover photo' ></img> : null}
+                  
 
                 </div>
                 <button type='submit' onClick={this.handleSubmit}>Upload Photo</button>

@@ -51,6 +51,9 @@ class PostItem extends React.Component {
           {this.props.post.body}
         </div>
       </div>
+        <div className='post-photo'>
+          {this.props.post.photo ? <img src={this.props.post.photo}></img> : null}
+        </div>
     </div>)
   }
 }

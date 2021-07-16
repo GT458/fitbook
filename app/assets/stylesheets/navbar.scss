@@ -117,20 +117,22 @@
 
         background-image: url("https://pngimg.com/uploads/github/github_PNG40.png");
         background-size: 24px 24px;
-        background-position: center;
+        background-position-y: center;
+        background-position-x: 5px;
         background-repeat: no-repeat;
       }
       .notif-btn {
         background-image: url("https://img.icons8.com/ios-glyphs/30/000000/appointment-reminders--v1.png");
-        background-size: 24px 24px;
+        background-size: 22px 22px;
         background-position: center;
         background-repeat: no-repeat;
       }
       .dropdown-btn {
-        background-image: url("https://img.icons8.com/ios-glyphs/30/000000/sort-down.png");
-        background-size: 24px 24px;
+        background-image: url("https://img.icons8.com/metro/52/000000/exit.png");
+        background-size: 22px 22px;
         background-position: center;
         background-repeat: no-repeat;
+        
       }
       .nav-btn{
         width: 33px;

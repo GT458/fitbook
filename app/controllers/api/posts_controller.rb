@@ -14,7 +14,12 @@ class Api::PostsController < ApplicationController
   end
 
   def update
-
+    @post = Post.find_by(id: params[:id])
+    if @post.update(post_params)
+      render 'api/posts/show'
+    else
+      render json: ['Post failed to update'], status: 402
+    end
   end
 
   def create
@@ -32,6 +37,6 @@ class Api::PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:body, :author_id, :wall_id)
+    params.require(:post).permit(:body, :author_id, :wall_id, :photo)
   end
 end

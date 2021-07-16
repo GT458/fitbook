@@ -82,7 +82,8 @@ class PhotoModal extends React.Component {
               <form>
                 <input type='file' onChange={this.handleInput}></input>
                 <div>
-                  <img src={this.state.imageUrl ||= 'https://www.houseofcharity.org/wp-content/uploads/2019/07/White-Square.jpg'} alt='' ></img>
+                  {this.state.imageUrl ? <img src={this.state.imageUrl} alt='profile photo' ></img> : null}
+                  {/* <img src={this.state.imageUrl ||= 'https://www.houseofcharity.org/wp-content/uploads/2019/07/White-Square.jpg'} alt='' ></img> */}
 
                 </div>
                 <button type='submit' onClick={this.handleSubmit}>Upload Photo</button>

@@ -25,28 +25,45 @@ class PostModal extends React.Component {
     this.state = {
       author_id: 0,
       body: '',
-
+      imageUrl: '',
+      imageFile: null
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFileInput = this.handleFileInput.bind(this);
   }
   handleInput(type) {
     return e => this.setState({[type]: e.currentTarget.value})
   }
-
+  handleFileInput(e) {
+    const reader = new FileReader();
+    const file = e.currentTarget.files[0];
+    reader.onloadend = () => {
+      this.setState({ imageUrl: reader.result, imageFile: file });
+    }
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      this.setState({ imageUrl: '', imageFile: null });
+    }
+  }
   handleSubmit(e) {
     e.preventDefault();
     // debugger;
-    this.props.createPost({
-      author_id: this.props.currentUser.id,
-      body: this.state.body
-    });
-
+    const formData = new FormData();
+    formData.append('post[body]', this.state.body);
+    formData.append('post[author_id]', this.props.currentUser.id);
+    if (this.state.imageFile) {
+      formData.append('post[photo]', this.state.imageFile);
+    }
     this.props.closeModal();
     this.setState({
       author_id: 0,
       body: '',
+      imageUrl: '',
+      imageFile: null
     })
+    this.props.createPost(formData);
   }
   render() {
     if (!this.props.modal.show_post) {
@@ -72,7 +89,11 @@ class PostModal extends React.Component {
             <div className='form-container'>
               <form>
                 <textarea value={this.state.body} onChange={this.handleInput('body')}placeholder={`What's on your mind, ${formatFirstName(this.props.currentUser.fname)}?`} required></textarea>
-                
+                <input type='file' onChange={this.handleFileInput}></input>
+                <div>
+                {this.state.imageUrl ? <img src={this.state.imageUrl} alt='post photo' ></img> : null}
+
+                </div>
                 <button type='submit' onClick={this.handleSubmit}>Post</button>
 
               </form>
