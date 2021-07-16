@@ -6,7 +6,15 @@ Fitbook is a full stack clone of Facebook that has the same core functionality a
 
 # Site
 ## Splash page and sign up
-![splash page](https://prnt.sc/1bsj5o6)
+![splash page](https://github.com/GT458/fitbook/blob/main/app/assets/images/splashpage.png "Splash Page")
+![sign up modal](https://github.com/GT458/fitbook/blob/main/app/assets/images/signupmodal.png "Sign Up Modal")
+![post modal](https://github.com/GT458/fitbook/blob/main/app/assets/images/postmodal.png "Post Modal")
+
+## Feed page and post modal
+![feed index](https://github.com/GT458/fitbook/blob/main/app/assets/images/feedindex.png "Feed")
+
+## Profile page
+![profile page](https://github.com/GT458/fitbook/blob/main/app/assets/images/profilepage.png "Profile Page")
 
 ## Challenges
 
