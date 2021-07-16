@@ -121,17 +121,17 @@ class ModalEdit extends React.Component {
                 </div>
                 <div className='city'>
                   <label>City:</label>
-                  <input className='text' type='text' value={this.state.city} onChange={this.update('city')} placeholder='city'></input>
+                  <input className='text' type='text' value={this.state.city} onChange={this.update('city')} placeholder='City'></input>
                   {/* <h2>{this.props.currentUser.city}</h2> */}
                 </div>
                 <div className='work'>
                   <label>Work:</label>
-                  <input className='text' type='text' value={this.state.work} onChange={this.update('work')} placeholder='work'></input>
+                  <input className='text' type='text' value={this.state.work} onChange={this.update('work')} placeholder='Work'></input>
                   {/* <h2>{this.props.currentUser.work}</h2> */}
                 </div>
                 <div className='school'>
                   <label>School:</label>
-                  <input className='text' type='text' value={this.state.school} onChange={this.update('school')} placeholder='school'></input>
+                  <input className='text' type='text' value={this.state.school} onChange={this.update('school')} placeholder='School'></input>
                   {/* <h2>{this.props.currentUser.school}</h2> */}
                 </div>
                 <button type='submit' className='edit-button'>Edit Info</button>

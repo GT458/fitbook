@@ -1,24 +1,38 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Fitbook is a full stack clone of Facebook that has the same core functionality as the original site. Fitbook allows users to sign up or login to an existing account, edit their profiles, and create posts with photos. Users can also view a feed of all posts on the main homepage and are able to view the profiles of each poster.
 
-Things you may want to cover:
+### Live Site: [Fitbook](https://fitbookus.herokuapp.com "Fitbook")
 
-* Ruby version
+# Site
+## Splash page and sign up
+![splash page](https://prnt.sc/1bsj5o6)
 
-* System dependencies
+## Challenges
 
-* Configuration
+# Built with
+* Frontend
+  * React
+    * Frontend components
+  * HTML
+    * Skeleton of website
+  * SCSS
+    * Styling 
+  * jQuery
+    * AJAX requests for frontend-backend communication
+  * Redux
+    * Maintaining application state throughout frontend-backend
 
-* Database creation
+* Backend
+  * Ruby on Rails
+  * JBuilder
+  * Postgresql
+  * AWS
+    * S3 buckets for hosting images
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Future features to be implemented
+* Editing/Deleting posts
+* Comments and likes on posts
+* Friend Requests and Friendships
+* Search for user
+* Notifications for friend requests
