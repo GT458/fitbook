@@ -17,7 +17,9 @@ Fitbook is a full stack clone of Facebook that has the same core functionality a
 ![profile page](https://github.com/GT458/fitbook/blob/main/app/assets/images/profilepage.png "Profile Page")
 
 ## Challenges
+###  
 
+###
 # Built with
 * Frontend
   * React

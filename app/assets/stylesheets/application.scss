@@ -31,9 +31,35 @@ body {
   background-color: white;
 }
 .app {
-  width: max-width;
+  width: 100%;
   min-width: 940px;
   background: #edf0f5;
+}
+@media (max-width: 800px) {
+  .app {
+    div {
+      width: 100vw;
+      flex-basis: 33%;
+    }
+  }
+  .app * {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100vw;
+    .posts-feed {
+      width: 85vw;
+    }
+    word-wrap: break-word;
+
+    .post-container {
+      // width: 85vw;
+    }
+  }
+  .footer {
+    width: 100vw;
+    
+  }
 }
 
 .homepage {
