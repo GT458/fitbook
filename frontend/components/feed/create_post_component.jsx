@@ -23,7 +23,6 @@ class CreatePostComponent extends React.Component {
       <div className='create-post'>
         <div className='create-post-top-half'>
           <div className='thumbnail-img'>
-
             <img src={this.props.currentUser.profile_photo}></img>
           </div>
           <input type='text' placeholder={`What's on your mind?`} onClick={() => this.props.openModal(this.props.modal)}></input>
