@@ -4,7 +4,7 @@ import { receiveErrors } from './session_actions';
 export const RECEIVE_POST = 'RECEIVE_POST';
 export const RECEIVE_ALL_POSTS = 'RECEIVE_ALL_POSTS';
 export const RECEIVE_POST_ERRORS = 'RECEIVE_POST_ERRORS';
-
+export const DELETE_POST = 'DELETE_POST';
 
 export const receivePost = post => ({
   type: RECEIVE_POST,
@@ -19,6 +19,11 @@ export const receiveAllPosts = (posts) => ({
 export const receivePostErrors = errors => ({
   type: RECEIVE_POST_ERRORS,
   errors
+})
+
+export const deletePostState = post => ({
+  type: DELETE_POST,
+  post
 })
 
 export const fetchPost = postId => dispatch => {
@@ -46,5 +51,11 @@ export const fetchAllPosts = () => dispatch => {
         dispatch(receiveAllPosts(posts))
       )
     })
+  )
+}
+
+export const deletePost = (postId) => dispatch => {
+  return (
+    PostAPIUtil.deletePost(postId).then((post) => (dispatch(deletePostState(post))))
   )
 }

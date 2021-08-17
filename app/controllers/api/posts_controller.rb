@@ -33,7 +33,13 @@ class Api::PostsController < ApplicationController
   end
 
   def destroy
-
+    @post = Post.find_by(id: params[:id])
+    if @post
+      @post.destroy
+      render :show
+    else
+      render json: ['Unable to locate post'], status: 404
+    end
   end
 
   def post_params
