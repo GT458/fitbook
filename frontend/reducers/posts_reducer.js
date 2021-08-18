@@ -1,4 +1,4 @@
-import { RECEIVE_POST, RECEIVE_ALL_POSTS } from "../actions/post_actions";
+import { RECEIVE_POST, RECEIVE_ALL_POSTS, DELETE_POST } from "../actions/post_actions";
 
 
 
@@ -17,7 +17,9 @@ const postsReducer = (state = {}, action) => {
       })
       // debugger;
       return newState;
-      
+    case DELETE_POST:
+      delete newState[action.post.id];
+      return newState;
     default:
       return state;
   }
