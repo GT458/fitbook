@@ -6,17 +6,41 @@
   border-radius: 10px;
   background-color: white;
   box-shadow: 0 2px 4px rgba( 0, 0, 0, .1), 0 8px 16px rgba( 0, 0, 0, 0.1);
-  
+  position: relative;
   
 
 }
 
 // POSTS IN GENERAL
 .post-top {
+  
     display: flex;
     // padding-top: 15px;
     // padding-left: 15px;
     margin-bottom: 7px;
+    .post-options-btn {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      border-radius: 100px;
+      background-color: transparent;
+
+      &:hover {
+        background-color: rgba(184, 183, 183, 0.7);
+        cursor: pointer;
+      }
+    }
+
+    .post-options {
+      width: 100px;
+      height: 50px;
+      border: 1px solid red;
+      position: absolute;
+      top: 15px;
+      right: 20px;
+    }
     .thumbnail {
       width: 46px;
       height: 46px;

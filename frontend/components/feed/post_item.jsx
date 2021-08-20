@@ -27,27 +27,44 @@ class PostItem extends React.Component {
   }
   constructor(props) {
     super(props);
-    
+    this.state = {
+      showOptions: false
+    }
+    this.showPostOptions = this.showPostOptions.bind(this);
   }
-
+  showPostOptions() {
+    this.setState({
+      showOptions: true
+    })
+  }
   render() {
     if (!this.props.author) {
       return null;
     }
     return (
+    
     <div className='post-container'>
-        <div className='delete-post-btn' onClick={() => this.props.deletePost(this.props.post.id)}>X</div>
-        <Link to={`/users/${this.props.author.id}`}>
+        
       <div className='post-top' >
+        {this.props.currentUser.id === this.props.author.id ? <div className='post-options-btn' onClick={this.showPostOptions}>∑</div> : null}
+        
+        {this.state.showOptions ? <div className='post-options'>
+          <div className='delete-post-btn' onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</div>
+          <div className='delete-post-btn' onClick={() => this.props.deletePost(this.props.post.id)}>Edit Post</div>
+        </div>: null}
+        
+        
         <div className='thumbnail'>
+          <Link to={`/users/${this.props.author.id}`}> 
             <img src={this.props.author.profile_photo}></img>
-            
+            </Link>
         </div>
         <div className='post-user-name'>
           {formatFullName(this.props.author.fname, this.props.author.lname)}
         </div>
+        
       </div>
-      </Link>
+      
       <div className='post-body'>
         <div className='body'>
           {this.props.post.body}
