@@ -28,7 +28,7 @@ class PostItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showOptions: false
+      showOptions: false,
     }
     this.showPostOptions = this.showPostOptions.bind(this);
   }
