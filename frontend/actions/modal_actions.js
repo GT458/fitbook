@@ -4,7 +4,7 @@ export const CLOSE_MODAL = 'CLOSE_MODAL';
 export const OPEN_EDIT_MODAL = 'OPEN_EDIT_MODAL';
 export const OPEN_PROFILE_PIC_MODAL = 'OPEN_PROFILE_PIC_MODAL';
 export const OPEN_COVER_PHOTO_MODAL = 'OPEN_COVER_PHOTO_MODAL';
-
+export const EDIT_POST_MODAL = 'EDIT_POST_MODAL';
 
 export const openModal = (modalType) => ({
   type: OPEN_MODAL,
@@ -24,6 +24,12 @@ export const openProfilePictureModal = (modalType) => ({
 export const openPostModal = (modalType) => ({
   type: OPEN_POST_MODAL,
   modalType
+})
+
+export const editPostModal = modalType => ({
+  type: EDIT_POST_MODAL,
+  modalType,
+  
 })
 
 export const closeModal = (modal) => ({

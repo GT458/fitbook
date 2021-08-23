@@ -1,18 +1,21 @@
 import { connect } from "react-redux";
 import React from 'react';
-import { openModal } from "../../actions/modal_actions";
+import { editPostModal, openModal } from "../../actions/modal_actions";
 import { getUser } from "../../actions/user_actions";
 import { formatFullName } from "../../util/format_name";
 import { Link } from 'react-router-dom';
 import { deletePost } from '../../actions/post_actions';
+import modal from "../session/modal";
 const mSTP = (state, ownProps) => ({
   currentUser: state.entities.users[state.session.id],
-  author: state.entities.users[ownProps.post.author_id]
+  author: state.entities.users[ownProps.post.author_id],
+  modal: state.ui.modal
 })
 
 const mDTP = dispatch => ({
   getUser: (id) => dispatch(getUser(id)),
-  deletePost: (id) => dispatch(deletePost(id))
+  deletePost: (id) => dispatch(deletePost(id)),
+  openEditModal: (modal) => dispatch(editPostModal(modal))
 })
 
 
@@ -51,7 +54,7 @@ class PostItem extends React.Component {
         {this.state.showOptions ? <> <div className='show-post-outer' onClick={() => this.setState({ showOptions: false })}></div> 
         <div className='post-options'>
           <div className='delete-post-btn' onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</div>
-          <div className='edit-post-btn' onClick={() => this.props.deletePost(this.props.post.id)}>Edit Post</div>
+          <div className='edit-post-btn' onClick={() => this.props.openEditModal(this.props.modal)}>Edit Post</div>
         </div> </>: null}
         
         

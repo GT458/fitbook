@@ -38,3 +38,13 @@ export const deletePost = postId => (
     url: `/api/posts/${postId}`
   })
 )
+
+export const editPost = post => (
+  $.ajax({
+    method: 'PUT',
+    url: `/api/posts/${post.id}`,
+    data: post,
+    contentType: false,
+    processData: false
+  })
+)

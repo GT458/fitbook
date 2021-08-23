@@ -56,6 +56,19 @@ export const fetchAllPosts = () => dispatch => {
 
 export const deletePost = (postId) => dispatch => {
   return (
-    PostAPIUtil.deletePost(postId).then((post) => (dispatch(deletePostState(post))))
+    PostAPIUtil.deletePost(postId).then(
+      (post) => (dispatch(deletePostState(post))),
+      err => dispatch(receivePostErrors(err))
+    
+    )
+  )
+}
+
+export const editPost = post => dispatch => {
+  return (
+    PostAPIUtil.editPost(post).then(
+      (post) => dispatch(receivePost(post)),
+      err => dispatch(receivePostErrors(err))
+      )
   )
 }

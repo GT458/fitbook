@@ -1,11 +1,12 @@
-import { OPEN_MODAL, CLOSE_MODAL, OPEN_EDIT_MODAL, OPEN_PROFILE_PIC_MODAL, OPEN_POST_MODAL, OPEN_COVER_PHOTO_MODAL } from "../actions/modal_actions";
+import { OPEN_MODAL, CLOSE_MODAL, OPEN_EDIT_MODAL, OPEN_PROFILE_PIC_MODAL, OPEN_POST_MODAL, OPEN_COVER_PHOTO_MODAL, EDIT_POST_MODAL } from "../actions/modal_actions";
 
 const _nullModal = {
   show: false,
   show_edit: false,
   show_profile_pic: false,
   show_post: false,
-  show_cover: false
+  show_cover: false,
+  show_edit_post: false
 }
 export const modalReducer = (state = _nullModal, action) => {
   Object.freeze(state);
@@ -21,6 +22,8 @@ export const modalReducer = (state = _nullModal, action) => {
       return Object.assign({}, state, {show_post: true})
     case OPEN_COVER_PHOTO_MODAL:
       return Object.assign({}, state, {show_cover: true})
+    case EDIT_POST_MODAL:
+      return Object.assign({}, state, {show_edit_post: true})
     case CLOSE_MODAL:
       return _nullModal
     default:
