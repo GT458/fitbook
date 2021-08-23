@@ -46,12 +46,13 @@ class PostItem extends React.Component {
     <div className='post-container'>
         
       <div className='post-top' >
-        {this.props.currentUser.id === this.props.author.id ? <div className='post-options-btn' onClick={this.showPostOptions}>∑</div> : null}
+        {this.props.currentUser.id === this.props.author.id ? <div className='post-options-btn' onClick={this.showPostOptions}><img src='https://pics.freeicons.io/uploads/icons/png/5992412641579237606-512.png'></img></div> : null}
         
-        {this.state.showOptions ? <div className='post-options'>
+        {this.state.showOptions ? <> <div className='show-post-outer' onClick={() => this.setState({ showOptions: false })}></div> 
+        <div className='post-options'>
           <div className='delete-post-btn' onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</div>
-          <div className='delete-post-btn' onClick={() => this.props.deletePost(this.props.post.id)}>Edit Post</div>
-        </div>: null}
+          <div className='edit-post-btn' onClick={() => this.props.deletePost(this.props.post.id)}>Edit Post</div>
+        </div> </>: null}
         
         
         <div className='thumbnail'>
