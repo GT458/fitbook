@@ -15,6 +15,7 @@ class Api::PostsController < ApplicationController
 
   def update
     @post = Post.find_by(id: params[:id])
+    print(@post)
     if @post.update(post_params)
       render 'api/posts/show'
     else
