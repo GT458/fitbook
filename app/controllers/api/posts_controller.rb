@@ -14,7 +14,7 @@ class Api::PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find_by(id: params[:id])
+    @post = Post.find_by(id: params[:post][:id])
     print(@post)
     if @post.update(post_params)
       render 'api/posts/show'

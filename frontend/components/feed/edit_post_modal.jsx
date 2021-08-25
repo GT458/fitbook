@@ -22,11 +22,12 @@ const mDTP = dispatch => ({
 });
 
 class EditPostModal extends React.Component {
-
+  
   componentDidUpdate(){
     // debugger;
-    if (this.props.post) {
+    if (this.props.post && this.state.author_id < 1) {
       this.setState({
+        
         author_id: this.props.post.author_id,
         body: this.props.post.body,
         imageUrl: this.props.post.photo,
@@ -41,7 +42,8 @@ class EditPostModal extends React.Component {
       author_id: 0,
       body: '',
       imageUrl: '',//this.props.post.photo,
-      imageFile: null
+      imageFile: null,
+      shouldUpdate: true
       // post: this.props.post
     };
     this.handleInput = this.handleInput.bind(this);
@@ -69,23 +71,34 @@ class EditPostModal extends React.Component {
     const formData = new FormData();
     formData.append('post[body]', this.state.body);
     formData.append('post[author_id]', this.props.currentUser.id);
+    formData.append('post[id]', this.props.post.id)
     if (this.state.imageFile) {
       formData.append('post[photo]', this.state.imageFile);
     }
+    // debugger;
     this.props.closeModal();
-    this.setState({
-      author_id: 0,
-      body: '',
-      imageUrl: '',
-      imageFile: null
-    })
+    // this.setState({
+    //   author_id: 0,
+    //   body: '',
+    //   imageUrl: '',
+    //   imageFile: null,
+      
+    // })
     this.props.editPost(formData);
   }
   render() {
     if (!this.props.modal.show_edit_post) {
       return null;
     }
-
+    // if (this.props.post && this.state.shouldUpdate) {
+    //   this.setState({
+    //     author_id: this.props.post.author_id,
+    //     body: this.props.post.body,
+    //     imageUrl: this.props.post.photo,
+    //     imageFile: null,
+    //     shouldUpdate: false
+    //   })
+    // }
     return (
       <div className='modal'>
         <div className='modal-child'>
@@ -93,7 +106,7 @@ class EditPostModal extends React.Component {
             <span className='close-button'><button onClick={() => this.props.closeModal()}>&#x2715;</button></span>
             <div className='modal-header'>
               
-              <h2>Create Post</h2>
+              <h2>Edit Post</h2>
             </div>
             <div className='post-header'>
               <div className='thumbnail'>
@@ -111,7 +124,7 @@ class EditPostModal extends React.Component {
                 {this.state.imageUrl ? <img src={this.state.imageUrl} alt='post photo' ></img> : null}
 
                 </div>
-                <button type='submit' onClick={this.handleSubmit}>Post</button>
+                <button type='submit' onClick={this.handleSubmit}>Update</button>
 
               </form>
             </div>
