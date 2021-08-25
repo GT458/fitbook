@@ -45,12 +45,12 @@ export const createPost = post => dispatch => {
 
 export const fetchAllPosts = () => dispatch => {
   return (
-    PostAPIUtil.fetchAllPosts().then((posts) => {
-      // debugger;
+    PostAPIUtil.fetchAllPosts().then(
+      (posts) => {
       return (
         dispatch(receiveAllPosts(posts))
       )
-    })
+    }, err => dispatch(receivePostErrors(err)))
   )
 }
 
