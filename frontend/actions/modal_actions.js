@@ -26,9 +26,10 @@ export const openPostModal = (modalType) => ({
   modalType
 })
 
-export const editPostModal = modalType => ({
+export const editPostModal = (modalType, postId) => ({
   type: EDIT_POST_MODAL,
   modalType,
+  postId
   
 })
 

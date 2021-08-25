@@ -23,7 +23,7 @@ export const modalReducer = (state = _nullModal, action) => {
     case OPEN_COVER_PHOTO_MODAL:
       return Object.assign({}, state, {show_cover: true})
     case EDIT_POST_MODAL:
-      return Object.assign({}, state, {show_edit_post: true})
+      return Object.assign({}, state, {show_edit_post: true, post_id: action.postId})
     case CLOSE_MODAL:
       return _nullModal
     default:

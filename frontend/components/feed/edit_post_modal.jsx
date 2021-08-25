@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal } from '../../actions/modal_actions';
-import { editPost } from '../../actions/post_actions';
+import { editPost,fetchPost } from '../../actions/post_actions';
 // import { RECEIVE_MODAL_ERROR } from '../../../actions/session_actions';
 
 import { formatFirstName, formatFullName } from '../../util/format_name';
@@ -9,26 +9,40 @@ const mSTP = (state) => ({
   errors: state.errors.modal,
   modal: state.ui.modal,
   currentUser: state.entities.users[state.session.id],
+  postId: state.ui.modal.post_id,
+  post: state.entities.posts[state.ui.modal.post_id]
   // post: state.entities.posts[ownProps.id]
 });
 
 const mDTP = dispatch => ({
   updateUser: (user) => dispatch(updateUser(user)),
   closeModal: () => dispatch(closeModal()),
-  editPost: (post) => dispatch(editPost(post))
+  editPost: (post) => dispatch(editPost(post)),
+  fetchPost: (postId) => dispatch(fetchPost(postId))
 });
 
 class EditPostModal extends React.Component {
 
-  
+  componentDidUpdate(){
+    // debugger;
+    if (this.props.post) {
+      this.setState({
+        author_id: this.props.post.author_id,
+        body: this.props.post.body,
+        imageUrl: this.props.post.photo,
+        imageFile: null
+      })
+    }
+  }
   constructor(props) {
     super(props);
 
     this.state = {
-      author_id: 0,//this.props.post.author_id,
-      body: '',//this.props.post.body,
+      author_id: 0,
+      body: '',
       imageUrl: '',//this.props.post.photo,
       imageFile: null
+      // post: this.props.post
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -78,6 +92,7 @@ class EditPostModal extends React.Component {
           <div className='modal-form post-modal'>
             <span className='close-button'><button onClick={() => this.props.closeModal()}>&#x2715;</button></span>
             <div className='modal-header'>
+              
               <h2>Create Post</h2>
             </div>
             <div className='post-header'>

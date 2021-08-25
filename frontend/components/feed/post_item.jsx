@@ -15,7 +15,7 @@ const mSTP = (state, ownProps) => ({
 const mDTP = dispatch => ({
   getUser: (id) => dispatch(getUser(id)),
   deletePost: (id) => dispatch(deletePost(id)),
-  openEditModal: (modal) => dispatch(editPostModal(modal))
+  openEditModal: (modal, id) => dispatch(editPostModal(modal, id))
 })
 
 
@@ -54,7 +54,7 @@ class PostItem extends React.Component {
         {this.state.showOptions ? <> <div className='show-post-outer' onClick={() => this.setState({ showOptions: false })}></div> 
         <div className='post-options'>
           <div className='delete-post-btn' onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</div>
-          <div className='edit-post-btn' onClick={() => this.props.openEditModal(this.props.modal)}>Edit Post</div>
+          <div className='edit-post-btn' onClick={() => this.props.openEditModal(this.props.modal, this.props.post.id)}>Edit Post</div>
         </div> </>: null}
         
         
