@@ -8,7 +8,7 @@ const postsReducer = (state = {}, action) => {
   // debugger
   switch (action.type) {
     case RECEIVE_POST:
-      // debugger
+      // debugger 
       return Object.assign({}, state, { [action.post.id]: action.post })
     case RECEIVE_ALL_POSTS:
       action.posts.forEach(ele => { 
