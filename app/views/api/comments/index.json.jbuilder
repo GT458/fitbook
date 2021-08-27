@@ -1,6 +1,6 @@
-json.array! @posts do |post|
-  json.set! post.id do
-    json.partial! 'api/posts/post', post: post
+json.array! @comments do |comment|
+  json.set! comment.id do
+    json.partial! 'api/comments/comment', comment: comment
   end
   
 end
