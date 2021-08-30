@@ -53,7 +53,7 @@ export const fetchAllPosts = () => dispatch => {
       return (
         dispatch(receiveAllPosts(posts))
       )
-    }, err => dispatch(receivePostErrors(err)))
+    }, err => dispatch(receiveErrors(err)))
   )
 }
 
@@ -61,7 +61,7 @@ export const deletePost = (postId) => dispatch => {
   return (
     PostAPIUtil.deletePost(postId).then(
       (post) => (dispatch(deletePostState(post))),
-      err => dispatch(receivePostErrors(err))
+      err => dispatch(receiveErrors(err))
     
     )
   )
@@ -71,7 +71,7 @@ export const editPost = post => dispatch => {
   return (
     PostAPIUtil.editPost(post).then(
       post => dispatch(updatedPost(post)),
-      err => dispatch(receivePostErrors(err))
+      err => dispatch(receiveErrors(err))
       )
   )
 }
