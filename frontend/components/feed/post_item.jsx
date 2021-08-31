@@ -5,11 +5,16 @@ import { getUser } from "../../actions/user_actions";
 import { formatFullName } from "../../util/format_name";
 import { Link } from 'react-router-dom';
 import { deletePost } from '../../actions/post_actions';
+import CommentItem from "./comments/comment_item";
+import CreateComment from "./comments/create_comment";
 import modal from "../session/modal";
+import { getCommentsByPostId } from "../../reducers/selectors/comment_selector";
+
 const mSTP = (state, ownProps) => ({
   currentUser: state.entities.users[state.session.id],
   author: state.entities.users[ownProps.post.author_id],
-  modal: state.ui.modal
+  modal: state.ui.modal,
+  comments: getCommentsByPostId(ownProps.post.id, state.entities.comments)
 })
 
 const mDTP = dispatch => ({
@@ -44,6 +49,12 @@ class PostItem extends React.Component {
     if (!this.props.author) {
       return null;
     }
+    let commentsArr;
+    if (this.props.comments) {
+        this.props.comments.forEach(comment => {
+          commentsArr.push(<CommentItem comment={comment}/>)
+        })
+    }
     return (
     
     <div className='post-container'>
@@ -77,6 +88,8 @@ class PostItem extends React.Component {
         <div className='post-photo'>
           {this.props.post.photo ? <img src={this.props.post.photo}></img> : null}
         </div>
+        {commentsArr.length > 0 ? commentsArr : null}
+        {<CreateComment post_id={this.props.post.id} />}
     </div>)
   }
 }

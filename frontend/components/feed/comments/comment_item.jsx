@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { getCommentsByPostId } from '../../../reducers/selectors/comment_selector';
 import { updateComment, deleteComment } from '../../../actions/comment_actions';
 import { getUser } from '../../../actions/user_actions';
 import { Link } from 'react-router-dom';

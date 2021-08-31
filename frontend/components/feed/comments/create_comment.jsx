@@ -6,7 +6,7 @@ import { getUser } from '../../../actions/user_actions';
 import { Link } from 'react-router-dom';
 const mSTP = (state, ownProps) => ({
   currentUser: state.entities.users[state.session.id],
- 
+  
 
 })
 
@@ -53,8 +53,8 @@ class CreateComment extends React.Component {
     return (
       <div className='create-comment-container'>
         <div className='profile-picture'>
-          <Link to={`users/${this.props.author.id}`}>
-        <img src={`${this.props.author.profile_photo}`}></img>
+          <Link to={`users/${this.props.currentUser.id}`}>
+        <img src={`${this.props.currentUser.profile_photo}`}></img>
         </Link>
         </div>
         <div className='create-comment-content'>
