@@ -22,10 +22,13 @@ class CommentItem extends React.Component {
     if (!this.props.author) {
       this.props.getUser(this.props.comment.author_id)
     }
+    
   }
+
+  
   constructor(props) {
     super(props);
-
+    // debugger;
     this.state = {
       body: '',
       author_id: 0,
@@ -35,6 +38,9 @@ class CommentItem extends React.Component {
   }
 
   render() {
+    if (!this.props.author) {
+      return null;
+    }
     return (
       <div className='comment-container'>
         <div className='profile-picture'>

@@ -14,7 +14,7 @@ const mSTP = (state, ownProps) => ({
   currentUser: state.entities.users[state.session.id],
   author: state.entities.users[ownProps.post.author_id],
   modal: state.ui.modal,
-  comments: getCommentsByPostId(ownProps.post.id, state.entities.comments)
+  comments: Object.keys(state.entities.comments).length > 1 ? getCommentsByPostId(ownProps.post.id, state.entities.comments) : [{id: 0, body: 'none', post_id: 1, author_id: 1}]
 })
 
 const mDTP = dispatch => ({
@@ -49,10 +49,11 @@ class PostItem extends React.Component {
     if (!this.props.author) {
       return null;
     }
-    let commentsArr;
+    let commentsArr = [];
     if (this.props.comments) {
         this.props.comments.forEach(comment => {
-          commentsArr.push(<CommentItem comment={comment}/>)
+          // debugger;
+          commentsArr.push(<CommentItem key={comment.id} comment={comment}/>)
         })
     }
     return (

@@ -31,7 +31,7 @@ export const createComment = comment => dispatch => {
 export const deleteComment = commentId => dispatch => {
   return (
     CommentAPIUtil.deleteComment(commentId).then(
-      comment => dispatch(receiveComment(comment)),
+      comment => dispatch(deleteCommentState(comment)),
       err => dispatch(receiveErrors(err))
     )
   )
@@ -42,11 +42,20 @@ export const deleteCommentState = comment => ({
   comment
 })
 
-export const updateComment = commentId => {
+export const updateComment = commentId => dispatch => {
   return (
     CommentAPIUtil.updateComment(commentId).then(
       comment => dispatch(receiveComment(comment)),
       err => dispatch(receiveErrors(err))
+    )
+  )
+}
+
+export const fetchAllComments = () => dispatch => {
+  return (
+    CommentAPIUtil.fetchAllComments().then(
+      comments => dispatch(receiveAllComments(comments),
+      err => dispatch(receiveErrors(err)))
     )
   )
 }

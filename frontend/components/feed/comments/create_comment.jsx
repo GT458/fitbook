@@ -34,9 +34,11 @@ class CreateComment extends React.Component {
       post_id: 0,
 
     }
+    this.update = this.update.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
     e.preventDefault();
     if (this.state.body.length > 0) {
       this.props.createComment(this.state)
@@ -57,10 +59,10 @@ class CreateComment extends React.Component {
         <img src={`${this.props.currentUser.profile_photo}`}></img>
         </Link>
         </div>
-        <div className='create-comment-content'>
+        <form onSubmit={this.handleSubmit}className='create-comment-content'>
           <input type='text' className='comment-body' placeholder='Write a comment' onChange={this.update('body')}></input>
-            
-          </div>
+          <button type='submit'>submit</button>
+        </form>
           
         </div>
       

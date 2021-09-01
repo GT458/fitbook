@@ -16,7 +16,7 @@ export const createComment = (comment) => (
   $.ajax({
     method: 'POST',
     url: `/api/comments`,
-    data: comment
+    data: {comment}
   })
 )
 
@@ -35,9 +35,3 @@ export const updateComment = comment => (
   })
 )
 
-export const fetchCommentsByPostId = postId => (
-  $.ajax({
-    method: 'GET',
-    url: `/api/comments/${postId}`
-  })
-)
