@@ -11,6 +11,7 @@ const postsReducer = (state = {}, action) => {
       // debugger 
       return Object.assign({}, state, { [action.post.id]: action.post })
     case RECEIVE_ALL_POSTS:
+    debugger;
       action.posts.forEach(ele => { 
         let postToAdd = Object.values(ele)[0] 
         newState[postToAdd.id] = postToAdd;

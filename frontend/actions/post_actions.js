@@ -11,10 +11,13 @@ export const receivePost = post => ({
   post
 })
 
-export const receiveAllPosts = (posts) => ({
-  type: RECEIVE_ALL_POSTS,
-  posts
-})
+export const receiveAllPosts = (posts) => {
+  // debugger; 
+  return ({
+    type: RECEIVE_ALL_POSTS,
+    posts
+  })
+}
 
 export const receivePostErrors = errors => ({
   type: RECEIVE_POST_ERRORS,

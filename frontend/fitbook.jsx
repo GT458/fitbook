@@ -4,7 +4,7 @@ import Root from './components/root';
 import configureStore from './store/store';
 import * as sessionActions from './actions/session_actions';
 
-import { fetchAllPosts } from "./actions/post_actions";
+import { fetchAllPosts, receivePost, receiveAllPosts } from "./actions/post_actions";
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   }
   // TESTING
+  // window.postActions = postActions;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   window.sessionActions = sessionActions;
