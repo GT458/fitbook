@@ -41,7 +41,9 @@ class CreateComment extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     if (this.state.body.length > 0) {
-      this.props.createComment(this.state)
+      this.props.createComment(this.state).then( () => this.setState({body: ''}))
+      
+      // this.forceUpdate();
     } else {
       console.log('empty comment')
     }
@@ -60,7 +62,7 @@ class CreateComment extends React.Component {
         </Link>
         </div>
         <form onSubmit={this.handleSubmit}className='create-comment-content'>
-          <input type='text' className='comment-body' placeholder='Write a comment' onChange={this.update('body')}></input>
+          <input type='text' className='comment-body' placeholder='Write a comment' onChange={this.update('body')} value={this.state.body}></input>
           <button type='submit'>submit</button>
         </form>
           

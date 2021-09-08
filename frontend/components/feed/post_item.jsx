@@ -14,7 +14,8 @@ const mSTP = (state, ownProps) => ({
   currentUser: state.entities.users[state.session.id],
   author: state.entities.users[ownProps.post.author_id],
   modal: state.ui.modal,
-  comments: Object.keys(state.entities.comments).length > 1 ? getCommentsByPostId(ownProps.post.id, state.entities.comments) : [{id: 0, body: 'none', post_id: 1, author_id: 1}]
+  comments: ownProps.post.comments ? ownProps.post.comments : [{id: 0, body: 'none', post_id: 1, author_id: 1}],
+  // getCommentsByPostId(ownProps.post.id, state.entities.comments)
 })
 
 const mDTP = dispatch => ({
@@ -33,10 +34,19 @@ class PostItem extends React.Component {
       this.props.getUser(this.props.post.author_id)
     }
   }
+
+  componentDidUpdate(prevProps) {
+    if (Object.values(prevProps.comments).length !== Object.values(this.props.comments).length) {
+      this.setState({
+        comments: Object.values(this.props.comments)
+      })
+    }
+  }
   constructor(props) {
     super(props);
     this.state = {
       showOptions: false,
+      comments: []
     }
     this.showPostOptions = this.showPostOptions.bind(this);
   }
@@ -51,9 +61,9 @@ class PostItem extends React.Component {
     }
     let commentsArr = [];
     if (this.props.comments) {
-        this.props.comments.forEach(comment => {
+        Object.keys(this.props.comments).forEach(commentId => {
           // debugger;
-          commentsArr.push(<CommentItem key={comment.id} comment={comment}/>)
+          commentsArr.push(<CommentItem key={commentId} comment={this.props.comments[commentId]}/>)
         })
     }
     return (
