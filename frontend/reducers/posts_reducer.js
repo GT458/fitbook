@@ -8,11 +8,11 @@ const postsReducer = (state = {}, action) => {
   // debugger
   switch (action.type) {
     
-    case RECEIVE_COMMENT:
+    // case RECEIVE_COMMENT:
       
-      let postOfComment = newState[action.comment.post_id];
-      postOfComment.comments[action.comment.id] = action.comment;
-      return Object.assign({}, newState, {[action['comment']['post_id']] : postOfComment });
+    //   let postOfComment = newState[action.comment.post_id];
+    //   postOfComment.comments[action.comment.id] = action.comment;
+    //   return Object.assign({}, newState, {[action['comment']['post_id']] : postOfComment });
     case RECEIVE_POST:
       // debugger 
       return Object.assign({}, state, { [action.post.id]: action.post })

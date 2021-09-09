@@ -4,6 +4,7 @@ import { updateComment, deleteComment } from '../../../actions/comment_actions';
 import { getUser } from '../../../actions/user_actions';
 import { Link } from 'react-router-dom';
 import { formatFullName } from '../../../util/format_name';
+
 const mSTP = (state, ownProps) => ({
   currentUser: state.entities.users[state.session.id],
   author: state.entities.users[ownProps.comment.author_id],
@@ -33,16 +34,27 @@ class CommentItem extends React.Component {
       body: '',
       author_id: 0,
       post_id: 0,
-
+      showOptions: false
     }
+
+    this.showCommentOptions = this.showCommentOptions.bind(this);
+  }
+  showCommentOptions() {
+    this.setState({
+      showOptions: true
+    })
   }
 
+  editCommentInput(commentId) {
+
+  }
   render() {
     if (!this.props.author) {
       return null;
     }
     return (
       <div className='comment-container'>
+        
         <div className='profile-picture'>
           <Link to={`users/${this.props.author.id}`}>
         <img src={`${this.props.author.profile_photo}`}></img>
@@ -56,6 +68,12 @@ class CommentItem extends React.Component {
             <p>{this.props.comment.body}</p>
           </div>
         </div>
+        {this.props.author.id === this.props.currentUser.id ? <div onClick={() => this.showCommentOptions} className='comment-options-btn'><img src='https://github.com/GT458/fitbook/blob/main/app/assets/images/three-dots.png'></img></div> : null }
+        {this.state.showCommentOptions ? <> <div className='show-comment-optns-outer' onClick={() => this.setState({ showCommentOptions: false })}></div><div className='comment-options'>
+          <div className='delete-comment-btn' onClick={() => this.props.deleteComment(this.props.comment.id)}>Delete Comment</div>
+          <div className='edit-comment-btn' onClick={() => this.props.editCommentInput(this.props.comment.id)}>Edit Comment</div>
+        </div> </>: null}
+       
       </div>
     )
   }

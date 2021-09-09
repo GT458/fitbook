@@ -14,7 +14,7 @@ const mSTP = (state, ownProps) => ({
   currentUser: state.entities.users[state.session.id],
   author: state.entities.users[ownProps.post.author_id],
   modal: state.ui.modal,
-  comments: ownProps.post.comments ? ownProps.post.comments : [{id: 0, body: 'none', post_id: 1, author_id: 1}],
+  comments: getCommentsByPostId(ownProps.post.id, state.entities.comments)//state.entities.posts[ownProps.post.id].comments ? state.entities.posts[ownProps.post.id].comments : [{id: 0, body: 'none', post_id: 1, author_id: 1}]//ownProps.post.comments //? ownProps.post.comments : [{id: 0, body: 'none', post_id: 1, author_id: 1}],
   // getCommentsByPostId(ownProps.post.id, state.entities.comments)
 })
 
@@ -33,12 +33,19 @@ class PostItem extends React.Component {
 
       this.props.getUser(this.props.post.author_id)
     }
+    
+      this.setState({
+        comments: this.props.comments
+      })
+    
   }
 
   componentDidUpdate(prevProps) {
-    if (Object.values(prevProps.comments).length !== Object.values(this.props.comments).length) {
+    // debugger;
+    if (prevProps.comments.length !== this.props.comments.length) {
+      // debugger;
       this.setState({
-        comments: Object.values(this.props.comments)
+        comments: this.props.comments
       })
     }
   }
@@ -60,10 +67,11 @@ class PostItem extends React.Component {
       return null;
     }
     let commentsArr = [];
-    if (this.props.comments) {
-        Object.keys(this.props.comments).forEach(commentId => {
+    if (this.state.comments !== undefined) {
+      // debugger;
+        this.state.comments.forEach(comment => {
           // debugger;
-          commentsArr.push(<CommentItem key={commentId} comment={this.props.comments[commentId]}/>)
+          commentsArr.push(<CommentItem key={comment.id} comment={comment}/>)
         })
     }
     return (

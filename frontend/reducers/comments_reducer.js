@@ -6,9 +6,20 @@ const commentsReducer = (state = {}, action) => {
   let newState = Object.assign({}, state);
 
   switch(action.type) {
-    
-    // case RECEIVE_COMMENT:
-    //   return Object.assign({}, state, {[action.comment.id]: action.comment})
+    case RECEIVE_ALL_POSTS:
+      action.posts.forEach(postObj => {
+        let post = Object.values(postObj)[0];
+        if (post.comments) {
+          // debugger;
+          Object.values(post.comments).forEach(comment => {
+            newState[comment.id] = comment;
+          })
+        }
+      })
+      // debugger;
+    return newState;
+    case RECEIVE_COMMENT:
+      return Object.assign({}, state, {[action.comment.id]: action.comment})
     case RECEIVE_ALL_COMMENTS: 
       action.comments.forEach(ele => {
         let commentToAdd = Object.values(ele)[0];
