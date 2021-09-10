@@ -79,7 +79,7 @@ class PostItem extends React.Component {
     <div className='post-container'>
         
       <div className='post-top' >
-        {this.props.currentUser.id === this.props.author.id ? <div className='post-options-btn' onClick={this.showPostOptions}><img src='https://github.com/GT458/fitbook/blob/main/app/assets/images/three-dots.png'></img></div> : null}
+        {this.props.currentUser.id === this.props.author.id ? <div className='post-options-btn' onClick={this.showPostOptions}><img src='https://i.ibb.co/7brv7Jz/three-dots.png'></img></div> : null}
         
         {this.state.showOptions ? <> <div className='show-post-outer' onClick={() => this.setState({ showOptions: false })}></div> 
         <div className='post-options'>
