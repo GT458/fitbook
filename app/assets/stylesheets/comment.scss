@@ -49,6 +49,27 @@ $facebook-grey: #F0F2F5;
     }
   }
   padding: 5px;
+
+  .show-comment-optns-outer {
+    z-index: 22;
+    background-color: transparent;
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  .comment-options {
+    position: absolute;
+    top: 35px;
+    left: 35px;
+    background-color: white;
+    border-radius: 5px;
+    z-index: 23;
+    box-shadow: 0 2px 4px rgba( 0, 0, 0, .1), 0 8px 16px rgba( 0, 0, 0, 0.1);
+      
+  }
 }
 
 .create-comment-container {

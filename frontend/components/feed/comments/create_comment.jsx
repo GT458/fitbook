@@ -62,7 +62,7 @@ class CreateComment extends React.Component {
         </Link>
         </div>
         <form onSubmit={this.handleSubmit}className='create-comment-content'>
-          <input maxlength='2000'type='text' className='comment-body' placeholder='Write a comment' onChange={this.update('body')} value={this.state.body}></input>
+          <input maxLength='2000'type='text' className='comment-body' placeholder='Write a comment' onChange={this.update('body')} value={this.state.body}></input>
           {/* <button type='submit'>submit</button> */}
         </form>
           

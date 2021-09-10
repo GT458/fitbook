@@ -70,8 +70,8 @@ class CommentItem extends React.Component {
             <p>{this.props.comment.body}</p>
           </div>
         </div>
-        {this.props.author.id === this.props.currentUser.id ? <div onClick={() => this.showCommentOptions} className='comment-options-btn'><img src='https://i.ibb.co/7brv7Jz/three-dots.png'></img></div> : null }
-        {this.state.showCommentOptions ? <> <div className='show-comment-optns-outer' onClick={() => this.setState({ showCommentOptions: false })}></div><div className='comment-options'>
+        {this.props.author.id === this.props.currentUser.id ? <div onClick={() => this.showCommentOptions()} className='comment-options-btn'><img src='https://i.ibb.co/7brv7Jz/three-dots.png'></img></div> : null }
+        {this.state.showOptions ? <> <div className='show-comment-optns-outer' onClick={() => this.setState({ showOptions: false })}></div><div className='comment-options'>
           <div className='delete-comment-btn' onClick={() => this.props.deleteComment(this.props.comment.id)}>Delete Comment</div>
           <div className='edit-comment-btn' onClick={() => this.props.editCommentInput(this.props.comment.id)}>Edit Comment</div>
         </div> </>: null}
