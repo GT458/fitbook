@@ -107,6 +107,9 @@ class PostItem extends React.Component {
         <div className='post-photo'>
           {this.props.post.photo ? <img src={this.props.post.photo}></img> : null}
         </div>
+        <div className='like-bar'>
+          <div className='like-btn'>Like</div>
+        </div>
         {commentsArr.length > 0 ? commentsArr : null}
         {<CreateComment post_id={this.props.post.id} />}
     </div>)
