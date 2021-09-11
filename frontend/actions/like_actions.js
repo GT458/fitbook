@@ -32,10 +32,24 @@ export const fetchLike = likeId => dispatch => {
     )
   )
 }
+export const fetchAllLikes = () => dispatch => {
+  return (
+    LikeAPIUtil.fetchAllLikes().then(
+      likes => dispatch(receiveAllLikes(likes)),
+      err => dispatch(receiveLikeErrors(err))
+    )
+  )
+}
 export const deleteLike = likeId => dispatch => {
 
   LikeAPIUtil.deleteLike(likeId).then(
     like => dispatch(deleteLikeState(like)),
+    err => dispatch(receiveLikeErrors(err))
+  )
+}
+export const createLike = like => dispatch => {
+  LikeAPIUtil.createLike(like).then(
+    like => dispatch(receiveLike(like)),
     err => dispatch(receiveLikeErrors(err))
   )
 }

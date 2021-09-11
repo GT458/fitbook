@@ -9,7 +9,7 @@ import CommentItem from "./comments/comment_item";
 import CreateComment from "./comments/create_comment";
 import modal from "../session/modal";
 import { getCommentsByPostId } from "../../reducers/selectors/comment_selector";
-
+import { deleteLike, createLike } from "../../actions/like_actions";
 const mSTP = (state, ownProps) => ({
   currentUser: state.entities.users[state.session.id],
   author: state.entities.users[ownProps.post.author_id],
@@ -21,7 +21,10 @@ const mSTP = (state, ownProps) => ({
 const mDTP = dispatch => ({
   getUser: (id) => dispatch(getUser(id)),
   deletePost: (id) => dispatch(deletePost(id)),
-  openEditModal: (modal, id) => dispatch(editPostModal(modal, id))
+  openEditModal: (modal, id) => dispatch(editPostModal(modal, id)),
+  createLike: (like) => dispatch(createLike(like)),
+  deleteLike: likeId => dispatch(deleteLike(likeId)),
+
 })
 
 
@@ -39,7 +42,9 @@ class PostItem extends React.Component {
       })
     
   }
-
+  likeButtonClicked() {
+    
+  }
   componentDidUpdate(prevProps) {
     // debugger;
     if (prevProps.comments.length !== this.props.comments.length) {
