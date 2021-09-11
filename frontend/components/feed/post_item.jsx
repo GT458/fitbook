@@ -9,12 +9,14 @@ import CommentItem from "./comments/comment_item";
 import CreateComment from "./comments/create_comment";
 import modal from "../session/modal";
 import { getCommentsByPostId } from "../../reducers/selectors/comment_selector";
+import { getLikesByPostId } from "../../reducers/selectors/like_selector";
 import { deleteLike, createLike } from "../../actions/like_actions";
 const mSTP = (state, ownProps) => ({
   currentUser: state.entities.users[state.session.id],
   author: state.entities.users[ownProps.post.author_id],
   modal: state.ui.modal,
-  comments: getCommentsByPostId(ownProps.post.id, state.entities.comments)//state.entities.posts[ownProps.post.id].comments ? state.entities.posts[ownProps.post.id].comments : [{id: 0, body: 'none', post_id: 1, author_id: 1}]//ownProps.post.comments //? ownProps.post.comments : [{id: 0, body: 'none', post_id: 1, author_id: 1}],
+  comments: getCommentsByPostId(ownProps.post.id, state.entities.comments),//state.entities.posts[ownProps.post.id].comments ? state.entities.posts[ownProps.post.id].comments : [{id: 0, body: 'none', post_id: 1, author_id: 1}]//ownProps.post.comments //? ownProps.post.comments : [{id: 0, body: 'none', post_id: 1, author_id: 1}],
+  likes: getLikesByPostId(ownProps.post.id, state.entities.likes)
   // getCommentsByPostId(ownProps.post.id, state.entities.comments)
 })
 
@@ -38,12 +40,17 @@ class PostItem extends React.Component {
     }
     
       this.setState({
-        comments: this.props.comments
+        comments: this.props.comments,
+        likes:  this.props.likes
       })
     
   }
   likeButtonClicked() {
-    
+    let currLikes = this.state.likes;
+    currLikes.push('like');
+    this.setState({
+      likes: currLikes
+    })
   }
   componentDidUpdate(prevProps) {
     // debugger;
@@ -53,12 +60,19 @@ class PostItem extends React.Component {
         comments: this.props.comments
       })
     }
+
+    if (prevProps.likes.length !== this.props.likes.length) {
+      this.setState({
+        likes: this.props.likes
+      })
+    }
   }
   constructor(props) {
     super(props);
     this.state = {
       showOptions: false,
-      comments: []
+      comments: [],
+      likes: []
     }
     this.showPostOptions = this.showPostOptions.bind(this);
   }
@@ -112,8 +126,11 @@ class PostItem extends React.Component {
         <div className='post-photo'>
           {this.props.post.photo ? <img src={this.props.post.photo}></img> : null}
         </div>
+        <div className='likes-counter-container'>
+          {this.state.likes !== undefined ? <div className='likes-count'>{this.state.likes.length} likes</div> : <div>No likes</div>}
+        </div>
         <div className='like-bar'>
-          <div className='like-btn'>Like</div>
+          <div className='like-btn' onClick={() => this.likeButtonClicked()}>Like</div>
         </div>
         {commentsArr.length > 0 ? commentsArr : null}
         {<CreateComment post_id={this.props.post.id} />}
