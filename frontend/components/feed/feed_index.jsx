@@ -11,6 +11,7 @@ class Feed extends React.Component {
   componentDidMount() {
     // console.log('hit it')
     this.props.fetchAllPosts();
+    this.props.fetchAllLikes();
     this.setState({
       posts: Object.values(this.props.posts)
     })

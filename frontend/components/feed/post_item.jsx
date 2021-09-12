@@ -34,24 +34,18 @@ const mDTP = dispatch => ({
 class PostItem extends React.Component {
   
   componentDidMount() {
+    this.setState({
+      comments: this.props.comments,
+      likes:  this.props.likes,
+      postIsLiked: false
+    })
+
     if (!this.props.author) {
 
       this.props.getUser(this.props.post.author_id)
-    }
-    
-      this.setState({
-        comments: this.props.comments,
-        likes:  this.props.likes
-      })
-    
+    } 
   }
-  likeButtonClicked() {
-    let currLikes = this.state.likes;
-    currLikes.push('like');
-    this.setState({
-      likes: currLikes
-    })
-  }
+  
   componentDidUpdate(prevProps) {
     // debugger;
     if (prevProps.comments.length !== this.props.comments.length) {
@@ -66,6 +60,14 @@ class PostItem extends React.Component {
         likes: this.props.likes
       })
     }
+
+    for (let like in this.state.likes) {
+        if (like.user_id === this.props.author.id) {
+          this.setState({
+            postIsLiked: true
+          })
+        }
+      }
   }
   constructor(props) {
     super(props);
@@ -76,6 +78,16 @@ class PostItem extends React.Component {
     }
     this.showPostOptions = this.showPostOptions.bind(this);
   }
+
+  likeButtonClicked() {
+    let currLikes = this.state.likes;
+    currLikes.push('like');
+    this.setState({
+      likes: currLikes
+    })
+  }
+
+
   showPostOptions() {
     this.setState({
       showOptions: true
