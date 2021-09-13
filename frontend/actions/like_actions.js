@@ -21,7 +21,7 @@ const receiveLikeErrors = errors => ({
 })
 
 const deleteLikeState = like => ({
-  type: DELETE_POST,
+  type: DELETE_LIKE,
   like
 })
 
@@ -33,6 +33,7 @@ export const fetchLike = likeId => dispatch => {
   )
 }
 export const fetchAllLikes = () => dispatch => {
+  console.log('fetching all likes');
   return (
     LikeAPIUtil.fetchAllLikes().then(
       likes => dispatch(receiveAllLikes(likes)),

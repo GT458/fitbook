@@ -36,13 +36,13 @@ class PostItem extends React.Component {
   componentDidMount() {
     this.setState({
       comments: this.props.comments,
-      likes:  this.props.likes,
+      likes:  Object.values(this.props.likes),
       postIsLiked: false
     })
 
     if (!this.props.author) {
 
-      this.props.getUser(this.props.post.author_id)
+      this.props.getUser(this.props.post.author_id);
     } 
   }
   
@@ -52,20 +52,20 @@ class PostItem extends React.Component {
       // debugger;
       this.setState({
         comments: this.props.comments
-      })
+      });
     }
 
     if (prevProps.likes.length !== this.props.likes.length) {
       this.setState({
-        likes: this.props.likes
-      })
+        likes: Object.values(this.props.likes)
+      });
     }
 
     for (let like in this.state.likes) {
         if (like.user_id === this.props.author.id) {
           this.setState({
             postIsLiked: true
-          })
+          });
         }
       }
   }
@@ -84,22 +84,32 @@ class PostItem extends React.Component {
   likeButtonClicked() {
     switch(this.state.postIsLiked) {
       case true:
-        for (let like in this.state.likes) {
+        this.state.likes.forEach(like => {
           if (like.user_id === this.props.author.id) {
             this.props.deleteLike(like.id);
           }
-        }
+        })
+        // for (let like in this.state.likes) {
+        //   debugger;
+        //   if (like.user_id === this.props.author.id) {
+        //     console.log('like found')
+        //     this.props.deleteLike(like.id);
+        //   }
+        // }
         this.setState({
           postIsLiked: false
         });
         break;
       case false:
+        // let filteredLikes = [];
+        // filteredLikes = this.state.likes.filter(like => like.likeable_id !== this.props.post.id)
         this.props.createLike({like:{
           likeable_type: 'post',
           user_id: this.props.author.id,
           likeable_id: this.props.post.id
         }});
         this.setState({
+        //  likes: filteredLikes,
           postIsLiked: true
         });
         break;
@@ -165,7 +175,7 @@ class PostItem extends React.Component {
           {this.props.post.photo ? <img src={this.props.post.photo}></img> : null}
         </div>
         <div className='likes-counter-container'>
-          {this.state.postIsLiked ? <div className='likes-count'>You and {this.state.likes.length} others</div> : this.state.likes !== undefined ? <div className='likes-count'>{this.state.likes.length}</div> : <div>Be the first to like</div> }
+          {this.state.postIsLiked ? this.state.likes.length < 2 ? <div className='likes-count'>You like this </div>: <div className='likes-count'>You and {this.state.likes.length} others</div> : this.state.likes !== undefined ? <div className='likes-count'>{this.state.likes.length}</div> : <div>Be the first to like</div> }
           {/* {this.state.likes !== undefined ? <div className='likes-count'>{this.state.likes.length}</div> : <div>Be the first to like</div>} */}
         </div>
         <div className='like-bar'>
