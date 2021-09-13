@@ -14,7 +14,7 @@ json.array! @posts do |post|
     json.likes do
       post.likes.each do |like|
         json.set! like.id do
-          json.partial! 'api/comments/comment', like: like
+          json.partial! 'api/likes/like', like: like
         end
       end
     end

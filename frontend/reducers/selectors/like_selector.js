@@ -7,7 +7,7 @@ export const getLikesByPostId = (postId, stateLikes) => {
   // );
   // debugger;
   for (let id in stateLikes) {
-    if (stateLikes[id].post_id === parseInt(postId)) {
+    if (stateLikes[id].likeable_id === parseInt(postId)) {
       likes.push(stateLikes[id])
     }
   }

@@ -74,17 +74,43 @@ class PostItem extends React.Component {
     this.state = {
       showOptions: false,
       comments: [],
-      likes: []
+      likes: [],
+      postIsLiked: false
     }
     this.showPostOptions = this.showPostOptions.bind(this);
+    this.likeButtonClicked = this.likeButtonClicked.bind(this);
   }
 
   likeButtonClicked() {
-    let currLikes = this.state.likes;
-    currLikes.push('like');
-    this.setState({
-      likes: currLikes
-    })
+    switch(this.state.postIsLiked) {
+      case true:
+        for (let like in this.state.likes) {
+          if (like.user_id === this.props.author.id) {
+            this.props.deleteLike(like.id);
+          }
+        }
+        this.setState({
+          postIsLiked: false
+        });
+        break;
+      case false:
+        this.props.createLike({like:{
+          likeable_type: 'post',
+          user_id: this.props.author.id,
+          likeable_id: this.props.post.id
+        }});
+        this.setState({
+          postIsLiked: true
+        });
+        break;
+
+    }
+    
+    // let currLikes = this.state.likes;
+    // currLikes.push('like');
+    // this.setState({
+    //   likes: currLikes
+    // })
   }
 
 
@@ -139,7 +165,8 @@ class PostItem extends React.Component {
           {this.props.post.photo ? <img src={this.props.post.photo}></img> : null}
         </div>
         <div className='likes-counter-container'>
-          {this.state.likes !== undefined ? <div className='likes-count'>{this.state.likes.length} likes</div> : <div>No likes</div>}
+          {this.state.postIsLiked ? <div className='likes-count'>You and {this.state.likes.length} others</div> : this.state.likes !== undefined ? <div className='likes-count'>{this.state.likes.length}</div> : <div>Be the first to like</div> }
+          {/* {this.state.likes !== undefined ? <div className='likes-count'>{this.state.likes.length}</div> : <div>Be the first to like</div>} */}
         </div>
         <div className='like-bar'>
           <div className='like-btn' onClick={() => this.likeButtonClicked()}>Like</div>
