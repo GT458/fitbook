@@ -5,6 +5,7 @@ import configureStore from './store/store';
 import * as sessionActions from './actions/session_actions';
 
 import { fetchAllPosts, receivePost, receiveAllPosts } from "./actions/post_actions";
+import { fetchAllLikes, fetchLike } from "./actions/like_actions";
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
@@ -29,5 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.dispatch = store.dispatch;
   window.sessionActions = sessionActions;
   window.fetchPosts = fetchAllPosts;
+  window.fetchAllLikes = fetchAllLikes;
+  window.fetchLike = fetchLike;
   ReactDOM.render(<Root store={store} />, root);
 })

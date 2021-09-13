@@ -33,7 +33,7 @@ export const fetchLike = likeId => dispatch => {
   )
 }
 export const fetchAllLikes = () => dispatch => {
-  console.log('fetching all likes');
+ 
   return (
     LikeAPIUtil.fetchAllLikes().then(
       likes => dispatch(receiveAllLikes(likes)),
