@@ -44,6 +44,7 @@ class PostItem extends React.Component {
 
       this.props.getUser(this.props.post.author_id);
     } 
+    
   }
   
   componentDidUpdate(prevProps) {
@@ -59,15 +60,21 @@ class PostItem extends React.Component {
       this.setState({
         likes: Object.values(this.props.likes)
       });
+      
     }
 
-    for (let like in this.state.likes) {
-        if (like.user_id === this.props.author.id) {
-          this.setState({
-            postIsLiked: true
-          });
-        }
-      }
+    this.props.likes.forEach(like => {
+          if (like.user_id === this.props.author.id) {
+            if (this.state.postIsLiked === false) {
+
+              this.setState({
+                postIsLiked: true
+              });
+            }
+            
+          }
+      })
+
   }
   constructor(props) {
     super(props);
@@ -89,13 +96,7 @@ class PostItem extends React.Component {
             this.props.deleteLike(like.id);
           }
         })
-        // for (let like in this.state.likes) {
-        //   debugger;
-        //   if (like.user_id === this.props.author.id) {
-        //     console.log('like found')
-        //     this.props.deleteLike(like.id);
-        //   }
-        // }
+        
         this.setState({
           postIsLiked: false
         });
