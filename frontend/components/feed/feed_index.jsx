@@ -20,12 +20,14 @@ class Feed extends React.Component {
     // debugger;
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     if (Object.values(prevProps.posts).length !== Object.values(this.props.posts).length ) {
       this.setState({
         posts: Object.values(this.props.posts)
       })
+      this.props.fetchAllLikes();
     }
+    
   }
   render() {
     // let posts = this.props.posts;

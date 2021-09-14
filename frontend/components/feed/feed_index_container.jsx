@@ -11,7 +11,7 @@ export const mSTP = state => ({
 export const mDTP = dispatch => ({
   fetchPost: postId => dispatch(fetchPost(postId)),
   fetchAllPosts: () => dispatch(fetchAllPosts()),
-  fetchAllLikes: () => dispatch(fetchAllLikes)
+  fetchAllLikes: () => dispatch(fetchAllLikes())
 })
 
 export default connect(mSTP, mDTP)(Feed)
