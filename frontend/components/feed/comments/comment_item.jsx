@@ -30,9 +30,7 @@ class CommentItem extends React.Component {
     })
   }
 
-  componentDidUpdate() {
-    
-  }
+  
 
   
   constructor(props) {
@@ -48,6 +46,7 @@ class CommentItem extends React.Component {
 
     this.showCommentOptions = this.showCommentOptions.bind(this);
     this.setEditingState = this.setEditingState.bind(this);
+    this.setFalse = this.setFalse.bind(this);
   }
   showCommentOptions() {
     console.log('open comment options');
@@ -55,6 +54,11 @@ class CommentItem extends React.Component {
       showOptions: true
     })
     
+  }
+  setFalse() {
+    this.setState({
+      isEditing: false
+    })
   }
   setEditingState(body) {
     this.setState({
@@ -76,7 +80,7 @@ class CommentItem extends React.Component {
     }
     return (
       <>
-      {this.state.isEditing ?  <EditCommentInput setEditingState={this.setEditingState} comment={this.props.comment}updateComment={this.props.updateComment} />:  
+      {this.state.isEditing ?  <EditCommentInput setFalse={this.setFalse} setEditingState={this.setEditingState} comment={this.props.comment}updateComment={this.props.updateComment} />:  
       <div className='comment-container'>
         
         <div className='profile-picture'>

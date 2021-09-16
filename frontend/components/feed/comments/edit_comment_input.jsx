@@ -6,6 +6,7 @@ export default class EditCommentInput extends React.Component {
     super(props);
     this.editButtonClicked = this.editButtonClicked.bind(this);
     this.state = {
+
       body: props.comment.body,
       author_id: props.comment.author_id,
       post_id: props.comment.post_id,
@@ -30,7 +31,10 @@ export default class EditCommentInput extends React.Component {
     <div className='edit-comment-container'>
       <form className='edit-comment-form' onSubmit={this.editButtonClicked}>
         <input type='text' value={this.state.body} onChange={this.update()}></input>
-        <button type='submit'>Edit</button>
+        <div className='edit-comment-btns'>
+          <button type='submit'>Edit</button>
+          <button onClick={() => this.props.setFalse()}>Cancel</button>  
+        </div>
       </form>
     </div>
     )

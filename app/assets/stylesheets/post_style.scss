@@ -61,11 +61,12 @@ $facebook-grey: #F0F2F5;
       box-shadow: 0 2px 4px rgba( 0, 0, 0, .1), 0 8px 16px rgba( 0, 0, 0, 0.1);
       padding: 5px;
       z-index: 11;
-      > div:nth-child(1) {
+      .post-options-border {
         border-bottom: 1px solid lightgray;
+        margin: 4px 0;
       }
-      > div {
-        margin-bottom: 6px;
+      > div.optn {
+        //margin-bottom: 6px;
         border-radius: 3px;
         padding: 3px;
         &:hover {
