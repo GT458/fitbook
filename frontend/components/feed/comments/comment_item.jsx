@@ -4,6 +4,7 @@ import { updateComment, deleteComment } from '../../../actions/comment_actions';
 import { getUser } from '../../../actions/user_actions';
 import { Link } from 'react-router-dom';
 import { formatFullName } from '../../../util/format_name';
+import EditCommentInput from './edit_comment_input';
 
 const mSTP = (state, ownProps) => ({
   currentUser: state.entities.users[state.session.id],
@@ -34,10 +35,12 @@ class CommentItem extends React.Component {
       body: '',
       author_id: 0,
       post_id: 0,
-      showOptions: false
+      showOptions: false,
+      isEditing: false
     }
 
     this.showCommentOptions = this.showCommentOptions.bind(this);
+    this.setEditingState = this.setEditingState.bind(this);
   }
   showCommentOptions() {
     console.log('open comment options');
@@ -46,15 +49,24 @@ class CommentItem extends React.Component {
     })
     
   }
-
+  setEditingState() {
+    this.setState({
+      isEditing: false
+    })
+  }
   editCommentInput(commentId) {
-
+    this.setState({
+      isEditing: true,
+      showOptions: false
+    })
   }
   render() {
     if (!this.props.author) {
       return null;
     }
     return (
+      <>
+      {this.state.isEditing ?  <EditCommentInput setEditingState={this.setEditingState} comment={this.props.comment}updateComment={this.props.updateComment} />:  
       <div className='comment-container'>
         
         <div className='profile-picture'>
@@ -74,11 +86,12 @@ class CommentItem extends React.Component {
         {this.state.showOptions ? <> <div className='show-comment-optns-outer' onClick={() => this.setState({ showOptions: false })}></div><div className='comment-options'>
           
           <div className='delete-comment-btn optn' onClick={() => this.props.deleteComment(this.props.comment.id)}>Delete Comment</div>
-          <div className='edit-comment-btn optn' onClick={() => this.props.editCommentInput(this.props.comment.id)}>Edit Comment</div>
+          <div className='edit-comment-btn optn' onClick={() => this.editCommentInput(this.props.comment.id)}>Edit Comment</div>
           <div className='arrow-top'> </div>
         </div> </> : null}
        
-      </div>
+      </div> } </>
+      
     )
   }
 }
