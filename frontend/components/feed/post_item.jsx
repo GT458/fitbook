@@ -180,7 +180,7 @@ class PostItem extends React.Component {
           {/* {this.state.likes !== undefined ? <div className='likes-count'>{this.state.likes.length}</div> : <div>Be the first to like</div>} */}
         </div>
         <div className='like-bar'>
-          <div className={this.state.postIsLiked ? 'like-btn liked' : 'like-btn'} onClick={() => this.likeButtonClicked()}>Like</div>
+          <div className={this.state.postIsLiked ? 'like-btn liked' : 'like-btn'} onClick={() => this.likeButtonClicked()}><img src='https://i.ibb.co/fXvtTQQ/like.png'></img>Like</div>
         </div>
         {commentsArr.length > 0 ? commentsArr : null}
         {<CreateComment post_id={this.props.post.id} />}
