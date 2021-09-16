@@ -19,7 +19,7 @@ class Api::LikesController < ApplicationController
     if @like.save
       render 'api/likes/show'
     else
-      render json: @post.errors.full_messages, status: 404
+      render json: @like.errors.full_messages, status: 404
     end
   end
 
