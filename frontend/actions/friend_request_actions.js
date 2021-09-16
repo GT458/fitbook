@@ -32,7 +32,7 @@ export const fetchFriendRequest = id => dispatch => (
   )
 )
 
-export const fetchAllFriendRequests = () => dispatch (
+export const fetchAllFriendRequests = () => dispatch => (
   FriendRequestAPI.fetchAllFriendRequests().then(
     friend_requests => dispatch(receiveAllFriendRequests(friend_requests)),
     err => dispatch(receiveFriendRequestErrors(err))
