@@ -8,15 +8,16 @@ export default class EditCommentInput extends React.Component {
     this.state = {
       body: props.comment.body,
       author_id: props.comment.author_id,
-      post_id: props.comment.post_id
+      post_id: props.comment.post_id,
+      id: props.comment.id
     }
   }
 
   editButtonClicked(e) {
     e.preventDefault();
     if (e.currentTarget.value !== '') {
-      this.props.updateComment(this.state)
-      this.props.setEditState()
+      this.props.updateComment({comment: this.state})
+      this.props.setEditingState(this.state.body)
     }
   }
   update() {
@@ -27,9 +28,9 @@ export default class EditCommentInput extends React.Component {
   render() {
     return (
     <div className='edit-comment-container'>
-      <form className='edit-comment-form'>
-        <input type='text' value={this.props.comment.body}></input>
-        <button onClick={() => this.editButtonClicked()}>Edit</button>
+      <form className='edit-comment-form' onSubmit={this.editButtonClicked}>
+        <input type='text' value={this.state.body} onChange={this.update()}></input>
+        <button type='submit'>Edit</button>
       </form>
     </div>
     )

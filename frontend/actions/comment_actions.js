@@ -59,3 +59,12 @@ export const fetchAllComments = () => dispatch => {
     )
   )
 }
+
+export const fetchComment = (commentId) => dispatch => {
+  return (
+    CommentAPIUtil.fetchComment(commentId).then(
+      comment => dispatch(receiveComment(comment)),
+      err => dispatch(receiveErrors(err))
+    )
+  )
+}

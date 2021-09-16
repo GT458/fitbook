@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { updateComment, deleteComment } from '../../../actions/comment_actions';
+import { updateComment, deleteComment, fetchComment } from '../../../actions/comment_actions';
 import { getUser } from '../../../actions/user_actions';
 import { Link } from 'react-router-dom';
 import { formatFullName } from '../../../util/format_name';
@@ -15,7 +15,8 @@ const mSTP = (state, ownProps) => ({
 const mDTP = dispatch => ({
   updateComment: comment => dispatch(updateComment(comment)),
   deleteComment: commentId => dispatch(deleteComment(commentId)),
-  getUser: id => dispatch(getUser(id))
+  getUser: id => dispatch(getUser(id)),
+  fetchComment: commentId => dispatch(fetchComment(commentId))
 })
 
 class CommentItem extends React.Component {
@@ -24,6 +25,12 @@ class CommentItem extends React.Component {
     if (!this.props.author) {
       this.props.getUser(this.props.comment.author_id)
     }
+    this.setState({
+      body: this.props.comment.body
+    })
+  }
+
+  componentDidUpdate() {
     
   }
 
@@ -49,9 +56,12 @@ class CommentItem extends React.Component {
     })
     
   }
-  setEditingState() {
+  setEditingState(body) {
     this.setState({
       isEditing: false
+    })
+    this.setState({
+      body: body
     })
   }
   editCommentInput(commentId) {
@@ -79,7 +89,7 @@ class CommentItem extends React.Component {
             <h1>{formatFullName(this.props.author.fname, this.props.author.lname)}</h1>
           </div>
           <div className='comment-body'>
-            <p>{this.props.comment.body}</p>
+            <p>{this.state.body}</p>
           </div>
         </div>
         {this.props.author.id === this.props.currentUser.id ? <div onClick={() => this.showCommentOptions()} className='comment-options-btn'><img src='https://i.ibb.co/7brv7Jz/three-dots.png'></img></div> : null }
