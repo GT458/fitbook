@@ -187,6 +187,7 @@ class PostItem extends React.Component {
           {this.props.post.photo ? <img src={this.props.post.photo}></img> : null}
         </div>
         <div className='likes-counter-container'>
+          <img src='https://i.ibb.co/Y0fZMds/icons8-like-25.png'></img>
           {this.state.postIsLiked ? this.state.likes.length < 2 ? <div className='likes-count'>You like this </div>: <div className='likes-count'>You and {this.state.likes.length} others</div> : this.state.likes !== undefined ? <div className='likes-count'>{this.state.likes.length}</div> : <div>Be the first to like</div> }
           {/* {this.state.likes !== undefined ? <div className='likes-count'>{this.state.likes.length}</div> : <div>Be the first to like</div>} */}
         </div>

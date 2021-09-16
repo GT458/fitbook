@@ -4,7 +4,15 @@ $facebook-grey: #F0F2F5;
   display: flex;
   width: 100%;
   height: auto;
-  
+  &:hover {
+    .comment-options-btn {
+      opacity: 1;
+    }
+  }
+  .comment-options-btn {
+    opacity: 0;
+  }
+
   .comment-options-btn {
     width: 25px;
     height: 25px;
