@@ -44,7 +44,17 @@ class PostItem extends React.Component {
 
       this.props.getUser(this.props.post.author_id);
     } 
-    
+    this.props.likes.forEach(like => {
+          if (like.user_id === this.props.author.id) {
+            if (this.state.postIsLiked === false) {
+
+              this.setState({
+                postIsLiked: true
+              });
+            }
+            
+          }
+      })
   }
   
   componentDidUpdate(prevProps) {
@@ -63,17 +73,17 @@ class PostItem extends React.Component {
       
     }
 
-    this.props.likes.forEach(like => {
-          if (like.user_id === this.props.author.id) {
-            if (this.state.postIsLiked === false) {
+    // this.props.likes.forEach(like => {
+    //       if (like.user_id === this.props.author.id) {
+    //         if (this.state.postIsLiked === false) {
 
-              this.setState({
-                postIsLiked: true
-              });
-            }
+    //           this.setState({
+    //             postIsLiked: true
+    //           });
+    //         }
             
-          }
-      })
+    //       }
+    //   })
 
   }
   constructor(props) {
@@ -96,10 +106,11 @@ class PostItem extends React.Component {
             this.props.deleteLike(like.id);
           }
         })
-        
+        //debugger;
         this.setState({
           postIsLiked: false
         });
+        //debugger;
         break;
       case false:
         // let filteredLikes = [];
