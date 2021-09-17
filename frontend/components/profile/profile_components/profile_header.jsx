@@ -30,7 +30,7 @@ class ProfileHeader extends React.Component {
         {this.props.user.id === this.props.currentUser.id ? 
         <button onClick={e => this.props.openEditModal(this.props.modal)}>Edit Profile</button> 
         
-        : <button>Add Friend</button>}
+        : <button onClick={() => this.props.createFriendRequest({friend_request: {requester_id: this.props.currentUser.id, requestee_id: user.id}})}>Add Friend</button>}
       </div>
     </div>
     );
