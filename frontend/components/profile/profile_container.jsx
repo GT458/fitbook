@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { getUser } from '../../actions/user_actions';
 import Profile from './profile';
 import { openCoverPhotoModal, openEditModal, openProfilePictureModal } from '../../actions/modal_actions';
-import { createFriendRequest } from '../../actions/friend_request_actions';
+import { createFriendRequest, fetchAllFriendRequests } from '../../actions/friend_request_actions';
 
 const mSTP = (state, ownProps) => {
   // debugger
@@ -18,7 +18,9 @@ const mDTP = dispatch => ({
   openEditModal: (modal) => dispatch(openEditModal(modal)),
   openCoverPhotoModal: (modal) => dispatch(openCoverPhotoModal(modal)),
   openProfilePictureModal: (modal) => dispatch(openProfilePictureModal(modal)),
-  createFriendRequest: friendRequest => dispatch(createFriendRequest(friendRequest))
+  createFriendRequest: friendRequest => dispatch(createFriendRequest(friendRequest)),
+  fetchAllFriendRequests: () => dispatch(fetchAllFriendRequests()),
+  
 });
 
 
