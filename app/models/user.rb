@@ -18,6 +18,20 @@ class User < ApplicationRecord
     class_name: :Like,
     foreign_key: :user_id,
     primary_key: :id
+
+  has_many :friend_requests_sent,
+    class_name: :Friend_Request,
+    foreign_key: :requester_id,
+    primary_key: :id
+
+  has_many :friend_requests_received,
+    class_name: :Friend_Request,
+    foreign_key: :requestee_id,
+    primary_key: :id
+  has_many :friends,
+    class_name: :Friend,
+    foreign_key: :user_id1,
+    primary_key: :id
   def self.find_by_credentials(email, password)
     @user = User.find_by(email: email)
 
