@@ -3,6 +3,7 @@ import { getUser } from '../../actions/user_actions';
 import Profile from './profile';
 import { openCoverPhotoModal, openEditModal, openProfilePictureModal } from '../../actions/modal_actions';
 import { createFriendRequest, fetchAllFriendRequests } from '../../actions/friend_request_actions';
+import { getRequestsSent } from '../../reducers/selectors/friend_request_selector';
 
 const mSTP = (state, ownProps) => {
   // debugger
@@ -20,7 +21,7 @@ const mDTP = dispatch => ({
   openProfilePictureModal: (modal) => dispatch(openProfilePictureModal(modal)),
   createFriendRequest: friendRequest => dispatch(createFriendRequest(friendRequest)),
   fetchAllFriendRequests: () => dispatch(fetchAllFriendRequests()),
-  
+  getRequestsSent: (userId, stateFriendRequests) => dispatch(getRequestsSent(userId, stateFriendRequests))
 });
 
 
