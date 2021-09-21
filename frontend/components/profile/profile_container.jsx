@@ -10,10 +10,11 @@ const mSTP = (state, ownProps) => {
   return ({
     currentUser: state.entities.users[state.session.id],
     user: state.entities.users[ownProps.match.params.userId],
-    modal: state.ui.modal
+    modal: state.ui.modal,
+    currentUserFriendRequests: (ownProps.match.params.userId, state.entities.friend_requests)
   })
 };
-
+// TODO: add get all friends here as well
 const mDTP = dispatch => ({
   getUser: (userId) => dispatch(getUser(userId)),
   openEditModal: (modal) => dispatch(openEditModal(modal)),
@@ -21,7 +22,7 @@ const mDTP = dispatch => ({
   openProfilePictureModal: (modal) => dispatch(openProfilePictureModal(modal)),
   createFriendRequest: friendRequest => dispatch(createFriendRequest(friendRequest)),
   fetchAllFriendRequests: () => dispatch(fetchAllFriendRequests()),
-  getRequestsSent: (userId, stateFriendRequests) => dispatch(getRequestsSent(userId, stateFriendRequests))
+  
 });
 
 

@@ -10,12 +10,14 @@ class Profile extends React.Component {
   componentDidMount() {
     // debugger
     this.props.getUser(this.props.match.params.userId);
+    this.props.fetchAllFriendRequests();
   }
 
   componentDidUpdate( prevProps) {
     if (this.props.match.params.userId !== prevProps.match.params.userId) {
       this.props.getUser(this.props.match.params.userId)
     }
+    
   }
 
   constructor(props) {
@@ -71,6 +73,7 @@ class Profile extends React.Component {
     if (!this.props.user) {
       return <h1>no user</h1>;
     }
+    
     return (
     <div className='profile-page'>
       <div className='top'>
