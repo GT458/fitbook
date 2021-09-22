@@ -20,7 +20,7 @@ const mDTP = dispatch => ({
   openEditModal: (modal) => dispatch(openEditModal(modal)),
   openCoverPhotoModal: (modal) => dispatch(openCoverPhotoModal(modal)),
   openProfilePictureModal: (modal) => dispatch(openProfilePictureModal(modal)),
-  createFriendRequest: friendRequest => dispatch(createFriendRequest(friendRequest)),
+  createFriendRequest: friend_request => dispatch(createFriendRequest(friend_request)),
   fetchAllFriendRequests: () => dispatch(fetchAllFriendRequests()),
   
 });

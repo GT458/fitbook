@@ -10,7 +10,22 @@ class ProfileHeader extends React.Component {
 
   render() {
     let user = this.props.user;
-    
+    let friendRequests = this.props.friendRequests;
+    let friendButton = () => {
+      if (friendRequests.length >= 1) {
+        for (let i = 0; i < friendRequests.length; i++) {
+          if (friendRequests[i].requestee_id === user.id) {
+            return <button>Friend Request Pending</button>
+          }
+        }
+        // friendRequests.forEach(request => {
+        //   if (request.requestee_id === user.id) {
+
+        //   }
+        // })
+      }
+      return <button onClick={() => this.props.createFriendRequest({friend_request: {requester_id: this.props.currentUser.id, requestee_id: user.id}})}>Add Friend</button>
+    }
     return (
     <div className='name-photo-container'>
       <div className='profile-picture'>
@@ -28,9 +43,9 @@ class ProfileHeader extends React.Component {
       </div>
       <div className='profile-button'>
         {this.props.user.id === this.props.currentUser.id ? 
-        <button onClick={e => this.props.openEditModal(this.props.modal)}>Edit Profile</button> 
+          <button onClick={e => this.props.openEditModal(this.props.modal)}>Edit Profile</button> 
         
-        : <button onClick={() => this.props.createFriendRequest({friend_request: {requester_id: this.props.currentUser.id, requestee_id: user.id}})}>Add Friend</button>}
+        : friendButton() }
       </div>
     </div>
     );
