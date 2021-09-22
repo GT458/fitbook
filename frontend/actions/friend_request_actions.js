@@ -41,7 +41,7 @@ export const fetchAllFriendRequests = () => dispatch => (
 
 export const deleteFriendRequest = id => dispatch => (
   FriendRequestAPI.deleteFriendRequest(id).then(
-    friend_request => dispatch(deleteFriendRequest(friend_request)),
+    friend_request => dispatch(deleteFriendRequestState(friend_request)),
     err => dispatch(receiveFriendRequestErrors(err))
   )
 )
