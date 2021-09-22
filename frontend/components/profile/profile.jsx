@@ -10,13 +10,13 @@ class Profile extends React.Component {
   componentDidMount() {
     // debugger
     this.props.getUser(this.props.match.params.userId);
-    
+    this.props.fetchAllFriendRequests();
   }
 
   componentDidUpdate( prevProps) {
     if (this.props.match.params.userId !== prevProps.match.params.userId) {
       this.props.getUser(this.props.match.params.userId)
-      this.props.fetchAllFriendRequests();
+      
     }
     
   }
@@ -55,6 +55,7 @@ class Profile extends React.Component {
         this.setState({pageType: 'posts'})
     }
   }
+  
   render() {
     // debugger
     let postToRender = () => {
@@ -71,10 +72,22 @@ class Profile extends React.Component {
           return <PostTab user={this.props.user} currentUser={this.props.currentUser} />
       }
     }
+
+    // let friendButton = () => {
+    //   let frs = this.props.currentUserFriendRequests;
+    //   if ( frs.length > 0) {
+    //     for ( let i = 0; i < frs.length; i++) {
+    //       if (frs[i].requestee_id === this.props.user.id) {
+    //         //return <button className=''
+    //       }
+    //     } 
+    //   }
+    // }
+
     if (!this.props.user) {
       return <h1>no user</h1>;
     }
-    
+    // debugger;
     return (
     <div className='profile-page'>
       <div className='top'>
@@ -84,7 +97,7 @@ class Profile extends React.Component {
               {this.props.currentUser.id === this.props.user.id ? <button className='edit-cover-button' onClick={e => this.props.openCoverPhotoModal(this.props.modal)}><img src="https://img.icons8.com/material-rounded/96/000000/camera--v1.png" />Edit Cover Photo</button> : null }
               <img className='cover-photo' src={this.props.user.cover_photo}></img>
           </div>
-            <ProfileHeader modal={this.props.modal} openEditModal={this.props.openEditModal} openProfilePictureModal={this.props.openProfilePictureModal} user={this.props.user} currentUser={this.props.currentUser} createFriendRequest={this.props.createFriendRequest}/>
+            <ProfileHeader friendRequests={this.props.currentUserFriendRequests} modal={this.props.modal} openEditModal={this.props.openEditModal} openProfilePictureModal={this.props.openProfilePictureModal} user={this.props.user} currentUser={this.props.currentUser} createFriendRequest={this.props.createFriendRequest}/>
         </div>
 
        

@@ -47,7 +47,7 @@ export const deleteFriendRequest = id => dispatch => (
 )
 
 export const createFriendRequest = friendRequest => dispatch => (
-  FriendRequestAPI.createFriendRequest.then(
+  FriendRequestAPI.createFriendRequest().then(
     friendRequest => dispatch(receiveFriendRequest(friendRequest)),
     err => dispatch(receiveFriendRequestErrors(err))
   )
