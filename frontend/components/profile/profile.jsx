@@ -10,12 +10,13 @@ class Profile extends React.Component {
   componentDidMount() {
     // debugger
     this.props.getUser(this.props.match.params.userId);
-    this.props.fetchAllFriendRequests();
+    
   }
 
   componentDidUpdate( prevProps) {
     if (this.props.match.params.userId !== prevProps.match.params.userId) {
       this.props.getUser(this.props.match.params.userId)
+      this.props.fetchAllFriendRequests();
     }
     
   }

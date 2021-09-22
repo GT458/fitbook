@@ -10,7 +10,7 @@ const friendRequestsReducer = (state = {}, action) => {
     case RECEIVE_FRIEND_REQUEST:
       return Object.assign({}, state, {[action.friend_request.id]: action.friend_request});
     case RECEIVE_ALL_FRIEND_REQUESTS:
-      Object.values(action.friend_request).forEach(fr => {
+      Object.values(action.friend_requests).forEach(fr => {
         newState[fr.id] = fr;
       });
       return newState;

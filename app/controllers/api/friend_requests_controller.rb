@@ -1,6 +1,6 @@
 class Api::FriendRequestsController < ApplicationController
   def index
-    @friend_requests = Friend.all
+    @friend_requests = FriendRequest.all
     render 'api/friend_requests/index'
   end
 
