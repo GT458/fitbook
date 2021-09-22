@@ -119,12 +119,13 @@
         margin-bottom: 20px;
         
         button {
-          width: 120px;
-          height: 30px;
+          width: 125px;
+          height: 35px;
           border: none;
           font-weight: bold;
           background-color:rgb(233, 233, 233);
           border-radius: 5px;
+          padding: 4px;
           &:hover {
             cursor: pointer;
             background-color: rgb(200,200,200);
@@ -342,7 +343,15 @@
     }
   }
 }
-
+.pending-fr-btn {
+  // padding: 2px;
+  &::after {
+    content: 'Friend Request Pending';
+  }
+  &:hover::after {
+    content: 'Remove friend request?';
+  }
+}
 // .top {
 //   grid-column-start: middle;
 //   grid-column-end: right;

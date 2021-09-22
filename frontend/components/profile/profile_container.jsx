@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { getUser } from '../../actions/user_actions';
 import Profile from './profile';
 import { openCoverPhotoModal, openEditModal, openProfilePictureModal } from '../../actions/modal_actions';
-import { createFriendRequest, fetchAllFriendRequests } from '../../actions/friend_request_actions';
+import { deleteFriendRequest, createFriendRequest, fetchAllFriendRequests } from '../../actions/friend_request_actions';
 import { getRequestsSent } from '../../reducers/selectors/friend_request_selector';
 
 const mSTP = (state, ownProps) => {
@@ -22,6 +22,7 @@ const mDTP = dispatch => ({
   openProfilePictureModal: (modal) => dispatch(openProfilePictureModal(modal)),
   createFriendRequest: friend_request => dispatch(createFriendRequest(friend_request)),
   fetchAllFriendRequests: () => dispatch(fetchAllFriendRequests()),
+  deleteFriendRequest: id => dispatch(deleteFriendRequest(id))
   
 });
 

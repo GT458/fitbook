@@ -15,7 +15,7 @@ class ProfileHeader extends React.Component {
       if (friendRequests.length >= 1) {
         for (let i = 0; i < friendRequests.length; i++) {
           if (friendRequests[i].requestee_id === user.id) {
-            return <button>Friend Request Pending</button>
+            return <button className='pending-fr-btn' onClick={() => this.props.deleteFriendRequest(friendRequests[i].id)}></button>
           }
         }
         // friendRequests.forEach(request => {
