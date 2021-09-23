@@ -6,26 +6,28 @@ export const getRequestsSent = (userId, stateFriendRequests) => {
     return [];
   }
   let requestsSent = [];
-  // CommentAPIUtil.fetchAllComments().then(
-  //   cmmnts => comments = cmmnts
-  // );
-  // debugger;
+ 
   Object.values(stateFriendRequests).forEach(friend_request => {
     if (friend_request.requester_id === parseInt(userId)) {
       requestsSent.push(friend_request);
     }
   })
-  // for (let id in stateFriendRequests) {
-    
-  //   if (stateFriendRequests[id].requester_id === parseInt(userId)) {
-      
-  //     requestsSent.push(stateFriendRequests[id])
-  //   }
-  // }
-  // Object.values(stateComments).forEach(commentId => {
-  //   if (stateComments[commentId].post_id === parseInt(postId)) {
-  //     comments.push(stateComments[commentId])
-  //   }
-  // })
+
   return requestsSent;
+}
+
+export const getRequestsReceived = (userId, stateFriendRequests) => {
+  if (userId === undefined || stateFriendRequests === undefined) {
+    console.log('no fr');
+    return [];
+  }
+  let requestsReceived = [];
+ 
+  Object.values(stateFriendRequests).forEach(friend_request => {
+    if (friend_request.requestee_id === parseInt(userId)) {
+      requestsReceived.push(friend_request);
+    }
+  })
+
+  return requestsReceived;
 }

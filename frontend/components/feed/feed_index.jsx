@@ -1,6 +1,8 @@
 import PostItem from './post_item';
 import React from 'react';
 import CreatePostComponent from './create_post_component';
+import NotificationsFeed from './notifications_feed';
+
 class Feed extends React.Component {
   constructor(props) {
     super(props);
@@ -47,11 +49,14 @@ class Feed extends React.Component {
     });
     // debugger;
     return (
+      <>
+      <NotificationsFeed />
       <div className='posts-feed'>
         {/* <h2>All Posts</h2> */}
         {<CreatePostComponent />}
         {posts.reverse()}
       </div>
+      </>
     )
   }
 }
