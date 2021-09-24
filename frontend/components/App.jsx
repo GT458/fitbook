@@ -14,6 +14,7 @@ import PostModal from './feed/post_modal';
 import CoverModal from './profile/profile_components/cover_modal';
 import EditPostModal from './feed/edit_post_modal';
 const App = () => (
+  
   <>
   <div className='app'>
     {/* Eventually, remove splash container and have login form container, login form

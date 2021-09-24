@@ -1,0 +1,46 @@
+$facebook-grey: #F0F2F5;
+
+
+.notifications-container {
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  width: 20%;
+  height: auto;
+  position: fixed;
+  right: 10px;
+  
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .notifications-header {
+    h1 {
+      font-weight: bold;
+      font-size: 20px;
+    }
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+  }
+
+  .notifications-body {
+    width: 100%;
+    padding: 5px;
+  }
+}
+
+.friend-req-container {
+  background-color: $facebook-grey;
+  border-radius: 5px;
+  padding: 3px;
+  width: 100%;
+  button {
+    border-radius: 3px;
+    border: none;
+    font-weight: bold;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

@@ -59,7 +59,7 @@ class NotificationsFeed extends React.Component {
     return (
       <div className='notifications-container'>
         <div className='notifications-header'>
-          {/* Notification header here */}
+          <h1>Notifications</h1>
         </div>
         <div className='notifications-body'>
           {friendRequests}
