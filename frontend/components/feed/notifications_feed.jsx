@@ -62,7 +62,7 @@ class NotificationsFeed extends React.Component {
           <h1>Notifications</h1>
         </div>
         <div className='notifications-body'>
-          {friendRequests}
+          {friendRequests.length >= 1 ? friendRequests : <div>No notifications</div>}
         </div>
       </div>
     )
