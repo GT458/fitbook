@@ -1,5 +1,5 @@
 $facebook-grey: #F0F2F5;
-
+$facebook-blue: #1976F2;
 
 .notifications-container {
   border: none;
@@ -42,6 +42,13 @@ $facebook-grey: #F0F2F5;
   padding: 3px;
   width: 100%;
   margin: 3px 0;
+  .friend-req-header {
+    img {
+      width: 20px;
+      height: 20px;
+      border-radius: 100px;
+    }
+  }
   button {
     border-radius: 3px;
     border: none;
@@ -49,5 +56,15 @@ $facebook-grey: #F0F2F5;
     &:hover {
       cursor: pointer;
     }
+  }
+
+
+  .accept-fr {
+    background-color: $facebook-blue;
+    color: white;
+  }
+
+  .decline-fr {
+    background-color: lightgray;
   }
 }
