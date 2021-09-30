@@ -32,6 +32,7 @@ class NavBar extends React.Component {
               </div>
                 </Link>
             <a href='https://github.com/GT458/fitbook'><button className='nav-btn menu'></button> </a>
+            <a href='https://github.com/GT458/fitbook'><button className='nav-btn menu'></button> </a>
             {/* <button className='nav-btn notif-btn'></button> */}
             <button className='nav-btn dropdown-btn' onClick={() => this.props.logout()}></button>
 
