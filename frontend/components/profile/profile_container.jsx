@@ -4,14 +4,17 @@ import Profile from './profile';
 import { openCoverPhotoModal, openEditModal, openProfilePictureModal } from '../../actions/modal_actions';
 import { deleteFriendRequest, createFriendRequest, fetchAllFriendRequests } from '../../actions/friend_request_actions';
 import { getRequestsSent } from '../../reducers/selectors/friend_request_selector';
-
+import { getFriends } from '../../reducers/selectors/friend_selector';
+import { deleteFriend } from '../../actions/friend_actions';
 const mSTP = (state, ownProps) => {
   // debugger
   return ({
     currentUser: state.entities.users[state.session.id],
     user: state.entities.users[ownProps.match.params.userId],
     modal: state.ui.modal,
-    currentUserFriendRequests: getRequestsSent(state.session.id, state.entities.friend_requests)
+    currentUserFriendRequests: getRequestsSent(state.session.id, state.entities.friend_requests),
+    currentUserFriends: getFriends(state.session.id, state.entities.friends),
+    profileUserFriends: getFriends(ownProps.match.params.userId, state.entities.friends)
   })
 };
 // TODO: add get all friends here as well
@@ -22,7 +25,8 @@ const mDTP = dispatch => ({
   openProfilePictureModal: (modal) => dispatch(openProfilePictureModal(modal)),
   createFriendRequest: friend_request => dispatch(createFriendRequest(friend_request)),
   fetchAllFriendRequests: () => dispatch(fetchAllFriendRequests()),
-  deleteFriendRequest: id => dispatch(deleteFriendRequest(id))
+  deleteFriendRequest: id => dispatch(deleteFriendRequest(id)),
+  deleteFriend: id => dispatch(deleteFriend(id))
   
 });
 

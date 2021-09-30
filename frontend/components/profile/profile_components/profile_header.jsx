@@ -11,6 +11,7 @@ class ProfileHeader extends React.Component {
   render() {
     let user = this.props.user;
     let friendRequests = this.props.friendRequests;
+    let currentUserFriends = this.props.currentUserFriends;
     let friendButton = () => {
       if (friendRequests.length >= 1) {
         for (let i = 0; i < friendRequests.length; i++) {
@@ -18,11 +19,15 @@ class ProfileHeader extends React.Component {
             return <button className='pending-fr-btn' onClick={() => this.props.deleteFriendRequest(friendRequests[i].id)}></button>
           }
         }
-        // friendRequests.forEach(request => {
-        //   if (request.requestee_id === user.id) {
+        
+      }
 
-        //   }
-        // })
+      if (currentUserFriends.length >= 1) {
+        for (let i = 0; i < currentUserFriends.length; i++) {
+          if (currentUserFriends[i].user_id2 === user.id) {
+            return <button className='remove-fr-btn' onClick={() => this.props.deleteFriend(currentUserFriends[i].id)}></button>
+          }
+        }
       }
       return <button onClick={() => this.props.createFriendRequest({friend_request: {requester_id: this.props.currentUser.id, requestee_id: user.id}})}>Add Friend</button>
     }
@@ -43,8 +48,7 @@ class ProfileHeader extends React.Component {
       </div>
       <div className='profile-button'>
         {this.props.user.id === this.props.currentUser.id ? 
-          <button onClick={e => this.props.openEditModal(this.props.modal)}>Edit Profile</button> 
-        
+          <button onClick={e => this.props.openEditModal(this.props.modal)}>Edit Profile</button>
         : friendButton() }
       </div>
     </div>
