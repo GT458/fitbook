@@ -46,12 +46,15 @@ class NotificationsFeed extends React.Component {
           </div>
           <div className='friend-req-body'>
             {requester !== undefined ? <p>{requester.fname}</p> : null} 
-            <button onClick={() => {
-                  this.props.createFriend({friend: {user_id1: requester.id, user_id2: this.props.currentUser.id}}) 
-                  this.props.deleteFriendRequest(friendRequest.id)
-                }
-              }className='accept-fr'>Accept</button>
-            <button className='decline-fr' onClick={() => this.props.deleteFriendRequest(friendRequest.id)}className='decline-fr'>Decline</button>
+            <div className='friend-btns'>
+              <button onClick={() => {
+                    this.props.createFriend({friend: {user_id1: requester.id, user_id2: this.props.currentUser.id}}) 
+                    this.props.deleteFriendRequest(friendRequest.id)
+                  }
+                }className='accept-fr'>Accept</button>
+              <button className='decline-fr' onClick={() => this.props.deleteFriendRequest(friendRequest.id)}className='decline-fr'>Decline</button>
+
+            </div>
           </div>
         </div>
       )
