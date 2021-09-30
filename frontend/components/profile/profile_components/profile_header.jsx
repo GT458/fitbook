@@ -25,7 +25,8 @@ class ProfileHeader extends React.Component {
       if (currentUserFriends.length >= 1) {
         for (let i = 0; i < currentUserFriends.length; i++) {
           if (currentUserFriends[i].user_id2 === user.id || currentUserFriends[i].user_id1 === user.id) {
-            return <button className='remove-fr-btn' onClick={() => this.props.deleteFriend(currentUserFriends[i].id)}></button>
+            // debugger;
+            return <button className='remove-fr-btn' onClick={() => this.props.deleteFriend(currentUserFriends[i].id)}>Remove Friend</button>
           }
         }
       }
