@@ -42,9 +42,10 @@ class NotificationsFeed extends React.Component {
       return (
         <div className='friend-req-container' key={idx}>
           <div className='friend-req-header'>
-            <p>{requester !== undefined ? <> <img src={requester.profile_photo}></img>{requester.fname} </>: null}</p>
+            {requester !== undefined ? <> <img src={requester.profile_photo}></img></>: null}
           </div>
           <div className='friend-req-body'>
+            {requester !== undefined ? <p>{requester.fname}</p> : null} 
             <button onClick={() => {
                   this.props.createFriend({friend: {user_id1: requester.id, user_id2: this.props.currentUser.id}}) 
                   this.props.deleteFriendRequest(friendRequest.id)
