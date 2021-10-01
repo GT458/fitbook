@@ -12,6 +12,7 @@ class ProfileHeader extends React.Component {
     let user = this.props.user;
     let friendRequests = this.props.friendRequests;
     let currentUserFriends = this.props.currentUserFriends;
+    let profileUserFriends = this.props.profileUserFriends;
     let friendButton = () => {
       if (friendRequests.length >= 1) {
         for (let i = 0; i < friendRequests.length; i++) {
@@ -45,7 +46,7 @@ class ProfileHeader extends React.Component {
       </div>
       <div className='name-header'>
         <h2 className='profile-name'>{`${(user.fname[0].toUpperCase()) + user.fname.slice(1)} ${(user.lname[0].toUpperCase()) + user.lname.slice(1)}`}</h2>
-        <span className='friend-count'>0 friends</span>
+        <span className='friend-count'>{profileUserFriends.length} {profileUserFriends.length === 1 ? 'friend':'friends'}</span>
       </div>
       <div className='profile-button'>
         {this.props.user.id === this.props.currentUser.id ? 
