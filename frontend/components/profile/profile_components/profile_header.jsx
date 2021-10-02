@@ -10,7 +10,7 @@ class ProfileHeader extends React.Component {
 
   render() {
     let user = this.props.user;
-    let friendRequests = this.props.friendRequests;
+    let currentUserFriendRequests = this.props.currentUserFriendRequests;
     let currentUserFriends = this.props.currentUserFriends;
     let profileUserFriends = this.props.profileUserFriends;
     let friendButton = () => {
@@ -19,6 +19,7 @@ class ProfileHeader extends React.Component {
           if (friendRequests[i].requestee_id === user.id) {
             return <button className='pending-fr-btn' onClick={() => this.props.deleteFriendRequest(friendRequests[i].id)}></button>
           }
+          
         }
         
       }
