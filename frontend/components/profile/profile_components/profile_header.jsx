@@ -11,17 +11,32 @@ class ProfileHeader extends React.Component {
   render() {
     let user = this.props.user;
     let currentUserFriendRequests = this.props.currentUserFriendRequests;
+    let profileUserFriendRequests = this.props.profileUserFriendRequests;
     let currentUserFriends = this.props.currentUserFriends;
     let profileUserFriends = this.props.profileUserFriends;
     let friendButton = () => {
-      if (friendRequests.length >= 1) {
-        for (let i = 0; i < friendRequests.length; i++) {
-          if (friendRequests[i].requestee_id === user.id) {
+
+      if (profileUserFriendRequests.length >= 1) {
+        for (let i = 0; i < profileUserFriendRequests.length; i++) {
+          if (profileUserFriendRequests[i].requestee_id === this.props.currentUser.id) {
+            return <><button className='accept-fr-btn' onClick={() => {
+              this.props.createFriend({friend: {user_id1: user.id, user_id2: this.props.currentUser.id}})
+              this.props.deleteFriendRequest(profileUserFriendRequests[i].id)
+          }  
+          }>Accept</button><button onClick={() => this.props.deleteFriendRequest(profileUserFriendRequests[i].id)}
+          className='delete-fr-btn'>Decline</button></>
+          }
+          
+        }        
+      }
+
+      if (currentUserFriendRequests.length >= 1) {
+        for (let i = 0; i < currentUserFriendRequests.length; i++) {
+          if (currentUserFriendRequests[i].requestee_id === user.id) {
             return <button className='pending-fr-btn' onClick={() => this.props.deleteFriendRequest(friendRequests[i].id)}></button>
           }
           
         }
-        
       }
 
       if (currentUserFriends.length >= 1) {

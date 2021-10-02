@@ -5,7 +5,7 @@ import { openCoverPhotoModal, openEditModal, openProfilePictureModal } from '../
 import { deleteFriendRequest, createFriendRequest, fetchAllFriendRequests } from '../../actions/friend_request_actions';
 import { getRequestsSent } from '../../reducers/selectors/friend_request_selector';
 import { getFriends } from '../../reducers/selectors/friend_selector';
-import { deleteFriend } from '../../actions/friend_actions';
+import { createFriend, deleteFriend } from '../../actions/friend_actions';
 const mSTP = (state, ownProps) => {
   // debugger
   return ({
@@ -27,7 +27,8 @@ const mDTP = dispatch => ({
   createFriendRequest: friend_request => dispatch(createFriendRequest(friend_request)),
   fetchAllFriendRequests: () => dispatch(fetchAllFriendRequests()),
   deleteFriendRequest: id => dispatch(deleteFriendRequest(id)),
-  deleteFriend: id => dispatch(deleteFriend(id))
+  deleteFriend: id => dispatch(deleteFriend(id)),
+  createFriend: friend => dispatch(createFriend(friend))
   
 });
 
