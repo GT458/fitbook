@@ -1,3 +1,7 @@
+$facebook-grey: #F0F2F5;
+$facebook-blue: #1976F2;
+
+
 .top {
   display: flex;
   justify-content: center;
@@ -100,7 +104,7 @@
       
       .name-header {
         // grid-area: name_header;
-        width: 60%;
+        width: 50%;
         padding-top: 30px;
         // margin-left: 15px;
         h2 {
@@ -117,7 +121,14 @@
         display: flex;
         align-items: flex-end;
         margin-bottom: 20px;
-        
+        .accept-fr-btn {
+          background-color: $facebook-blue;
+          color: white;
+        }
+
+        .delete-fr-btn {
+          margin-left: 5px;
+        }
         button {
           width: 125px;
           height: 35px;
