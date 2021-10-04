@@ -1,9 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getRequestsReceived } from '../../reducers/selectors/friend_request_selector';
 import { createFriend } from '../../actions/friend_actions';
 import { deleteFriendRequest } from '../../actions/friend_request_actions';
 import { getUser } from '../../actions/user_actions';
+import { formatFullName } from '../../util/format_name';
 
 const mSTP = (state, ownProps) => ({
   currentUser: state.entities.users[state.session.id],
@@ -45,10 +47,10 @@ class NotificationsFeed extends React.Component {
         
         <div className='friend-req-container' key={idx}>
           <div className='friend-req-header'>
-            {requester !== undefined ? <> <img src={requester.profile_photo}></img></>: null}
+            {requester !== undefined ? <Link to={`/users/${requester.id}`}> <img src={requester.profile_photo}></img></Link>: null}
           </div>
           <div className='friend-req-body'>
-            {requester !== undefined ? <p>{requester.fname}</p> : null} 
+            {requester !== undefined ? <p><Link to={`/users/${requester.id}`}>{formatFullName(requester.fname, requester.lname)}</Link></p> : null} 
             <div className='friend-btns'>
               <button onClick={() => {
                     this.props.createFriend({friend: {user_id1: requester.id, user_id2: this.props.currentUser.id}}) 
