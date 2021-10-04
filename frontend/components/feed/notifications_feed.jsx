@@ -9,7 +9,7 @@ import { formatFullName } from '../../util/format_name';
 
 const mSTP = (state, ownProps) => ({
   currentUser: state.entities.users[state.session.id],
-  incomingFriendRequests: getRequestsReceived(state.session.id, state.entities.friend_requests),
+  //incomingFriendRequests: getRequestsReceived(state.session.id, state.entities.friend_requests),
   users: state.entities.users
 })
 
@@ -36,8 +36,17 @@ class NotificationsFeed extends React.Component {
   
   render() {
     if ( this.props.incomingFriendRequests === undefined || this.props.users === undefined) {
+      //this.props.setNotifsIndicator(false);
       null;
+    } else {
+      //this.props.setNotifsIndicator(true);
     }
+
+    // if (this.props.incomingFriendRequests.length < 1) {
+    //   this.props.setNotifsIndicator(false);
+    // } else {
+    //   this.props.setNotifsIndicator(true);
+    // }
     let friendRequests = this.props.incomingFriendRequests.map((friendRequest, idx) => {
       let requester = this.props.users[friendRequest.requester_id];
       // debugger;

@@ -3,23 +3,32 @@ import { Link } from 'react-router-dom';
 import NotificationsFeed from '../feed/notifications_feed';
 class NavBar extends React.Component {
 
+  componentDidUpdate() {
+    
+  }
   componentDidMount() {
     this.props.fetchUser();
   }
   constructor(props) {
     super(props)
     this.state = {
-      showNotifs: false
+      showNotifs: false,
+      hasNotifs: false
       
     }
     this.setNotification = this.setNotification.bind(this);
+    this.setNotifsIndicator = this.setNotifsIndicator.bind(this);
   }
 
+  setNotifsIndicator(boolVal) {
+    this.setState({hasNotifs: boolVal})
+  }
   setNotification() {
     
     this.setState({showNotifs: !this.state.showNotifs})
   }
   render() {
+    
     return (
       <div className='nav-bar'>
         <div className='left'>
@@ -35,7 +44,7 @@ class NavBar extends React.Component {
           </div>
         </div>
         <div className='right'>
-          {this.state.showNotifs ? <NotificationsFeed setNotification={this.setNotification}/> : null}
+          {this.state.showNotifs ? <NotificationsFeed incomingFriendRequests={this.props.incomingFriendRequests} setNotifsIndicator={this.setNotifsIndicator} setNotification={this.setNotification}/> : null}
           
           <div className='nav-buttons-container'>
                 <Link to={`/users/${this.props.currentUser.id}`}>
@@ -46,6 +55,7 @@ class NavBar extends React.Component {
               <span>{this.props.currentUser.fname[0].toUpperCase() + this.props.currentUser.fname.slice(1)}</span>
               </div>
                 </Link>
+              {this.props.incomingFriendRequests.length >= 1 ? <div className='notif-indic'>  </div> : null}
             <button onClick={() => this.setState({showNotifs: !this.state.showNotifs})}className='nav-btn .notif-btn'>N</button> 
             {/* <button className='nav-btn notif-btn'></button> */}
             <button className='nav-btn logout-btn' onClick={() => this.props.logout()}></button>
