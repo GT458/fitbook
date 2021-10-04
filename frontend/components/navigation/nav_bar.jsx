@@ -1,13 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import NotificationsFeed from '../feed/notifications_feed';
 class NavBar extends React.Component {
 
-  constructor(props) {
-    super(props)
-  }
   componentDidMount() {
     this.props.fetchUser();
+  }
+  constructor(props) {
+    super(props)
+    this.state = {
+      showNotifs: false
+      
+    }
+    this.setNotification = this.setNotification.bind(this);
+  }
+
+  setNotification() {
+    
+    this.setState({showNotifs: !this.state.showNotifs})
   }
   render() {
     return (
@@ -25,6 +35,8 @@ class NavBar extends React.Component {
           </div>
         </div>
         <div className='right'>
+          {this.state.showNotifs ? <NotificationsFeed setNotification={this.setNotification}/> : null}
+          
           <div className='nav-buttons-container'>
                 <Link to={`/users/${this.props.currentUser.id}`}>
             <div className='profile-btn'>
@@ -34,7 +46,7 @@ class NavBar extends React.Component {
               <span>{this.props.currentUser.fname[0].toUpperCase() + this.props.currentUser.fname.slice(1)}</span>
               </div>
                 </Link>
-            <button className='nav-btn .notif-btn'>N</button> 
+            <button onClick={() => this.setState({showNotifs: !this.state.showNotifs})}className='nav-btn .notif-btn'>N</button> 
             {/* <button className='nav-btn notif-btn'></button> */}
             <button className='nav-btn logout-btn' onClick={() => this.props.logout()}></button>
 

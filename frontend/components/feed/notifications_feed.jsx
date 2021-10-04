@@ -40,6 +40,9 @@ class NotificationsFeed extends React.Component {
       let requester = this.props.users[friendRequest.requester_id];
       // debugger;
       return (
+        
+
+        
         <div className='friend-req-container' key={idx}>
           <div className='friend-req-header'>
             {requester !== undefined ? <> <img src={requester.profile_photo}></img></>: null}
@@ -57,10 +60,12 @@ class NotificationsFeed extends React.Component {
             </div>
           </div>
         </div>
+       
       )
     })
 
     return (
+      <div className='notifs-bg' onClick={() => this.props.setNotification()}>
       <div className='notifications-container'>
         <div className='notifications-header'>
           <h1>Notifications</h1>
@@ -68,6 +73,7 @@ class NotificationsFeed extends React.Component {
         <div className='notifications-body'>
           {friendRequests.length >= 1 ? friendRequests : <div>No notifications</div>}
         </div>
+      </div>
       </div>
     )
   }

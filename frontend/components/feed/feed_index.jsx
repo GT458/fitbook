@@ -52,7 +52,7 @@ class Feed extends React.Component {
     // debugger;
     return (
       <>
-      <NotificationsFeed />
+      
       <div className='posts-feed'>
         {/* <h2>All Posts</h2> */}
         {<CreatePostComponent />}
