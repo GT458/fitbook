@@ -12,6 +12,7 @@ const mSTP = (state, ownProps) => {
     currentUser: state.entities.users[state.session.id],
     user: state.entities.users[ownProps.match.params.userId],
     modal: state.ui.modal,
+    users: state.entities.users,
     currentUserFriendRequests: getRequestsSent(state.session.id, state.entities.friend_requests),
     profileUserFriendRequests: getRequestsSent(ownProps.match.params.userId, state.entities.friend_requests),
     currentUserFriends: getFriends(state.session.id, state.entities.friends),
