@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getUser } from '../../../actions/user_actions';
 import { Link } from 'react-router-dom';
-
+import { formatFullName } from '../../../util/format_name';
 const mSTP = (state, ownProps) => ({
   user: state.entities.users[ownProps.friend.user_id1]
 })
@@ -31,6 +31,7 @@ class FriendsIndex extends React.Component {
     if (!this.props.user) {
       return null;
     }
+    //debugger;
     return (
       <div className='user-card-container'>
           <div className='user-card-header'>

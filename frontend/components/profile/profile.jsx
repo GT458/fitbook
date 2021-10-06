@@ -109,7 +109,7 @@ class Profile extends React.Component {
           return <AboutTab  user={this.props.user} currentUser={this.props.currentUser}/>
         case 'friends':
           //debugger;
-          return <FriendsTab friends={this.props.profileUserFriends} currentUser={this.props.currentUser}/>
+          return <FriendsTab user={this.props.user} friends={this.props.profileUserFriends} currentUser={this.props.currentUser}/>
         case 'photos':
           return <PhotosTab user={this.props.user} currentUser={this.props.currentUser}/>
         default:

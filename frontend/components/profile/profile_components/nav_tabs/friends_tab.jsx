@@ -31,6 +31,7 @@ class FriendsTab extends React.Component {
     let friends = this.props.friends.map((friend, idx) => {
       return <FriendsIndex friend={friend} />
     })
+   //debugger;
     return (
       <div className='about-tab'>
         <div className='content-display'>
