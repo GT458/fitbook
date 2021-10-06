@@ -29,7 +29,14 @@ class FriendsTab extends React.Component {
     // debugger;
     //debugger;
     let friends = this.props.friends.map((friend, idx) => {
-      return <FriendsIndex friend={friend} key={idx}/>
+      let friendId = 0;
+      if (friend.user_id1 !== this.props.user.id) {
+        friendId = friend.user_id1;
+      } else {
+        friendId = friend.user_id2;
+      }
+      //debugger;
+      return <FriendsIndex friendId={friendId} key={idx}/>
     })
    //debugger;
     return (

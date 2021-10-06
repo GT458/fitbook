@@ -4,7 +4,7 @@ import { getUser } from '../../../actions/user_actions';
 import { Link } from 'react-router-dom';
 import { formatFullName } from '../../../util/format_name';
 const mSTP = (state, ownProps) => ({
-  user: state.entities.users[ownProps.friend.user_id1]
+  user: state.entities.users[ownProps.friendId]
 })
 
 
@@ -18,7 +18,7 @@ class FriendsIndex extends React.Component {
 
   componentDidMount() {
     if (!this.props.user) {
-      this.props.getUser(this.props.friend.user_id1)
+      this.props.getUser(this.props.friendId)
     }
   }
   constructor(props) {
@@ -32,15 +32,17 @@ class FriendsIndex extends React.Component {
       return null;
     }
     //debugger;
+    
+    
     return (
       <div className='user-card-container' key={this.props.idx}>
           <div className='user-card-header'>
-        <Link to={`/users/${this.props.friend.user_id1}`}><img src={this.props.user.profile_photo} className='user-img'></img>
+        <Link to={`/users/${this.props.friendId}`}><img src={this.props.user.profile_photo} className='user-img'></img>
           
         </Link>
           </div>
           <div className='user-card-body'>
-            <Link to={`/users/${this.props.friend.user_id1}`}>{formatFullName(this.props.user.fname,this.props.user.lname)}</Link>
+            <Link to={`/users/${this.props.friendId}`}>{formatFullName(this.props.user.fname,this.props.user.lname)}</Link>
           </div>
         </div>
     )
