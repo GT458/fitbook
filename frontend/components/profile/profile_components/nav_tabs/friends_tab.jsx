@@ -29,12 +29,12 @@ class FriendsTab extends React.Component {
     // debugger;
     //debugger;
     let friends = this.props.friends.map((friend, idx) => {
-      return <FriendsIndex friend={friend} />
+      return <FriendsIndex friend={friend} key={idx}/>
     })
    //debugger;
     return (
       <div className='about-tab'>
-        <div className='content-display'>
+        <div className='content-display friends'>
           <h2>{this.props.user.fname[0].toUpperCase() + this.props.user.fname.slice(1)}'s friends</h2>
           <div className='friends-content'>
             {friends}
