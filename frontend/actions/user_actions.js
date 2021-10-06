@@ -2,11 +2,22 @@ import * as UserAPIUtil from '../util/user_api_util';
 import { receiveErrors } from './session_actions';
 import { fetchUser } from '../util/user_api_util';
 export const RECEIVE_USER = 'RECEIVE_USER';
+export const RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
 
 export const receiveUser = (user) => ({
   type: RECEIVE_USER,
   user
 })
+const receiveAllUsers = users => ({
+  type: RECEIVE_ALL_USERS,
+  users
+})
+
+export const getAllUsers = () => dispatch => {
+  return (
+    UserAPIUtil.getAllUsers().then(users => dispatch(receiveAllUsers(users)))
+  )
+}
 
 export const getCurrentUser = () => (dispatch, getState) => {
   return (
@@ -24,10 +35,8 @@ export const updateUser = user => dispatch => {
 export const getUser = userId => dispatch => { 
   
   return (
-  UserAPIUtil.fetchUser(parseInt(userId)).then((user) => { 
-    // debugger 
-    return dispatch(receiveUser(user)) 
-  }, (error) => dispatch(receiveErrors(error)))
+  UserAPIUtil.fetchUser(parseInt(userId)).then((user) => 
+  dispatch(receiveUser(user)), (error) => dispatch(receiveErrors(error)))
 )}
 
 export const updateUserPhoto = (userId, formData) => dispatch => {

@@ -13,6 +13,7 @@ import PhotoModal from './profile/profile_components/photo_modal';
 import PostModal from './feed/post_modal';
 import CoverModal from './profile/profile_components/cover_modal';
 import EditPostModal from './feed/edit_post_modal';
+
 const App = () => (
   
   <>

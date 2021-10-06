@@ -14,8 +14,8 @@ class FriendsTab extends React.Component {
 
 
   render() {
-    // debugger;
-    if (this.props.friends.length < 1) {
+    //debugger;
+    if (this.props.friends === undefined) {
       return (<div className='about-tab'>
         <div className='content-display'>
           <h2>{this.props.user.fname[0].toUpperCase() + this.props.user.fname.slice(1)}'s friends</h2>

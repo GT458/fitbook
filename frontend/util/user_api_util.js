@@ -24,3 +24,10 @@ export const updateUserPhoto = (userId, formData) => (
   })
 )
 
+export const fetchAllUsers = () => (
+  $.ajax({
+    url: 'api/users',
+    method: 'GET',
+  })
+)
+

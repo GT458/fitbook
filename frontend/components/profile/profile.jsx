@@ -7,6 +7,7 @@ import PhotosTab from './profile_components/nav_tabs/photos_tab';
 import FriendsTab from './profile_components/nav_tabs/friends_tab';
 import { deleteFriendRequest } from '../../util/friend_request_api_util';
 
+
 class Profile extends React.Component {
   componentDidMount() {
     // debugger
@@ -14,17 +15,29 @@ class Profile extends React.Component {
     this.props.fetchAllFriendRequests();
     
 
-    if (this.props.profileUserFriends.length >= 1) {
-      this.props.profileUserFriends.forEach(friend => {
-        this.props.getUser(friend.id);
-      })
-    }
+    // if (this.props.profileUserFriends.length >= 1) {
+    //   this.props.profileUserFriends.forEach(friend => {
+    //     this.props.getUser(friend.id);
+    //   })
+    // }
   }
 
   componentDidUpdate( prevProps) {
+    
     if (this.props.match.params.userId !== prevProps.match.params.userId) {
       this.props.getUser(this.props.match.params.userId)
       
+    }
+
+    if (this.props.profileUserFriends.length !== prevProps.profileUserFriends.length) {
+      let tempFriends = [];
+      tempFriends = this.props.profileFriendUsers;
+      // this.props.profileFriendUsers.forEach(friend => {
+      //   //this.props.getUser(friend.user_id1);
+      //   debugger;
+      //   tempFriends.push(this.props.users[friend.user_id1])
+      // })
+      this.setState({friends: tempFriends})
     }
     
   }
@@ -32,7 +45,8 @@ class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageType: 'posts'
+      pageType: 'posts',
+      friends: []
     }
     this.deleteFr = this.deleteFr.bind(this);
     this.handleButtonClick = this.handleButtonClick.bind(this);
@@ -71,18 +85,18 @@ class Profile extends React.Component {
   render() {
     // debugger
     
-    let friends = [];
-    if (this.props.profileUserFriends !== undefined) {
-      this.props.profileUserFriends.forEach(friend => {
-        //debugger;
-        if (friend.user_id1 !== this.props.currentUser.id) {
+    // let friends = [];
+    // if (this.state.profileUserFriends !== undefined) {
+    //   this.state.profileUserFriends.forEach(friend => {
+    //     //debugger;
+    //     if (friend.user_id1 !== this.props.currentUser.id) {
 
-          friends.push(this.props.users[friend.user_id1])
-        } else {
-          friends.push(this.props.users[friend.user_id2])
-        }
-      })
-    }
+    //       friends.push(this.props.users[friend.user_id1])
+    //     } else {
+    //       friends.push(this.props.users[friend.user_id2])
+    //     }
+    //   })
+    // }
     
     
     let postToRender = () => {
@@ -92,10 +106,10 @@ class Profile extends React.Component {
         case 'posts':
           return <PostTab user={this.props.user} currentUser={this.props.currentUser} />
         case 'about':
-          return <AboutTab getUser={this.props.getUser} user={this.props.user} currentUser={this.props.currentUser}/>
+          return <AboutTab  user={this.props.user} currentUser={this.props.currentUser}/>
         case 'friends':
           //debugger;
-          return <FriendsTab friends={friends} user={this.props.user} users={this.props.users} currentUser={this.props.currentUser}/>
+          return <FriendsTab friends={Object.values(this.state.friends)} user={this.props.user} users={this.props.users} currentUser={this.props.currentUser}/>
         case 'photos':
           return <PhotosTab user={this.props.user} currentUser={this.props.currentUser}/>
         default:
@@ -117,7 +131,7 @@ class Profile extends React.Component {
     if (!this.props.user) {
       return <h1>no user</h1>;
     }
-    // debugger;
+   
     return (
     <div className='profile-page'>
       <div className='top'>

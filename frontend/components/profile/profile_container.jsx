@@ -4,7 +4,7 @@ import Profile from './profile';
 import { openCoverPhotoModal, openEditModal, openProfilePictureModal } from '../../actions/modal_actions';
 import { deleteFriendRequest, createFriendRequest, fetchAllFriendRequests } from '../../actions/friend_request_actions';
 import { getRequestsSent } from '../../reducers/selectors/friend_request_selector';
-import { getFriends } from '../../reducers/selectors/friend_selector';
+import { getFriends, getFriendUsers } from '../../reducers/selectors/friend_selector';
 import { createFriend, deleteFriend } from '../../actions/friend_actions';
 const mSTP = (state, ownProps) => {
   // debugger
@@ -16,7 +16,8 @@ const mSTP = (state, ownProps) => {
     currentUserFriendRequests: getRequestsSent(state.session.id, state.entities.friend_requests),
     profileUserFriendRequests: getRequestsSent(ownProps.match.params.userId, state.entities.friend_requests),
     currentUserFriends: getFriends(state.session.id, state.entities.friends),
-    profileUserFriends: getFriends(ownProps.match.params.userId, state.entities.friends)
+    profileUserFriends: getFriends(ownProps.match.params.userId, state.entities.friends),
+    profileFriendUsers: getFriendUsers(ownProps.match.params.userId, state.entities.friends, state.entities.users)
   })
 };
 // TODO: add get all friends here as well

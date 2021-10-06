@@ -1,5 +1,5 @@
 import * as FriendAPIUtil from '../util/friend_api_util'
-
+import { getUser } from './user_actions';
 export const RECEIVE_FRIEND = 'RECEIVE_FRIEND';
 export const RECEIVE_ALL_FRIENDS = 'RECEIVE_ALL_FRIENDS';
 export const RECEIVE_FRIEND_ERRORS = 'RECEIVE_FRIEND_ERRORS';
@@ -27,14 +27,23 @@ const receiveFriendErrors = errors => ({
 
 export const fetchFriend = id => dispatch => (
   FriendAPIUtil.fetchFriend(id).then(
-    friend => dispatch(receiveFriend(friend)),
+    friend => (
+      dispatch(receiveFriend(friend))
+    
+    ),
     err => dispatch(receiveFriendErrors(err))
   )
 )
 
 export const fetchAllFriends = () => dispatch => (
   FriendAPIUtil.fetchAllFriends().then(
-    friends => dispatch(receiveAllFriends(friends)),
+    friends => {
+      Object.values(friends).forEach(friend => {
+        //debugger;
+        getUser(friend.user_id1);
+      })
+      dispatch(receiveAllFriends(friends))
+    },
     err => dispatch(receiveFriendErrors(err))
   )
 )
