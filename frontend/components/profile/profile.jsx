@@ -31,7 +31,7 @@ class Profile extends React.Component {
 
     if (this.props.profileUserFriends.length !== prevProps.profileUserFriends.length) {
       let tempFriends = [];
-      tempFriends = this.props.profileFriendUsers;
+      tempFriends = this.props.profileUserFriends;
       // this.props.profileFriendUsers.forEach(friend => {
       //   //this.props.getUser(friend.user_id1);
       //   debugger;
@@ -109,7 +109,7 @@ class Profile extends React.Component {
           return <AboutTab  user={this.props.user} currentUser={this.props.currentUser}/>
         case 'friends':
           //debugger;
-          return <FriendsTab friends={Object.values(this.state.friends)} user={this.props.user} users={this.props.users} currentUser={this.props.currentUser}/>
+          return <FriendsTab friends={this.props.profileUserFriends} currentUser={this.props.currentUser}/>
         case 'photos':
           return <PhotosTab user={this.props.user} currentUser={this.props.currentUser}/>
         default:

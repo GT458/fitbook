@@ -17,8 +17,7 @@ const mSTP = (state, ownProps) => {
     profileUserFriendRequests: getRequestsSent(ownProps.match.params.userId, state.entities.friend_requests),
     currentUserFriends: getFriends(state.session.id, state.entities.friends),
     profileUserFriends: getFriends(ownProps.match.params.userId, state.entities.friends),
-    profileFriendUsers: getFriendUsers(ownProps.match.params.userId, state.entities.friends, state.entities.users)
-  })
+    })
 };
 // TODO: add get all friends here as well
 const mDTP = dispatch => ({
