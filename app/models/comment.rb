@@ -12,4 +12,8 @@ class Comment < ApplicationRecord
   class_name: :Post,
   foreign_key: :post_id,
   primary_key: :id
+
+  def created_at
+    attributes['created_at'].strftime("%b %-d, %Y %l:%M %p")
+  end
 end

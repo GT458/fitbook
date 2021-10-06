@@ -80,6 +80,7 @@ class CommentItem extends React.Component {
     }
     return (
       <>
+      
       {this.state.isEditing ?  <EditCommentInput setFalse={this.setFalse} setEditingState={this.setEditingState} comment={this.props.comment}updateComment={this.props.updateComment} />:  
       <div className='comment-container'>
         
@@ -91,6 +92,7 @@ class CommentItem extends React.Component {
         <div className='comment-content'>
           <div className='author-name'>
             <h1>{formatFullName(this.props.author.fname, this.props.author.lname)}</h1>
+            <span>{this.props.comment.created_at}</span>
           </div>
           <div className='comment-body'>
             <p>{this.state.body}</p>
