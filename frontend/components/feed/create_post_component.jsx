@@ -20,12 +20,12 @@ class CreatePostComponent extends React.Component {
 
   render() {
     return (
-      <div className='create-post'>
+      <div className='create-post' onClick={() => this.props.openModal(this.props.modal)}>
         <div className='create-post-top-half'>
           <div className='thumbnail-img'>
             <img src={this.props.currentUser.profile_photo}></img>
           </div>
-          <input type='text' placeholder={`What's on your mind?`} onClick={() => this.props.openModal(this.props.modal)}></input>
+          <input type='text' placeholder={`What's on your mind?`}  disabled></input>
         </div>
         {/* <div className='create-post-button'>
            <button>Add Photo</button> 
