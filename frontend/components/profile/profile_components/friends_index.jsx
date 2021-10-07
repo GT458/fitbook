@@ -37,12 +37,12 @@ class FriendsIndex extends React.Component {
     return (
       <div className='user-card-container' key={this.props.idx}>
           <div className='user-card-header'>
-        <Link to={`/users/${this.props.friendId}`}><img src={this.props.user.profile_photo} className='user-img'></img>
+        <Link onClick={() => this.props.handleButtonClick('posts')} to={`/users/${this.props.friendId}`}><img src={this.props.user.profile_photo} className='user-img'></img>
           
         </Link>
           </div>
           <div className='user-card-body'>
-            <Link to={`/users/${this.props.friendId}`}>{formatFullName(this.props.user.fname,this.props.user.lname)}</Link>
+            <Link onClick={() => this.props.handleButtonClick('posts')}to={`/users/${this.props.friendId}`}>{formatFullName(this.props.user.fname,this.props.user.lname)}</Link>
           </div>
         </div>
     )

@@ -1,6 +1,17 @@
 import React from 'react';
 
 class ProfileNavBar extends React.Component {
+  componentDidUpdate() {
+    if (this.state.selected !== this.props.pageType) {
+      this.setState({selected: this.props.pageType})
+    }
+  }
+
+  componentDidMount() {
+    this.setState({
+      selected: this.props.pageType
+    })
+  }
   constructor(props) {
     super(props);
     this.state = {

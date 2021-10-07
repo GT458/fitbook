@@ -110,7 +110,7 @@ class Profile extends React.Component {
         case 'friends':
           //debugger;
           
-          return <FriendsTab user={this.props.user} friends={this.props.profileUserFriends} currentUser={this.props.currentUser}/>
+          return <FriendsTab handleButtonClick={this.handleButtonClick} user={this.props.user} friends={this.props.profileUserFriends} currentUser={this.props.currentUser}/>
         case 'photos':
           return <PhotosTab user={this.props.user} currentUser={this.props.currentUser}/>
         default:
@@ -147,7 +147,7 @@ class Profile extends React.Component {
 
        
       </div>
-      <ProfileNavBar handleButtonClick={this.handleButtonClick}/>
+      <ProfileNavBar handleButtonClick={this.handleButtonClick} pageType={this.state.pageType}/>
       <div className='profile-page-info'>
         {/* For now temp stuff, but based off nav bar on page content rendered here will be based off such*/}
         {/* render Posts or About or Friends or Photos */}

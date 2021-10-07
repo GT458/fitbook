@@ -36,7 +36,7 @@ class FriendsTab extends React.Component {
         friendId = friend.user_id2;
       }
       //debugger;
-      return <FriendsIndex friendId={friendId} key={idx}/>
+      return <FriendsIndex handleButtonClick={this.props.handleButtonClick} friendId={friendId} key={idx}/>
     })
    //debugger;
     return (
