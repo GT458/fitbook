@@ -32,7 +32,7 @@ class SearchResults extends React.Component {
     this.handleInput = this.handleInput.bind(this);
   }
   handleInput(e) {
-    let results = this.state.results;
+    let results = [];
     this.setState({
       query: e.target.value.toLowerCase()
     })
@@ -42,8 +42,9 @@ class SearchResults extends React.Component {
       if (
         queryString.includes(user.fname.toLowerCase()) || 
         queryString.includes(user.lname.toLowerCase()) ||
-        queryString.includes(user.fname.slice(0, queryString.length)) ||
-        queryString.includes(user.lname.slice(0, queryString.length))
+        queryString.includes(user.fname.toLowerCase().slice(0, queryString.length + 1)) ||
+        queryString.includes(user.lname.toLowerCase().slice(0, queryString.length + 1)) &&
+        queryString.length >= 1
         ){
           results.push(user)
       }
@@ -59,7 +60,7 @@ class SearchResults extends React.Component {
     let results = this.state.results.map((result, idx) => {
       return (
         <li className='search-result' key={idx}>
-          <Link to={`/users/${result.id}`}>{result.fname}</Link></li>
+          <Link to={`/users/${result.id}`}>{result.fname  + " " + result.lname}</Link></li>
       )
     });
     return (
