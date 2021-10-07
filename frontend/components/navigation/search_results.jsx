@@ -1,0 +1,79 @@
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+const mSTP = state => ({
+  users: state.entities.users
+})
+
+const mDTP = dispatch => ({
+
+})
+
+
+class SearchResults extends React.Component {
+
+  
+  componentWillUnmount() {
+    this.setState({
+      results: [],
+      query: '',
+      barFocused: false
+    })
+  }
+  constructor(props) {
+    super(props);
+    this.state = {
+      results: [],
+      barFocused: false,
+      query: ''
+    }
+
+    this.handleInput = this.handleInput.bind(this);
+  }
+  handleInput(e) {
+    let results = this.state.results;
+    this.setState({
+      query: e.target.value.toLowerCase()
+    })
+    let queryString = this.state.query;
+    Object.values(this.props.users).forEach(user => {
+      let fullName = user.fname + ' ' + user.lname;
+      if (
+        queryString.includes(user.fname.toLowerCase()) || 
+        queryString.includes(user.lname.toLowerCase()) ||
+        queryString.includes(user.fname.slice(0, queryString.length)) ||
+        queryString.includes(user.lname.slice(0, queryString.length))
+        ){
+          results.push(user)
+      }
+    })
+    this.setState({
+      results: results
+    })
+  }
+
+
+  render() {
+
+    let results = this.state.results.map((result, idx) => {
+      return (
+        <li className='search-result' key={idx}>
+          <Link to={`/users/${result.id}`}>{result.fname}</Link></li>
+      )
+    });
+    return (
+      <div className='search-container'>
+        <input onChange={this.handleInput} onFocus={() => this.setState({barFocused: true})} type='text' placeholder='Search Fitbook'></input>
+        {this.state.barFocused ? <div className='search-results'>
+          <ul>
+            {results}
+          </ul>
+        </div>: null}
+      </div>
+    )
+  }
+}
+
+
+export default connect(mSTP, mDTP)(SearchResults);

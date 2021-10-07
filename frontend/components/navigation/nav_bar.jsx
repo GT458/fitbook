@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NotificationsFeed from '../feed/notifications_feed';
+import SearchResults from './search_results';
 class NavBar extends React.Component {
 
   componentDidUpdate() {
@@ -33,7 +34,8 @@ class NavBar extends React.Component {
       <div className='nav-bar'>
         <div className='left'>
           <Link to='/'><img src={'https://img.icons8.com/fluent/96/000000/facebook-new.png'}></img></Link>
-           <input type='text' placeholder='Search Fitbook'></input>
+           <SearchResults />
+           {/* <input type='text' placeholder='Search Fitbook'></input> */}
         </div>
         <div className='middle'>
           <div className='buttons-container'>
