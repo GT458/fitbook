@@ -32,26 +32,35 @@ class SearchResults extends React.Component {
     this.handleInput = this.handleInput.bind(this);
   }
   handleInput(e) {
-    let results = [];
-    this.setState({
-      query: e.target.value.toLowerCase()
-    })
-    let queryString = this.state.query;
-    Object.values(this.props.users).forEach(user => {
-      let fullName = user.fname + ' ' + user.lname;
-      if (
-        queryString.includes(user.fname.toLowerCase()) || 
-        queryString.includes(user.lname.toLowerCase()) ||
-        queryString.includes(user.fname.toLowerCase().slice(0, queryString.length + 1)) ||
-        queryString.includes(user.lname.toLowerCase().slice(0, queryString.length + 1)) &&
-        queryString.length >= 1
-        ){
-          results.push(user)
-      }
-    })
-    this.setState({
-      results: results
-    })
+    let queryString = e.target.value.toLowerCase();
+    if (queryString.length < 1) {
+      this.setState({
+        results: []
+      })
+    } else {
+
+      let results = [];
+      this.setState({
+        query: e.target.value.toLowerCase()
+      })
+      Object.values(this.props.users).forEach(user => {
+        let fullName = user.fname + ' ' + user.lname;
+        
+        if (
+          queryString.includes(user.fname.toLowerCase()) || 
+          queryString.includes(user.lname.toLowerCase()) ||
+          queryString===(user.fname.toLowerCase().slice(0, queryString.length )) ||
+          queryString===(user.lname.toLowerCase().slice(0, queryString.length)) &&
+          queryString.length >= 1
+          ){
+            results.push(user)
+        }
+        //debugger;
+      })
+      this.setState({
+        results: results
+      })
+    }
   }
 
 
