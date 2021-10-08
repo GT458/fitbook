@@ -31,6 +31,8 @@ class SearchResults extends React.Component {
 
     this.handleInput = this.handleInput.bind(this);
   }
+
+   
   handleInput(e) {
     let queryString = e.target.value.toLowerCase();
     if (queryString.length < 1) {
@@ -44,7 +46,6 @@ class SearchResults extends React.Component {
         query: e.target.value.toLowerCase()
       })
       Object.values(this.props.users).forEach(user => {
-        let fullName = user.fname + ' ' + user.lname;
         
         if (
           queryString.includes(user.fname.toLowerCase()) || 
@@ -74,7 +75,7 @@ class SearchResults extends React.Component {
     });
     return (
       <div className='search-container'>
-        <input onChange={this.handleInput} onFocus={() => this.setState({barFocused: true})} type='text' placeholder='Search Fitbook'></input>
+        <input onBlur={() => this.setState({barFocused: false})} onChange={this.handleInput} onFocus={() => this.setState({barFocused: true})} type='text' placeholder='Search Fitbook'></input>
         {this.state.barFocused ? <div className='search-results'>
           <ul>
             {results}
