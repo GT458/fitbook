@@ -1,4 +1,4 @@
-import { RECEIVE_CURRENT_USER, RECEIVE_MODAL_ERROR } from "../actions/session_actions";
+import { RECEIVE_CURRENT_USER, RECEIVE_MODAL_ERROR } from "../../actions/session_actions";
 
 export const modalErrorsReducer = (state = [], action) => {
   Object.freeze(state);
