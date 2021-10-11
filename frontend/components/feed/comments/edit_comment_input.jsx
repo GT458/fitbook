@@ -16,7 +16,7 @@ export default class EditCommentInput extends React.Component {
 
   editButtonClicked(e) {
     e.preventDefault();
-    if (e.currentTarget.value !== '') {
+    if (e.currentTarget.value !== ''&& this.state.body.length >= 1) {
       this.props.updateComment({comment: this.state})
       this.props.setEditingState(this.state.body)
     }
