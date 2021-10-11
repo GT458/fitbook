@@ -16,7 +16,8 @@ const mSTP = (state, ownProps) => ({
   author: state.entities.users[ownProps.post.author_id],
   modal: state.ui.modal,
   comments: getCommentsByPostId(ownProps.post.id, state.entities.comments),//state.entities.posts[ownProps.post.id].comments ? state.entities.posts[ownProps.post.id].comments : [{id: 0, body: 'none', post_id: 1, author_id: 1}]//ownProps.post.comments //? ownProps.post.comments : [{id: 0, body: 'none', post_id: 1, author_id: 1}],
-  likes: getLikesByPostId(ownProps.post.id, state.entities.likes)
+  likes: getLikesByPostId(ownProps.post.id, state.entities.likes),
+  
   // getCommentsByPostId(ownProps.post.id, state.entities.comments)
 })
 
@@ -72,18 +73,8 @@ class PostItem extends React.Component {
       });
       
     }
-
-    // this.props.likes.forEach(like => {
-    //       if (like.user_id === this.props.author.id) {
-    //         if (this.state.postIsLiked === false) {
-
-    //           this.setState({
-    //             postIsLiked: true
-    //           });
-    //         }
-            
-    //       }
-    //   })
+    
+    
 
   }
   constructor(props) {
@@ -92,6 +83,7 @@ class PostItem extends React.Component {
       showOptions: false,
       comments: [],
       likes: [],
+      
       postIsLiked: false
     }
     this.showPostOptions = this.showPostOptions.bind(this);
@@ -145,6 +137,7 @@ class PostItem extends React.Component {
     if (!this.props.author) {
       return null;
     }
+    
     let commentsArr = [];
     if (this.state.comments !== undefined) {
       // debugger;

@@ -8,7 +8,8 @@ import { formatFirstName, formatFullName } from '../../util/format_name';
 const mSTP = state => ({
   errors: state.errors.modal,
   modal: state.ui.modal,
-  currentUser: state.entities.users[state.session.id]
+  currentUser: state.entities.users[state.session.id],
+  errors: state.errors.post
 });
 
 const mDTP = dispatch => ({
@@ -19,6 +20,13 @@ const mDTP = dispatch => ({
 
 class PostModal extends React.Component {
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.errors.length !== this.props.errors.length) {
+      this.setState({
+        errors: this.props.errors
+      })
+    }
+  }
   constructor(props) {
     super(props);
 
@@ -26,7 +34,8 @@ class PostModal extends React.Component {
       author_id: 0,
       body: '',
       imageUrl: '',
-      imageFile: null
+      imageFile: null,
+      errors: []
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -50,6 +59,12 @@ class PostModal extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     // debugger;
+    if (this.state.body.length < 1) {
+      this.setState({
+        errors: ['Post cannot have an empty body']
+      })
+      return null;
+    }
     const formData = new FormData();
     formData.append('post[body]', this.state.body);
     formData.append('post[author_id]', this.props.currentUser.id);
@@ -69,12 +84,21 @@ class PostModal extends React.Component {
     if (!this.props.modal.show_post) {
       return null;
     }
-
+    let errors = null;
+    if (this.state.errors.length >= 1) {
+      errors = (
+        <div className='post-errors-container'>
+          {this.state.errors}
+        </div>
+      )
+    }
     return (
       <div className='modal'>
         <div className='modal-child'>
           <div className='modal-form post-modal'>
-            <span className='close-button'><button onClick={() => this.props.closeModal()}>&#x2715;</button></span>
+            <span className='close-button'><button onClick={() => {
+              this.setState({errors: []}); 
+            this.props.closeModal();}}>&#x2715;</button></span>
             <div className='modal-header'>
               <h2>Create Post</h2>
             </div>
@@ -86,6 +110,7 @@ class PostModal extends React.Component {
                 {formatFullName(this.props.currentUser.fname, this.props.currentUser.lname)}
               </div>
             </div>
+            {this.state.errors.length >= 1 ? <div className='post-modal-errors'>{this.state.errors}</div> : null}
             <div className='form-container'>
               <form>
                 <textarea value={this.state.body} onChange={this.handleInput('body')}placeholder={`What's on your mind, ${formatFirstName(this.props.currentUser.fname)}?`} required></textarea>

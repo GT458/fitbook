@@ -6,9 +6,11 @@ import { commentErrorsReducer } from "./error_reducers/comment_errors_reducer";
 import { likeErrorsReducer } from "./error_reducers/like_error_reducer";
 import { friendRequestErrorsReducer } from "./error_reducers/friend_request_errors_reducer";
 import { friendErrorsReducer } from "./error_reducers/friend_errors_reducer";
+import { userErrorsReducer } from "./error_reducers/user_errors_reducer";
 
 const errorsReducer = combineReducers({
   session: sessionErrorsReducer,
+  user: userErrorsReducer,
   modal: modalErrorsReducer,
   post: postErrorsReducer,
   comment: commentErrorsReducer,

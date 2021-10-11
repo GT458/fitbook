@@ -28,7 +28,7 @@ const deleteLikeState = like => ({
 export const fetchLike = likeId => dispatch => {
   return (
     LikeAPIUtil.fetchLike(likeId).then(like => dispatch(receiveLike(like)),
-      err => dispatch(receiveLikeErrors(err))      
+      err => dispatch(receiveLikeErrors(err.responseJSON))      
     )
   )
 }
@@ -37,7 +37,7 @@ export const fetchAllLikes = () => dispatch => {
   return (
     LikeAPIUtil.fetchAllLikes().then(
       likes => dispatch(receiveAllLikes(likes)),
-      err => dispatch(receiveLikeErrors(err))
+      err => dispatch(receiveLikeErrors(err.responseJSON))
     )
   )
 }
@@ -45,12 +45,12 @@ export const deleteLike = likeId => dispatch => {
 
   LikeAPIUtil.deleteLike(likeId).then(
     like => dispatch(deleteLikeState(like)),
-    err => dispatch(receiveLikeErrors(err))
+    err => dispatch(receiveLikeErrors(err.responseJSON))
   )
 }
 export const createLike = like => dispatch => {
   LikeAPIUtil.createLike(like).then(
     like => dispatch(receiveLike(like)),
-    err => dispatch(receiveLikeErrors(err))
+    err => dispatch(receiveLikeErrors(err.responseJSON))
   )
 }

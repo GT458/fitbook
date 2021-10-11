@@ -31,7 +31,7 @@ export const fetchFriend = id => dispatch => (
       dispatch(receiveFriend(friend))
     
     ),
-    err => dispatch(receiveFriendErrors(err))
+    err => dispatch(receiveFriendErrors(err.responseJSON))
   )
 )
 
@@ -44,14 +44,14 @@ export const fetchAllFriends = () => dispatch => (
       })
       dispatch(receiveAllFriends(friends))
     },
-    err => dispatch(receiveFriendErrors(err))
+    err => dispatch(receiveFriendErrors(err.responseJSON))
   )
 )
 
 export const deleteFriend = id => dispatch => (
   FriendAPIUtil.deleteFriend(id).then(
     friend => dispatch(deleteFriendState(friend)),
-    err => dispatch(receiveFriendErrors(err))
+    err => dispatch(receiveFriendErrors(err.responseJSON))
   )
 )
 
@@ -59,6 +59,6 @@ export const deleteFriend = id => dispatch => (
 export const createFriend = friend => dispatch => {
   FriendAPIUtil.createFriend(friend).then(
     friend => dispatch(receiveFriend(friend)),
-    err => dispatch(receiveFriendErrors(err))
+    err => dispatch(receiveFriendErrors(err.responseJSON))
   )
 }

@@ -28,27 +28,27 @@ const deleteFriendRequestState = friend_request => ({
 export const fetchFriendRequest = id => dispatch => (
   FriendRequestAPI.fetchFriendRequest(id).then(
     friend_request => dispatch(receiveFriendRequest(friend_request)),
-    err => dispatch(receiveFriendRequestErrors(err))
+    err => dispatch(receiveFriendRequestErrors(err.responseJSON))
   )
 )
 
 export const fetchAllFriendRequests = () => dispatch => (
   FriendRequestAPI.fetchAllFriendRequests().then(
     friend_requests => dispatch(receiveAllFriendRequests(friend_requests)),
-    err => dispatch(receiveFriendRequestErrors(err))
+    err => dispatch(receiveFriendRequestErrors(err.responseJSON))
   )
 )
 
 export const deleteFriendRequest = id => dispatch => (
   FriendRequestAPI.deleteFriendRequest(id).then(
     friend_request => dispatch(deleteFriendRequestState(friend_request)),
-    err => dispatch(receiveFriendRequestErrors(err))
+    err => dispatch(receiveFriendRequestErrors(err.responseJSON))
   )
 )
 
 export const createFriendRequest = friendRequest => dispatch => (
   FriendRequestAPI.createFriendRequest(friendRequest).then(
     friendRequest => dispatch(receiveFriendRequest(friendRequest)),
-    err => dispatch(receiveFriendRequestErrors(err))
+    err => dispatch(receiveFriendRequestErrors(err.responseJSON))
   )
 )
