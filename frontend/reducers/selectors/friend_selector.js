@@ -1,6 +1,6 @@
 export const getFriends = (userId, stateFriends) => {
   if (userId === undefined || stateFriends === undefined) {
-    console.log('no friends');
+    
     return [];
   }
   let friends = [];
@@ -19,7 +19,7 @@ export const getFriends = (userId, stateFriends) => {
 
 export const getFriendUsers = (userId, stateFriends, stateUsers) => {
   if (userId === undefined || stateFriends === undefined) {
-    console.log('no friends');
+    
     return [];
   }
   let friends = [];

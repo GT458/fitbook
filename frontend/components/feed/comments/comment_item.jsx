@@ -35,7 +35,7 @@ class CommentItem extends React.Component {
   
   constructor(props) {
     super(props);
-    // debugger;
+
     this.state = {
       body: '',
       author_id: 0,
@@ -49,7 +49,7 @@ class CommentItem extends React.Component {
     this.setFalse = this.setFalse.bind(this);
   }
   showCommentOptions() {
-    console.log('open comment options');
+    
     this.setState({
       showOptions: true
     })

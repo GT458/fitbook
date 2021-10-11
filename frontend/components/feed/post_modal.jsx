@@ -58,7 +58,7 @@ class PostModal extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    // debugger;
+    
     if (this.state.body.length < 1) {
       this.setState({
         errors: ['Post cannot have an empty body']

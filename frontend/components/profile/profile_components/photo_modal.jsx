@@ -51,13 +51,6 @@ class PhotoModal extends React.Component {
       formData.append('user[profile_photo]', this.state.imageFile);
     }
 
-    // $.ajax({
-    //   url: `api/users/${this.props.currentUser.id}`,
-    //   method: 'PATCH',
-    //   data: formData,
-    //   contentType: false,
-    //   processData: false
-    // }).then(response => console.log(response), err => console.log(err.responseJSON))
     this.props.updateUserPhoto(this.props.currentUser.id, formData)
     this.props.closeModal();
     this.setState({

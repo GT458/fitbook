@@ -50,7 +50,7 @@ class ModalEdit extends React.Component {
   componentDidMount() {
     let props = this.props;
     if (this.props.currentUser) {
-      console.log(this.props.currentUser)
+      
       this.setState({
         cover_photo_url: 'url',
         profile_photo_url: 'url',
@@ -60,11 +60,6 @@ class ModalEdit extends React.Component {
         school: props.currentUser.school,
         show_edit: false,
         error: false,
-        // email: props.currentUser.email,
-        // fname: props.currentUser.fname,
-        // lname: props.currentUser.lname,
-        // gender: props.currentUser.gender,
-        // birthday: props.currentUser.birthday,
         id: props.currentUser.id
       })
     }

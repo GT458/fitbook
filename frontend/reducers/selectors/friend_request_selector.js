@@ -2,7 +2,7 @@ import * as CommentAPIUtil from '../../util/comment_api_util';
 import * as FriendRequestAPIUtil from '../../util/friend_request_api_util'
 export const getRequestsSent = (userId, stateFriendRequests) => {
   if (userId === undefined || stateFriendRequests === undefined) {
-    console.log('no fr');
+    
     return [];
   }
   let requestsSent = [];
@@ -18,7 +18,7 @@ export const getRequestsSent = (userId, stateFriendRequests) => {
 
 export const getRequestsReceived = (userId, stateFriendRequests) => {
   if (userId === undefined || stateFriendRequests === undefined) {
-    console.log('no fr');
+    
     return [];
   }
   let requestsReceived = [];
