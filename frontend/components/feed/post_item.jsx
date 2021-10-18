@@ -46,7 +46,8 @@ class PostItem extends React.Component {
       this.props.getUser(this.props.post.author_id);
     } 
     this.props.likes.forEach(like => {
-          if (like.user_id === this.props.author.id) {
+      if ( this.props.author) {
+        if (like.user_id === this.props.author.id) {
             if (this.state.postIsLiked === false) {
 
               this.setState({
@@ -55,6 +56,8 @@ class PostItem extends React.Component {
             }
             
           }
+      }
+          
       })
   }
   
