@@ -44,6 +44,7 @@ class PostItem extends React.Component {
     if (!this.props.author) {
 
       this.props.getUser(this.props.post.author_id);
+      
     } 
     this.props.likes.forEach(like => {
       if ( this.props.author) {
@@ -74,6 +75,21 @@ class PostItem extends React.Component {
       this.setState({
         likes: Object.values(this.props.likes)
       });
+
+      this.props.likes.forEach(like => {
+      
+        if (like.user_id === this.props.author.id) {
+            if (this.state.postIsLiked === false) {
+
+              this.setState({
+                postIsLiked: true
+              });
+            }
+            
+          }
+      
+          
+      })
       
     }
     
@@ -158,9 +174,9 @@ class PostItem extends React.Component {
         
         {this.state.showOptions ? <> <div className='show-post-outer' onClick={() => this.setState({ showOptions: false })}></div> 
         <div className='post-options'>
-          <div className='delete-post-btn optn' onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</div>
+          <div className='delete-post-btn optn' onClick={() => {this.props.deletePost(this.props.post.id); this.setState({ showOptions: false });}}>Delete Post</div>
           <div className='post-options-border'></div>
-          <div className='edit-post-btn optn' onClick={() => this.props.openEditModal(this.props.modal, this.props.post.id)}>Edit Post</div>
+          <div className='edit-post-btn optn' onClick={() => {this.props.openEditModal(this.props.modal, this.props.post.id); this.setState({ showOptions: false });}}>Edit Post</div>
         </div> </>: null}
         
         
@@ -185,7 +201,7 @@ class PostItem extends React.Component {
         </div>
         <div className='likes-counter-container'>
           <img src='https://i.ibb.co/Y0fZMds/icons8-like-25.png'></img>
-          {this.state.postIsLiked ? this.state.likes.length < 2 ? <div className='likes-count'>You like this </div>: <div className='likes-count'>You and {this.state.likes.length} others</div> : this.state.likes !== undefined ? <div className='likes-count'>{this.state.likes.length}</div> : <div>Be the first to like</div> }
+          {this.state.postIsLiked ? this.state.likes.length < 2 ? <div className='likes-count'>You like this </div>: <div className='likes-count'>You and {this.state.likes.length} others</div> : this.state.likes !== undefined || this.state.likes > 0 ? <div className='likes-count'>{this.state.likes.length}</div> : <div>Be the first to like</div> }
           {/* {this.state.likes !== undefined ? <div className='likes-count'>{this.state.likes.length}</div> : <div>Be the first to like</div>} */}
         </div>
         <div className='like-bar'>
