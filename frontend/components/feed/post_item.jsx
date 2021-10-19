@@ -35,11 +35,8 @@ const mDTP = dispatch => ({
 class PostItem extends React.Component {
   
   componentDidMount() {
-    this.setState({
-      comments: this.props.comments,
-      likes:  Object.values(this.props.likes),
-      postIsLiked: false
-    })
+    let isLiked = false;
+    
 
     if (!this.props.author) {
 
@@ -47,22 +44,31 @@ class PostItem extends React.Component {
       
     } 
     this.props.likes.forEach(like => {
-      if ( this.props.author) {
-        if (like.user_id === this.props.author.id) {
+      //if ( this.props.author) {
+        if (like.user_id === this.props.currentUser.id) {
             if (this.state.postIsLiked === false) {
-
-              this.setState({
-                postIsLiked: true
-              });
+              isLiked = true;
+              // this.setState({
+              //   postIsLiked: true
+              // });
             }
             
           }
-      }
+      //}
           
       })
+      this.setState({
+        comments: this.props.comments,
+        likes: this.props.likes,
+        postIsLiked: isLiked
+      })
   }
-  
-  componentDidUpdate(prevProps) {
+  componentWillUnmount() {
+    // this.setState({
+    //   postIsLiked: false
+    // })
+  }
+  componentDidUpdate(prevProps,) {
     // debugger;
     if (prevProps.comments.length !== this.props.comments.length) {
       // debugger;
@@ -72,15 +78,16 @@ class PostItem extends React.Component {
     }
 
     if (prevProps.likes.length !== this.props.likes.length) {
+      //debugger;
       this.setState({
-        likes: Object.values(this.props.likes)
+        likes: this.props.likes
       });
-
-      this.props.likes.forEach(like => {
       
-        if (like.user_id === this.props.author.id) {
+      this.props.likes.forEach(like => {
+        //debugger;
+        if (like.user_id === this.props.currentUser.id) {
             if (this.state.postIsLiked === false) {
-
+              
               this.setState({
                 postIsLiked: true
               });
@@ -90,8 +97,11 @@ class PostItem extends React.Component {
       
           
       })
+
       
-    }
+      
+      
+     }
     
     
 
@@ -113,7 +123,7 @@ class PostItem extends React.Component {
     switch(this.state.postIsLiked) {
       case true:
         this.state.likes.forEach(like => {
-          if (like.user_id === this.props.author.id) {
+          if (like.user_id === this.props.currentUser.id) {
             this.props.deleteLike(like.id);
           }
         })
@@ -128,7 +138,7 @@ class PostItem extends React.Component {
         // filteredLikes = this.state.likes.filter(like => like.likeable_id !== this.props.post.id)
         this.props.createLike({like:{
           likeable_type: 'post',
-          user_id: this.props.author.id,
+          user_id: this.props.currentUser.id,
           likeable_id: this.props.post.id
         }});
         this.setState({
@@ -201,7 +211,7 @@ class PostItem extends React.Component {
         </div>
         <div className='likes-counter-container'>
           <img src='https://i.ibb.co/Y0fZMds/icons8-like-25.png'></img>
-          {this.state.postIsLiked ? this.state.likes.length < 2 ? <div className='likes-count'>You like this </div>: <div className='likes-count'>You and {this.state.likes.length} others</div> : this.state.likes !== undefined || this.state.likes > 0 ? <div className='likes-count'>{this.state.likes.length}</div> : <div>Be the first to like</div> }
+          {this.state.postIsLiked ? this.state.likes.length < 2 ? <div className='likes-count'>You like this </div>: <div className='likes-count'>You and {this.state.likes.length - 1} others</div> : (this.state.likes !== undefined || this.state.likes > 0 ? <div className='likes-count'>{this.state.likes.length}</div> : <div>Be the first to like</div>) }
           {/* {this.state.likes !== undefined ? <div className='likes-count'>{this.state.likes.length}</div> : <div>Be the first to like</div>} */}
         </div>
         <div className='like-bar'>
