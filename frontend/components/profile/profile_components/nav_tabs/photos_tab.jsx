@@ -1,5 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
+const mSTP = state =>  ({
+  posts: Object.values(state.entities.posts)
+})
 
+const mDTP = dispatch => ({
+
+})
 
 class PhotosTab extends React.Component {
 
@@ -10,6 +17,13 @@ class PhotosTab extends React.Component {
 
 
   render() {
+   
+    const postsWithPhotos = this.props.posts.filter(post => {
+      if (post.photo !== undefined) {
+        return post;
+      }
+    })
+    console.log(postsWithPhotos);
     return (
       <div className='about-tab'>
         <div className='content-display'>
@@ -23,4 +37,4 @@ class PhotosTab extends React.Component {
   }
 }
 
-export default PhotosTab;
+export default connect(mSTP, mDTP)(PhotosTab);
