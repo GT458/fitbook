@@ -18,9 +18,10 @@ class PhotosTab extends React.Component {
 
   render() {
    
-    const postsWithPhotos = this.props.posts.filter(post => {
-      if (post.photo !== undefined) {
-        return post;
+    const postsWithPhotos = [];
+    this.props.posts.forEach(post => {
+      if (post.photo !== undefined && post.author_id === this.props.user.id) {
+        postsWithPhotos.push( <img key={post.id} className='profile-photo-thumb'src={post.photo}></img>);
       }
     })
     console.log(postsWithPhotos);
@@ -29,7 +30,7 @@ class PhotosTab extends React.Component {
         <div className='content-display'>
           <h2>{this.props.user.fname[0].toUpperCase() + this.props.user.fname.slice(1)}'s Photos</h2>
           <div className='photos-content'>
-            0 photos :(
+            {postsWithPhotos.length >= 1  ? postsWithPhotos : 'No photos'}
           </div>
         </div>
       </div>
