@@ -32,7 +32,7 @@ export default class EditCommentInput extends React.Component {
       <form className='edit-comment-form' onSubmit={this.editButtonClicked}>
         <input type='text' value={this.state.body} onChange={this.update()}></input>
         <div className='edit-comment-btns'>
-          <button type='submit'>Edit</button>
+          <button type='submit'>Press enter to submit</button>
           <button onClick={() => this.props.setFalse()}>Cancel</button>  
         </div>
       </form>
