@@ -1,0 +1,23 @@
+.sidebar-container {
+  position: fixed;
+  left: 1em;
+  top: 70px;
+
+  width: 20%;
+  height: 100%;
+  border: 1px solid red;
+  
+}
+.s-item {
+  margin-bottom: 2em;
+}
+
+.user-bar {
+  display: flex;
+  flex-direction: row;
+  img {
+    border-radius: 100%;
+    width: 3em;
+    height: auto;
+  }
+}

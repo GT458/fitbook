@@ -13,6 +13,7 @@ import PhotoModal from './profile/profile_components/photo_modal';
 import PostModal from './feed/post_modal';
 import CoverModal from './profile/profile_components/cover_modal';
 import EditPostModal from './feed/edit_post_modal';
+import Sidebar from './sidebar/sidebar';
 
 const App = () => (
   
@@ -23,6 +24,7 @@ const App = () => (
     sign up button rendersa signup modal */}
     <AuthRoute exact path='/' component={LoginFormContainer}/>
     <ProtectedRoute path='/' component={NavBarContainer}/>
+    <ProtectedRoute path='/' component={Sidebar} />
     {/* <SplashContainer /> */}
     {/* AuthRoute: not logged in, / renders login form, ProtectedRoute means logged in, / renders what we have in splash container for now */}
     <Modal />
