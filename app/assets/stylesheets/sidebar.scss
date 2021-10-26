@@ -1,6 +1,6 @@
 .sidebar-container {
   position: fixed;
-  left: 1em;
+  left: .8em;
   top: 70px;
 
   width: 20%;
@@ -9,7 +9,9 @@
   
 }
 .s-item {
-  margin-bottom: 2em;
+  // padding: 1em 2em;
+  padding: 1em 0;
+  // margin-bottom: 2em;
   border-bottom: 1px solid lightgray;
 }
 
@@ -18,7 +20,7 @@
   flex-direction: row;
   img {
     border-radius: 100%;
-    width: 3em;
+    width: 2em;
     height: auto;
   }
 }
