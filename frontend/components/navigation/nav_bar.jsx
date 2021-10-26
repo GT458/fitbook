@@ -15,7 +15,8 @@ class NavBar extends React.Component {
     super(props)
     this.state = {
       showNotifs: false,
-      hasNotifs: false
+      hasNotifs: false,
+      menuOpen: false
       
     }
     this.setNotification = this.setNotification.bind(this);
@@ -60,9 +61,9 @@ class NavBar extends React.Component {
                 </Link>
               {this.props.incomingFriendRequests.length >= 1 ? <div className='notif-indic'>  </div> : null}
             <button onClick={() => this.setState({showNotifs: !this.state.showNotifs})}className='nav-btn .notif-btn'><i className="far fa-bell"></i></button> 
-            {/* <button className='nav-btn notif-btn'></button> */}
-            <button className='nav-btn logout-btn' onClick={() => this.props.logout()}><i className="fas fa-caret-down"></i></button>
-            <DropDownMenu />
+            {/* <button className='nav-btn notif-btn'></button> */} 
+           <button className='nav-btn logout-btn' onClick={() => this.setState({menuOpen: !this.state.menuOpen})}><i className="fas fa-caret-down"></i></button>
+            <DropDownMenu menuOpen={this.state.menuOpen} logout={this.props.logout} currentUser={this.props.currentUser} />
 
           </div>
         </div>

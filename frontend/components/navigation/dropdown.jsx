@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-
+import { Link } from "react-router-dom";
+import { formatFullName } from "../../util/format_name";
 const mSTP = state => ({
 
 })
@@ -23,20 +24,22 @@ class DropDownMenu extends React.Component {
     return (
       <div className="drop-down-container">
         <div className="drop-down-contents">
-          <div className="view-profile-bar">
-            <img><i class="fab fa-mandalorian"></i></img>
-            <h1>Name</h1>
-            <span>See your profile</span>
+          <div className="view-profile-bar bar">
+            <Link to={`users/${this.props.currentUser.id}`}>
+              <img src={this.props.currentUser.profile_photo}></img>
+              <h1>{formatFullName(this.props.currentUser.fname, this.props.currentUser.lname)}</h1>
+              <span>See your profile</span>
+            </Link>
           </div>
-          <div className="display-bar">
+          <div className="display-bar bar">
             <div className="display-icon">
-              <i class="fas fa-moon"></i>
+              <i className="fas fa-moon"></i>
             </div>
             <h1>Display Settings</h1>
           </div>
-          <div className="logout-bar">
+          <div className="logout-bar bar" onClick={() => this.props.logout()}>
             <div className="logout-icon">
-              <i class="fas fa-sign-out-alt"></i>
+              <i className="fas fa-sign-out-alt"></i>
             </div>
             <h1>Log Out</h1>
           </div>
