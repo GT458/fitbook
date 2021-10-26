@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import NotificationsFeed from '../feed/notifications_feed';
 import SearchResults from './search_results';
+import DropDownMenu from './dropdown';
 class NavBar extends React.Component {
 
   componentDidUpdate() {
@@ -58,9 +59,10 @@ class NavBar extends React.Component {
               </div>
                 </Link>
               {this.props.incomingFriendRequests.length >= 1 ? <div className='notif-indic'>  </div> : null}
-            <button onClick={() => this.setState({showNotifs: !this.state.showNotifs})}className='nav-btn .notif-btn'><i class="far fa-bell"></i></button> 
+            <button onClick={() => this.setState({showNotifs: !this.state.showNotifs})}className='nav-btn .notif-btn'><i className="far fa-bell"></i></button> 
             {/* <button className='nav-btn notif-btn'></button> */}
-            <button className='nav-btn logout-btn' onClick={() => this.props.logout()}><i class="fas fa-caret-down"></i></button>
+            <button className='nav-btn logout-btn' onClick={() => this.props.logout()}><i className="fas fa-caret-down"></i></button>
+            <DropDownMenu />
 
           </div>
         </div>
