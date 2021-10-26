@@ -58,9 +58,9 @@ class NavBar extends React.Component {
               </div>
                 </Link>
               {this.props.incomingFriendRequests.length >= 1 ? <div className='notif-indic'>  </div> : null}
-            <button onClick={() => this.setState({showNotifs: !this.state.showNotifs})}className='nav-btn .notif-btn'>N</button> 
+            <button onClick={() => this.setState({showNotifs: !this.state.showNotifs})}className='nav-btn .notif-btn'><i class="far fa-bell"></i></button> 
             {/* <button className='nav-btn notif-btn'></button> */}
-            <button className='nav-btn logout-btn' onClick={() => this.props.logout()}></button>
+            <button className='nav-btn logout-btn' onClick={() => this.props.logout()}><i class="fas fa-caret-down"></i></button>
 
           </div>
         </div>

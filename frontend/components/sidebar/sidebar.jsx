@@ -31,9 +31,11 @@ class Sidebar extends React.Component {
             <h1>{formatFullName(currentUser.fname, currentUser.lname)}</h1>
           </div>
           <div className="friends-bar s-item">
+            <span><i class="fas fa-user-friends"></i></span>
             <h1>Friends</h1>
           </div>
           <div className="photos-bar s-item">
+            <span><i class="fas fa-images"></i></span>
             <h1>Photos</h1>
           </div>
         </div>

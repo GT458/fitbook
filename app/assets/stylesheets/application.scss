@@ -16,11 +16,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&family=Raleway:wght@200;300;400;500;600;700&display=swap');
 
-@media only screen and (max-width: 1000px) {
-  * {
-    display: none;
-  }
-}
+// @media only screen and (max-width: 1000px) {
+//   * {
+//     display: none;
+//   }
+// }
 
 
 .html {
@@ -33,42 +33,53 @@ body {
 
 .footer {
 
-  width: max-width;
-  height: 100vh;
+  height: 50%;
   background-color: white;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 .app {
   width: 100%;
   min-width: 940px;
   background: #edf0f5;
 }
-@media (max-width: 800px) {
-  .app {
-    div {
-      width: 100vw;
-      flex-basis: 33%;
-    }
-  }
-  .app * {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width: 100vw;
-    .posts-feed {
-      width: 85vw;
-    }
-    word-wrap: break-word;
 
-    .post-container {
-      // width: 85vw;
-    }
-  }
-  .footer {
-    width: 100vw;
-    
+@media (max-width: 699px) {
+  .sidebar-container {
+    display: none;
   }
 }
+// @media (max-width: 800px) {
+//   .app {
+//     div {
+//       width: 100vw;
+//       flex-basis: 33%;
+//     }
+//   }
+//   .app * {
+//     display: flex;
+//     flex-direction: column;
+//     flex-wrap: wrap;
+//     width: 100vw;
+//     // .posts-feed {
+//     //   width: 85vw;
+//     // }
+//     word-wrap: break-word;
+
+//   }
+//   .footer {
+//     width: 100vw;
+    
+//   }
+// }
 
 .homepage {
   padding-top: 8px;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  max-width: 100%;
+
 }
