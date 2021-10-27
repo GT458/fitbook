@@ -21,6 +21,7 @@ class NavBar extends React.Component {
     }
     this.setNotification = this.setNotification.bind(this);
     this.setNotifsIndicator = this.setNotifsIndicator.bind(this);
+    this.setMenuOpen = this.setMenuOpen.bind(this);
   }
 
   setNotifsIndicator(boolVal) {
@@ -30,9 +31,16 @@ class NavBar extends React.Component {
     
     this.setState({showNotifs: !this.state.showNotifs})
   }
+
+  setMenuOpen(val) {
+    this.setState({
+      menuOpen: val
+    })
+  }
   render() {
     
     return (
+     
       <div className='nav-bar'>
         <div className='left'>
           <Link to='/'><img src={'https://img.icons8.com/fluent/96/000000/facebook-new.png'}></img></Link>
@@ -62,12 +70,13 @@ class NavBar extends React.Component {
               {this.props.incomingFriendRequests.length >= 1 ? <div className='notif-indic'>  </div> : null}
             <button onClick={() => this.setState({showNotifs: !this.state.showNotifs})}className='nav-btn .notif-btn'><i className="far fa-bell"></i></button> 
             {/* <button className='nav-btn notif-btn'></button> */} 
-           <button className='nav-btn logout-btn' onClick={() => this.setState({menuOpen: !this.state.menuOpen})}><i className="fas fa-caret-down"></i></button>
-            <DropDownMenu menuOpen={this.state.menuOpen} logout={this.props.logout} currentUser={this.props.currentUser} />
+           <button className={ this.state.menuOpen ? 'nav-btn logout-btn blue': 'nav-btn logout-btn'} onClick={() => this.setState({menuOpen: !this.state.menuOpen})}><i className="fas fa-caret-down"></i></button>
+            <DropDownMenu setMenuOpen={this.setMenuOpen} menuOpen={this.state.menuOpen} logout={this.props.logout} currentUser={this.props.currentUser} />
 
           </div>
         </div>
       </div>
+      
     )
   }
 }

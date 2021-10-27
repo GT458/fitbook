@@ -22,7 +22,8 @@ class DropDownMenu extends React.Component {
     }
 
     return (
-      <div className="drop-down-container">
+       <div className='drop-down-full' onClick={() => this.props.setMenuOpen(false)}>
+      <div className="drop-down-container" >
         <div className="drop-down-contents">
           <div className="view-profile-bar bar">
             <Link to={`users/${this.props.currentUser.id}`}>
@@ -47,6 +48,7 @@ class DropDownMenu extends React.Component {
             <h1>Log Out</h1>
           </div>
         </div>
+      </div>
       </div>
     )
     
