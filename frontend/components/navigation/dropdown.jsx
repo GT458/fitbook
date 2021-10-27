@@ -26,11 +26,14 @@ class DropDownMenu extends React.Component {
         <div className="drop-down-contents">
           <div className="view-profile-bar bar">
             <Link to={`users/${this.props.currentUser.id}`}>
-              <img src={this.props.currentUser.profile_photo}></img>
-              <h1>{formatFullName(this.props.currentUser.fname, this.props.currentUser.lname)}</h1>
-              <span>See your profile</span>
+                <img src={this.props.currentUser.profile_photo}></img>
+                <div>
+                  <h1>{formatFullName(this.props.currentUser.fname, this.props.currentUser.lname)}</h1>
+                  <span>See your profile</span>
+              </div>
             </Link>
           </div>
+          <div className="border"></div>
           <div className="display-bar bar">
             <div className="display-icon">
               <i className="fas fa-moon"></i>
@@ -38,7 +41,7 @@ class DropDownMenu extends React.Component {
             <h1>Display Settings</h1>
           </div>
           <div className="logout-bar bar" onClick={() => this.props.logout()}>
-            <div className="logout-icon">
+            <div className="display-icon">
               <i className="fas fa-sign-out-alt"></i>
             </div>
             <h1>Log Out</h1>

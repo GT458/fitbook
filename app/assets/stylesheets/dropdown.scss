@@ -1,3 +1,6 @@
+$facebook-grey: #F0F2F5;
+
+
 .drop-down-container {
   width: 20em;
   height: auto;
@@ -12,23 +15,35 @@
   .drop-down-contents {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     a {
       display: flex;
       flex-direction:row;
+      justify-content: center;
+      align-items: center;
+      div {
+        margin-left: 8px;
+      }
     }
     .bar {
       display: flex;
       flex-direction: row;
       align-items: center;
-      width: 100%;
+      width: 17.2em;
       border-radius: 5px;
+      padding: 0.8em 0.5em;
+      font-size: 1.1em;
       img {
-        border: 1px solid red;
+        // border: 1px solid red;
         width: 3.5em;
-        height: auto;
+        height: 3.5em;
+        border-radius: 100%;
       }
       h1 {
         font-weight: 400;
+        margin-bottom: 5px;
       }
       span {
         font-weight: 100;
@@ -38,6 +53,32 @@
         cursor: pointer;
         background-color: lightgray;
       }
+    }
+    .border {
+      border-bottom: 1px solid gray;
+      width: 100%;
+      margin: 5px 0;
+    }
+    .display-icon {
+      border-radius: 100%;
+      background-color: $facebook-grey;
+      font-size: 1.3em;
+      width: 30px;
+      height: 30px;
+      padding: 7px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 8px;
+      // text-align: center;
+    }
+    .bar:not(:first-child) {
+      height: 30px;
+
+    }
+
+    .display-bar:first-child {
+      margin-bottom: 5px;
     }
   }
 }

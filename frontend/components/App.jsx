@@ -24,7 +24,7 @@ const App = () => (
     sign up button rendersa signup modal */}
     <AuthRoute exact path='/' component={LoginFormContainer}/>
     <ProtectedRoute path='/' component={NavBarContainer}/>
-    <ProtectedRoute path='/' component={Sidebar} />
+    <ProtectedRoute exactpath='/' component={Sidebar} />
     {/* <SplashContainer /> */}
     {/* AuthRoute: not logged in, / renders login form, ProtectedRoute means logged in, / renders what we have in splash container for now */}
     <Modal />
