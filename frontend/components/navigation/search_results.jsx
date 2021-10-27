@@ -75,6 +75,7 @@ class SearchResults extends React.Component {
     });
     return (
       <div className='search-container'>
+        <span className="search-ico"><i class="fas fa-search"></i></span>
         <input onBlur={() => this.setState({barFocused: false})} onChange={this.handleInput} onFocus={() => this.setState({barFocused: true})} type='text' placeholder='Search Fitbook'></input>
         {this.state.barFocused ? <div className='search-results'>
           <ul>
