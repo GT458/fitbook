@@ -2,6 +2,7 @@ import React from 'react';
 import { openPostModal } from '../../actions/modal_actions';
 
 import { connect } from 'react-redux';
+import { formatFullName } from '../../util/format_name';
 
 const mSTP = state => ({
   modal: state.ui.modal,
@@ -25,7 +26,7 @@ class CreatePostComponent extends React.Component {
           <div className='thumbnail-img'>
             <img src={this.props.currentUser.profile_photo}></img>
           </div>
-          <input type='text' placeholder={`What's on your mind?`}  disabled></input>
+          <input type='text' placeholder={`What's on your mind, ${formatFullName(this.props.currentUser.fname, this.props.currentUser.lname)}?`}  disabled></input>
         </div>
         {/* <div className='create-post-button'>
            <button>Add Photo</button> 
