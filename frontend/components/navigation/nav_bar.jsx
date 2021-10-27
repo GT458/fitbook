@@ -50,8 +50,8 @@ class NavBar extends React.Component {
         <div className='middle'>
           <div className='buttons-container'>
             {/* <a href='https://github.com/GT458/fitbook'><img src='https://pngimg.com/uploads/github/github_PNG40.png'></img></a> */}
-            <a target="_blank" href='https://github.com/GT458/fitbook'><button className='nav-btn github'><i class="fab fa-github"></i></button> </a>
-            <a target="_blank" href='https://www.linkedin.com/in/isohrob/'><button className='nav-btn linkedin'><i class="fab fa-linkedin-in"></i></button> </a>
+            <a target="_blank" href='https://github.com/GT458/fitbook'><button className='nav-btn github'><i className="fab fa-github"></i></button> </a>
+            <a target="_blank" href='https://www.linkedin.com/in/isohrob/'><button className='nav-btn linkedin'><i className="fab fa-linkedin-in"></i></button> </a>
             
           </div>
         </div>
