@@ -4,6 +4,15 @@ import {Link} from 'react-router-dom';
 import { formatFullName } from '../../../../util/format_name';
 import FriendsIndex from '../friends_index';
 
+const mSTP = state => ({
+
+})
+
+const mDTP = dispatch => ({
+
+})
+
+
 class FriendsPage extends React.Component {
 
   componentDidMount() {
@@ -53,4 +62,4 @@ class FriendsPage extends React.Component {
   }
 }
 
-export default FriendsPage;
+export default connect(mSTP, mDTP)(FriendsPage);
