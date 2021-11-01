@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { formatFullName } from "../../util/format_name";
 
 
@@ -27,8 +28,11 @@ class Sidebar extends React.Component {
       <div className="sidebar-container">
         <div className="sidebar-items">
           <div className="user-bar s-item">
+            <Link to={`/users/${this.props.currentUser.id}`}>
+
             <img src={currentUser.profile_photo}></img>
             <h1>{formatFullName(currentUser.fname, currentUser.lname)}</h1>
+            </Link>
           </div>
           <div className="friends-bar s-item">
             <span><i className="fas fa-user-friends"></i></span>
