@@ -14,6 +14,7 @@ import PostModal from './feed/post_modal';
 import CoverModal from './profile/profile_components/cover_modal';
 import EditPostModal from './feed/edit_post_modal';
 import Sidebar from './sidebar/sidebar';
+import FriendsPage from './sidebar-pages/friend-page';
 
 const App = () => (
   
@@ -34,7 +35,8 @@ const App = () => (
     <CoverModal />
     <EditPostModal />
     <Switch>
-      <ProtectedRoute path = '/users/:userId' component={ProfileContainer} />
+      <ProtectedRoute exact path='/users/:userId/friends' component={FriendsPage} />
+      <ProtectedRoute exact path = '/users/:userId' component={ProfileContainer} />
       <ProtectedRoute path='/' component={SplashContainer} />
       <Redirect to='/' />
     </Switch>

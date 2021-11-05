@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
-import { formatFullName } from '../../../../util/format_name';
-import FriendsIndex from '../friends_index';
+import { formatFullName } from '../../util/format_name';
+
 import { getFriends } from '../../reducers/selectors/friend_selector';
 import { getUser } from '../../actions/user_actions';
 const mSTP = state => ({
@@ -33,7 +33,7 @@ class FriendsPage extends React.Component {
       return (<div className='friends-page'>
         <div className='content-display'>
           <h2>{this.props.user.fname[0].toUpperCase() + this.props.user.fname.slice(1)}'s friends</h2>
-          <div className='friends-content'>
+          <div className='friends-content no-friends'>
             No Friends
           </div>
         </div>
@@ -65,7 +65,7 @@ class FriendsPage extends React.Component {
     })
    //debugger;
     return (
-      <div className='about-tab'>
+      <div className='friends-page'>
         <div className='content-display friends'>
           <h2>{this.props.user.fname[0].toUpperCase() + this.props.user.fname.slice(1)}'s friends</h2>
           <div className='friends-content'>

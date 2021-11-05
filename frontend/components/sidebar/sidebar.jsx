@@ -35,8 +35,10 @@ class Sidebar extends React.Component {
             </Link>
           </div>
           <div className="friends-bar s-item">
+            <Link to={`/users/${this.props.currentUser.id}/friends`}>
             <span><i className="fas fa-user-friends"></i></span>
             <h1>Friends</h1>
+            </Link>
           </div>
           <div className="photos-bar s-item">
             <span><i className="fas fa-images"></i></span>
