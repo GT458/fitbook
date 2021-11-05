@@ -7,7 +7,7 @@ import { getFriends } from '../../reducers/selectors/friend_selector';
 import { getUser } from '../../actions/user_actions';
 const mSTP = state => ({
   user: state.entities.users[state.session.id],
-  friendsriends: getFriends(state.session.id, state.entities.friends),
+  friends: getFriends(state.session.id, state.entities.friends),
   users: state.entities.users
 })
 
@@ -20,6 +20,10 @@ class FriendsPage extends React.Component {
 
   componentDidMount() {
     
+  }
+
+  componentDidUpdate(prevProps) {
+
   }
   constructor(props) {
     super(props);
