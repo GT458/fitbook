@@ -11,6 +11,10 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= favicon_link_tag asset_path('fblg.png') %>
+    <meta property="og:title" content="Fitbook" />
+    <meta property="og:image" content="<%= image_url('fitbook.png')%>">
+    <meta property="og:description" content="A fullstack clone of Facebook made with React and Ruby on Rails" />
+    <meta property="og:url" content="http://fitbookus.herokuapp.com" />
   </head>
 
   <body>
