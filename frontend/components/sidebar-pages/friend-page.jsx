@@ -53,7 +53,8 @@ class FriendsPage extends React.Component {
         friendId = friend.user_id2;
       }
       //debugger;
-      let user = this.props.user[friendId];
+      let user = this.props.users[friendId];
+      // debugger;
       return (//<FriendsIndex friendId={friendId} key={idx}/>
         <div className='user-card-container' key={idx}>
           <div className='user-card-header'>
