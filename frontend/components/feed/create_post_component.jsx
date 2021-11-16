@@ -19,7 +19,7 @@ class CreatePostComponent extends React.Component {
     
   }
 
-  render() {
+  render() { 
     return (
       <div className='create-post' onClick={() => this.props.openModal(this.props.modal)}>
         <div className='create-post-top-half'>
